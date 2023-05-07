@@ -127,7 +127,7 @@ export function Card() {
               errors.year && "border-[--light-red] "
             }`}
             placeholder="YYYY"
-            {...register("year", { valueAsNumber: true })}
+            {...register("year")}
           />
           {errors.year && (
             <span className="mt-2 text-sm text-[--light-red]">

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -27,6 +27,7 @@
     "zod": "3.21.4"
   },
   "devDependencies": {
+    "@hookform/devtools": "4.3.1",
     "eslint-config-prettier": "8.8.0",
     "prettier": "2.8.8",
     "prettier-plugin-tailwindcss": "0.2.8"
