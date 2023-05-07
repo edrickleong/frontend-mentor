@@ -4,7 +4,7 @@ import Card from "@/app/result/_components/card"
 export default function Page() {
   return (
     <div
-      className={`overflow-hidden flex h-screen max-h-screen w-full items-center justify-center bg-gray-100 sm:overflow-auto ${hankenGrotesk.className} sm:p-6`}
+      className={`flex h-screen max-h-screen w-full items-center justify-center overflow-hidden bg-gray-100 ${hankenGrotesk.className} sm:p-6`}
       style={
         {
           "--light-red": "hsl(0, 100%, 67%)",
