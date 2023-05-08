@@ -1,10 +1,12 @@
 import { spaceMono } from "@/app/styles/fonts"
 import Card from "@/app/tip-calculator/_components/card"
+import Image from "next/image"
+import logo from "#/logo.svg"
 
 export default function Page() {
   return (
     <div
-      className={`flex h-screen max-h-screen w-full items-center justify-center overflow-hidden bg-[--light-grayish-cyan] ${spaceMono.className} sm:p-6`}
+      className={`flex h-screen w-full flex-col pt-8 gap-8 items-center bg-[--light-grayish-cyan] sm:justify-center ${spaceMono.className} sm:p-6`}
       style={
         {
           "--strong-cyan": "hsl(172, 67%, 45%)",
@@ -17,6 +19,7 @@ export default function Page() {
         } as React.CSSProperties
       }
     >
+      <Image src={logo} alt={""} />
       <Card />
     </div>
   )
