@@ -6,7 +6,7 @@ import logo from "#/logo.svg"
 export default function Page() {
   return (
     <div
-      className={`flex h-screen w-full flex-col pt-8 gap-8 items-center bg-[--light-grayish-cyan] sm:justify-center ${spaceMono.className} sm:p-6`}
+      className={`flex w-full min-h-screen flex-col pt-8 gap-8 items-center bg-[--light-grayish-cyan] sm:justify-center ${spaceMono.className} sm:p-6 sm:pt-8`}
       style={
         {
           "--strong-cyan": "hsl(172, 67%, 45%)",
