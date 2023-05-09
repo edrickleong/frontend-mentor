@@ -1,6 +1,13 @@
+"use client"
 import { rubik } from "@/app/styles/fonts"
+import jeremy from "#/time-tracking-dashboard/image-jeremy.png"
+import Image from "next/image"
+import data from "./data.json"
+import { useState } from "react"
 
 export default function Page() {
+  const [timeframe, setTimeframe] = useState("weekly")
+
   return (
     <div
       className={`flex min-h-screen w-full flex-col items-center bg-[--very-dark-blue] px-6 pt-20 ${rubik.className}`}
@@ -20,13 +27,15 @@ export default function Page() {
         } as React.CSSProperties
       }
     >
-      <div className="max-w-[375px] w-full flex flex-col gap-4">
+      <div className="flex w-full max-w-[375px] flex-col gap-6">
         <div className="w-full rounded-xl bg-[--dark-blue] text-white">
-          <div className="flex flex-row gap-4 rounded-xl bg-[--blue] p-8">
-            <div>Image</div>
+          <div className="flex flex-row items-center gap-4 rounded-xl bg-[--blue] p-8">
+            <div className="h-16 w-16 rounded-full border-4 border-white">
+              <Image src={jeremy} alt={"Profile picture"} />
+            </div>
             <div>
               <div className="text-sm text-[--pale-blue]">Report for</div>
-              <div className="text-lg">Jeremy Robson</div>
+              <div className="text-2xl">Jeremy Robson</div>
             </div>
           </div>
           <div className="flex flex-row justify-between p-8">
@@ -35,19 +44,55 @@ export default function Page() {
             <div>Monthly</div>
           </div>
         </div>
-        <div className="w-full rounded-xl bg-white pt-8">
-          <div className="flex text-white bg-[--dark-blue] rounded-xl flex-row justify-between p-8">
-            <div>
-              <div className="text-lg font-medium">Work</div>
-              <div className="text-3xl font-light">32hrs</div>
-            </div>
-            <div className="flex flex-col gap-2 items-end justify-between">
-              <div>...</div>
-              <div className="text-sm text-[--pale-blue]">Last Week - 36 hours</div>
+        {data.map((it) => (
+          <div
+            key={it.title}
+            className={`w-full rounded-xl ${getBackground(it.title)} pt-8`}
+          >
+            <div className="flex flex-row justify-between rounded-xl bg-[--dark-blue] p-8 text-white">
+              <div>
+                <div className="text-lg font-medium">{it.title}</div>
+                <div className="text-3xl font-light">
+                  {timeframe === "daily"
+                    ? it.timeframes.daily.current
+                    : timeframe === "weekly"
+                    ? it.timeframes.weekly.current
+                    : it.timeframes.monthly.current}
+                  hrs
+                </div>
+              </div>
+              <div className="flex flex-col items-end justify-end gap-2">
+                <div className="text-sm text-[--pale-blue]">
+                  {`${
+                    timeframe === "weekly"
+                      ? `Last Week - ${it.timeframes.weekly.previous} hours`
+                      : timeframe === "daily"
+                      ? `Yesterday - ${it.timeframes.daily.previous} hours`
+                      : `Last Month - ${it.timeframes.monthly.previous} hours`
+                  }`}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   )
+}
+
+function getBackground(it: string) {
+  switch (it) {
+    case "Work":
+      return "bg-[--light-red]"
+    case "Play":
+      return "bg-[--soft-blue]"
+    case "Study":
+      return "bg-[--light-red]"
+    case "Exercise":
+      return "bg-[--lime-green]"
+    case "Social":
+      return "bg-[--violet]"
+    case "Self Care":
+      return "bg-[--soft-orange]"
+  }
 }
