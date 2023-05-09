@@ -1,5 +1,6 @@
 import {
   Hanken_Grotesk,
+  Kumbh_Sans,
   Outfit,
   Overpass,
   Poppins,
@@ -32,4 +33,8 @@ export const spaceMono = Space_Mono({
 export const rubik = Rubik({
   subsets: ["latin-ext"],
   weight: ["300", "400", "500"],
+})
+
+export const kumbhSans = Kumbh_Sans({
+  subsets: ["latin-ext"],
 })

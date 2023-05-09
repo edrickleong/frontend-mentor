@@ -27,7 +27,7 @@ export default function Page() {
       }
     >
       <Tabs.Root
-        className="flex w-full flex-col gap-6 sm:flex-row sm:items-center md:max-w-screen-sm lg:max-w-screen-md xl:max-w-[1200px]"
+        className="flex w-full flex-col gap-6 sm:flex-row sm:items-center max-w-screen-xl"
         defaultValue="weekly"
       >
         <div className="w-full rounded-xl bg-[--dark-blue] text-white sm:max-w-[256px]">
@@ -61,7 +61,7 @@ export default function Page() {
             </Tabs.Trigger>
           </Tabs.List>
         </div>
-        <div className="w-full ">
+        <div>
           {["daily", "weekly", "monthly"].map((timeframe) => (
             <Tabs.Content
               value={timeframe}
