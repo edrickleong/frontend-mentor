@@ -9,7 +9,7 @@ import * as Tabs from "@radix-ui/react-tabs"
 export default function Page() {
   return (
     <div
-      className={`flex min-h-screen w-full flex-col items-center bg-[--very-dark-blue] px-6 py-20 ${rubik.className}`}
+      className={`flex min-h-screen items-center w-full flex-col justify-center bg-[--very-dark-blue] px-6 py-20  ${rubik.className}`}
       style={
         {
           "--blue": "hsl(246, 80%, 60%)",
@@ -27,11 +27,11 @@ export default function Page() {
       }
     >
       <Tabs.Root
-        className="flex w-full max-w-[375px] flex-col gap-6"
+        className="flex w-full flex-col gap-6 sm:flex-row sm:items-center md:max-w-screen-sm lg:max-w-screen-md xl:max-w-[1200px]"
         defaultValue="weekly"
       >
-        <div className="w-full rounded-xl bg-[--dark-blue] text-white">
-          <div className="flex flex-row items-center gap-4 rounded-xl bg-[--blue] p-8">
+        <div className="w-full rounded-xl bg-[--dark-blue] text-white sm:max-w-[256px]">
+          <div className="flex flex-row items-center gap-4 rounded-xl bg-[--blue] p-8 sm:flex-col sm:items-start">
             <div className="h-16 w-16 rounded-full border-4 border-white">
               <Image src={jeremy} alt={"Profile picture"} />
             </div>
@@ -40,43 +40,45 @@ export default function Page() {
               <div className="text-2xl">Jeremy Robson</div>
             </div>
           </div>
-          <Tabs.List className="flex flex-row justify-between text-xl p-8">
+          <Tabs.List className="flex flex-row justify-between p-8 text-xl sm:flex-col sm:items-start">
             <Tabs.Trigger
               value="daily"
-              className="data-[state=active]:text-white text-[--desaturated-blue]"
+              className="text-[--desaturated-blue] data-[state=active]:text-white"
             >
               Daily
             </Tabs.Trigger>
             <Tabs.Trigger
               value="weekly"
-              className="data-[state=active]:text-white text-[--desaturated-blue]"
+              className="text-[--desaturated-blue] data-[state=active]:text-white"
             >
               Weekly
             </Tabs.Trigger>
             <Tabs.Trigger
               value="monthly"
-              className="data-[state=active]:text-white text-[--desaturated-blue]"
+              className="text-[--desaturated-blue] data-[state=active]:text-white"
             >
               Monthly
             </Tabs.Trigger>
           </Tabs.List>
         </div>
-        <div>
+        <div className="w-full ">
           {["daily", "weekly", "monthly"].map((timeframe) => (
             <Tabs.Content
               value={timeframe}
               key={timeframe}
-              className="flex flex-col gap-6"
+              className="flex flex-col gap-6 sm:flex-row sm:flex-wrap"
             >
               {data.map((it) => (
                 <div
                   key={it.title}
-                  className={`w-full rounded-xl ${background(it.title)} pt-8 overflow`}
+                  className={`flex h-[244px] w-full flex-col justify-end rounded-xl sm:max-w-[256px] ${background(
+                    it.title
+                  )} pt-8`}
                 >
-                  <div className="flex flex-row justify-between rounded-xl bg-[--dark-blue] p-8 text-white">
+                  <div className="flex flex-row sm:flex-col justify-between rounded-xl bg-[--dark-blue] p-8 text-white">
                     <div>
                       <div className="text-lg font-medium">{it.title}</div>
-                      <div className="text-3xl font-light">
+                      <div className="text-3xl sm:text-5xl font-light">
                         {timeframe === "daily"
                           ? it.timeframes.daily.current
                           : timeframe === "weekly"
@@ -85,13 +87,13 @@ export default function Page() {
                         hrs
                       </div>
                     </div>
-                    <div className="flex flex-col items-end justify-end gap-2">
+                    <div className="flex flex-col items-end sm:items-start justify-end gap-2">
                       <div className="text-sm text-[--pale-blue]">
                         {`${
                           timeframe === "daily"
-                            ? `Last Week - ${it.timeframes.weekly.previous} hours`
-                            : timeframe === "weekly"
                             ? `Yesterday - ${it.timeframes.daily.previous} hours`
+                            : timeframe === "weekly"
+                            ? `Last Week - ${it.timeframes.weekly.previous} hours`
                             : `Last Month - ${it.timeframes.monthly.previous} hours`
                         }`}
                       </div>
