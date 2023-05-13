@@ -1,5 +1,5 @@
 import Image from "next/image"
-import qrCode from "#/qr-code/qr-code.svg"
+import qrCode from "#/qr-code/image-qr-code.png"
 
 export function Card() {
   return (

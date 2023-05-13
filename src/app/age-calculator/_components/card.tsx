@@ -1,5 +1,5 @@
 "use client"
-import arrow from "/public/icon-arrow.svg"
+import arrow from "#/age-calculator/icon-arrow.svg"
 import Image from "next/image"
 import { FieldError, useForm } from "react-hook-form"
 import { useMemo, useState } from "react"
@@ -116,9 +116,9 @@ export function Card() {
         <div className="flex flex-col">
           <label
             htmlFor="year"
-            className={
-              `w-full text-sm font-semibold uppercase text-[--smokey-grey] ${errors.year && "text-[--light-red]"}`
-            }
+            className={`w-full text-sm font-semibold uppercase text-[--smokey-grey] ${
+              errors.year && "text-[--light-red]"
+            }`}
           >
             Year
           </label>
@@ -127,7 +127,7 @@ export function Card() {
               errors.year && "border-[--light-red] "
             }`}
             placeholder="YYYY"
-            {...register("year")}
+            {...register("year", { valueAsNumber: true })}
           />
           {errors.year && (
             <span className="mt-2 text-sm text-[--light-red]">
