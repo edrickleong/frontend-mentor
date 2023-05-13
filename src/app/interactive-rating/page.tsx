@@ -1,5 +1,9 @@
-import { Card } from "@/app/rating/_components/card"
-import { overpass } from "@/app/styles/fonts"
+import { Card } from "@/app/interactive-rating/_components/card"
+import { Overpass } from "next/font/google"
+
+const overpass = Overpass({
+  subsets: ["latin-ext"],
+})
 
 export default function Page() {
   return (

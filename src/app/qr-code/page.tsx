@@ -1,5 +1,9 @@
-import { Card } from "@/app/code/_components/card"
-import { outfit } from "@/app/styles/fonts"
+import { Card } from "@/app/qr-code/_components/card"
+import { Outfit } from "next/font/google"
+
+const outfit = Outfit({
+  subsets: ["latin-ext"],
+})
 
 export default function Page() {
   return (

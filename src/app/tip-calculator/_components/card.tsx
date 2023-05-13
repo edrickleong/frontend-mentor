@@ -1,7 +1,7 @@
 "use client"
 import React, { useMemo, useState } from "react"
-import dollarIcon from "#/icon-dollar.svg"
-import personIcon from "#/icon-person.svg"
+import dollarIcon from "#/tip-calculator/icon-dollar.svg"
+import personIcon from "#/tip-calculator/icon-person.svg"
 import Image from "next/image"
 import * as RadioGroup from "@radix-ui/react-radio-group"
 

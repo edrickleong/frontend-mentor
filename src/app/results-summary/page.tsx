@@ -1,5 +1,9 @@
-import { hankenGrotesk } from "@/app/styles/fonts"
-import Card from "@/app/result/_components/card"
+import Card from "@/app/results-summary/_components/card"
+import { Hanken_Grotesk } from "next/font/google"
+
+const hankenGrotesk = Hanken_Grotesk({
+  subsets: ["latin-ext"],
+})
 
 export default function Page() {
   return (

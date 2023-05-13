@@ -1,7 +1,12 @@
-import { spaceMono } from "@/app/styles/fonts"
 import Card from "@/app/tip-calculator/_components/card"
 import Image from "next/image"
-import logo from "#/logo.svg"
+import logo from "#/tip-calculator/logo.svg"
+import { Space_Mono } from "next/font/google"
+
+const spaceMono = Space_Mono({
+  subsets: ["latin-ext"],
+  weight: ["400", "700"],
+})
 
 export default function Page() {
   return (

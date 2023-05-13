@@ -1,8 +1,8 @@
 import React from "react"
-import reaction from "/public/icon-reaction.svg"
-import memory from "/public/icon-memory.svg"
-import verbal from "/public/icon-verbal.svg"
-import visual from "/public/icon-visual.svg"
+import reaction from "#/results-summary/icon-reaction.svg"
+import memory from "#/results-summary/icon-memory.svg"
+import verbal from "#/results-summary/icon-verbal.svg"
+import visual from "#/results-summary/icon-visual.svg"
 import Image from "next/image"
 
 function Card() {

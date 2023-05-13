@@ -1,15 +1,20 @@
 "use client"
-import { rubik } from "@/app/styles/fonts"
 import jeremy from "#/time-tracking-dashboard/image-jeremy.png"
 import Image from "next/image"
 import data from "./data.json"
 import React from "react"
 import * as Tabs from "@radix-ui/react-tabs"
+import { Rubik } from "next/font/google"
+
+const rubik = Rubik({
+  subsets: ["latin-ext"],
+  weight: ["300", "400", "500"],
+})
 
 export default function Page() {
   return (
     <div
-      className={`flex min-h-screen items-center w-full flex-col justify-center bg-[--very-dark-blue] px-6 py-20  ${rubik.className}`}
+      className={`flex min-h-screen w-full flex-col items-center justify-center bg-[--very-dark-blue] px-6 py-20  ${rubik.className}`}
       style={
         {
           "--blue": "hsl(246, 80%, 60%)",
@@ -27,7 +32,7 @@ export default function Page() {
       }
     >
       <Tabs.Root
-        className="flex w-full flex-col gap-6 sm:flex-row sm:items-center max-w-screen-xl"
+        className="flex w-full max-w-screen-xl flex-col gap-6 sm:flex-row sm:items-center"
         defaultValue="weekly"
       >
         <div className="w-full rounded-xl bg-[--dark-blue] text-white sm:max-w-[256px]">
@@ -75,10 +80,10 @@ export default function Page() {
                     it.title
                   )} pt-8`}
                 >
-                  <div className="flex flex-row sm:flex-col justify-between rounded-xl bg-[--dark-blue] p-8 text-white">
+                  <div className="flex flex-row justify-between rounded-xl bg-[--dark-blue] p-8 text-white sm:flex-col">
                     <div>
                       <div className="text-lg font-medium">{it.title}</div>
-                      <div className="text-3xl sm:text-5xl font-light">
+                      <div className="text-3xl font-light sm:text-5xl">
                         {timeframe === "daily"
                           ? it.timeframes.daily.current
                           : timeframe === "weekly"
@@ -87,7 +92,7 @@ export default function Page() {
                         hrs
                       </div>
                     </div>
-                    <div className="flex flex-col items-end sm:items-start justify-end gap-2">
+                    <div className="flex flex-col items-end justify-end gap-2 sm:items-start">
                       <div className="text-sm text-[--pale-blue]">
                         {`${
                           timeframe === "daily"

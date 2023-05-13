@@ -1,6 +1,6 @@
 "use client"
-import star from "/public/icon-star.svg"
-import thankYou from "/public/illustration-thank-you.svg"
+import star from "#/interactive-rating/icon-star.svg"
+import thankYou from "#/interactive-rating/illustration-thank-you.svg"
 import Image from "next/image"
 import * as RadioGroup from "@radix-ui/react-radio-group"
 import { useState } from "react"
