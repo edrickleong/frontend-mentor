@@ -24,6 +24,7 @@
 - [x] 👤 Profile card component
 - [x] 🧴 Product preview card component
 - [x] 📱 Huddle landing page with a single introductory section
+- [x] 🪙 NFT preview card
 
 ## 🔧 Built with
 
