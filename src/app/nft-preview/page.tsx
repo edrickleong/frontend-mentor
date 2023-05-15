@@ -66,9 +66,9 @@ export default function Page() {
           />
           <div className="font-light">
             <span className="text-[--soft-blue]">Creation of </span>
-            <div className="cursor-pointer text-white hover:text-[--cyan]">
+            <span className="cursor-pointer text-white hover:text-[--cyan]">
               Jules Wyvern
-            </div>
+            </span>
           </div>
         </div>
       </div>

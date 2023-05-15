@@ -8,8 +8,16 @@ import time from "#/time-tracking-dashboard/desktop-preview.jpg"
 import profile from "#/profile-card/desktop-preview.jpg"
 import product from "#/product-card/desktop-preview.jpg"
 import huddlePreview from "#/huddle-landing-page/desktop-preview.jpg"
+import nftPreview from "#/nft-preview/desktop-preview.jpg"
 import Image from "next/image"
 import Link from "next/link"
+import { DM_Sans } from "next/font/google"
+import { cn } from "@/app/utils"
+
+const dmSans = DM_Sans({
+  subsets: ["latin-ext"],
+  weight: ["400", "500"],
+})
 
 const projects = [
   {
@@ -62,21 +70,34 @@ const projects = [
     preview: huddlePreview,
     link: "/huddle-landing-page",
   },
+  {
+    title: "NFT preview card component",
+    preview: nftPreview,
+    link: "/nft-preview",
+  },
 ]
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1 className="text-6xl font-bold">Frontend Mentor projects</h1>
-      <div className="mt-8 flex flex-row flex-wrap">
+    <main
+      className={cn(
+        "flex min-h-screen flex-col items-center justify-between p-6 lg:p-24",
+        dmSans.className
+      )}
+    >
+      <h1 className="text-center text-4xl font-medium sm:text-6xl">
+        Frontend Mentor Projects
+      </h1>
+      <div className="mt-2 text-lg">By Edrick Leong</div>
+      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <Link
-            className="m-4 flex flex-col items-center justify-center"
+            className="flex flex-col items-center justify-center rounded-lg border border-gray-200 p-6 shadow"
             key={project.title}
             href={project.link}
           >
-            <Image src={project.preview} alt={project.title} className="w-96" />
-            <h2 className="text-2xl font-bold">{project.title}</h2>
+            <Image src={project.preview} alt={project.title} />
+            <h2 className="text-medium mt-4 text-center">{project.title}</h2>
           </Link>
         ))}
       </div>
