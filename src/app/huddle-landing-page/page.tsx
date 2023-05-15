@@ -27,7 +27,7 @@ export default function Page() {
     <div
       style={styles}
       className={cn(
-        "relative flex min-h-screen w-full flex-col p-10 sm:py-20",
+        "relative flex min-h-screen w-full flex-col p-10 md:py-20",
         openSans.className
       )}
     >
@@ -38,17 +38,19 @@ export default function Page() {
         alt={""}
       />
       <header>
-        <Image src={logo} className="w-[120px] sm:w-[200px]" width={200} alt={""} />
+        <Image src={logo} className="w-[120px] md:w-[200px]" alt={""} />
       </header>
-      <main className="mt-16 flex flex-col items-center text-white sm:flex-row">
-        <Image src={illustrationMockups} alt={""} />
-        <div className="mt-16 text-center sm:ml-14 sm:mt-0 sm:text-left">
+      <main className="mt-16 flex flex-col items-center text-white md:flex-row">
+        <div className={"flex-1"}>
+          <Image src={illustrationMockups} alt={""} />
+        </div>
+        <div className="mt-16 flex-1 text-center md:ml-14 md:mt-0 md:text-left">
           <div
-            className={cn("text-2xl font-bold sm:text-5xl", poppins.className)}
+            className={cn("text-2xl font-bold md:text-5xl", poppins.className)}
           >
             Build The Community Your Fans Will Love
           </div>
-          <div className={"mt-6 sm:text-lg"}>
+          <div className={"mt-6 md:text-lg"}>
             Huddle re-imagines the way we build communities. You have a voice,
             but so does your audience. Create connections with your users as you
             engage in genuine discussion.
@@ -62,7 +64,7 @@ export default function Page() {
           </button>
         </div>
       </main>
-      <footer className="mt-6 flex flex-row items-center justify-center gap-2 text-white sm:justify-end">
+      <footer className="mt-6 flex flex-row items-center justify-center gap-2 text-white md:justify-end">
         <Link
           href={"#"}
           className="flex h-7 w-7 items-center justify-center rounded-full border border-white"
