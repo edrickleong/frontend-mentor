@@ -1,29 +1,40 @@
-import { Card } from "@/app/interactive-rating/_components/card"
-import { Overpass } from "next/font/google"
-import { cn } from "@/app/utils"
-
-const overpass = Overpass({
-  subsets: ["latin"],
-})
-
-const styles = {
-  "--orange": "hsl(25, 97%, 53%)",
-  "--light-grey": "hsl(217, 12%, 63%)",
-  "--medium-grey": "hsl(216, 12%, 54%)",
-  "--dark-blue": "hsl(213, 19%, 18%)",
-  "--very-dark-blue": "hsl(216, 12%, 8%)",
-} as React.CSSProperties
+"use client"
+import iconStar from "#/interactive-rating/icon-star.svg"
+import Image from "next/image"
+import * as RadioGroup from "@radix-ui/react-radio-group"
+import { addItem } from "@/app/interactive-rating/_actions"
 
 export default function Page() {
   return (
-    <div
-      style={styles}
-      className={cn(
-        "flex h-screen w-full items-center justify-center bg-[--very-dark-blue] px-6",
-        overpass.className
-      )}
+    <form
+      className="max-w-[327px] rounded-xl bg-[#1f2630] p-6"
+      action={addItem}
     >
-      <Card />
-    </div>
+      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[--dark-blue]">
+        <Image src={iconStar} alt={""} />
+      </div>
+      <p className="mt-5 text-xl text-white">How did we do?</p>
+      <p className="mt-4 text-sm text-[--light-grey]">
+        Please let us know how we did with your support request. All feedback is
+        appreciated to help us improve our offering!
+      </p>
+      <RadioGroup.Root
+        name="rating"
+        className="mt-6 flex flex-row gap-4 text-sm text-[--light-grey]"
+      >
+        {Array.from({ length: 5 }, (_, i) => i + 1).map((it) => (
+          <RadioGroup.Item
+            key={it}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-[--dark-blue] hover:bg-[--light-grey] hover:text-white data-[state=checked]:bg-[--orange] data-[state=checked]:text-white"
+            value={it.toString()}
+          >
+            {it}
+          </RadioGroup.Item>
+        ))}
+      </RadioGroup.Root>
+      <button className="mt-5 w-full rounded-xl bg-[--orange] px-3 py-2 text-sm font-medium uppercase tracking-widest text-white hover:bg-white hover:text-[--orange]">
+        Submit
+      </button>
+    </form>
   )
 }
