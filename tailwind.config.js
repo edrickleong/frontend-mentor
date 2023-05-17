@@ -8,12 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "light-red": "hsl(0, 100%, 67%)",
-        "orangey-yellow": "hsl(39, 100%, 56%)",
-        "green-teal": "hsl(166, 100%, 37%)",
-        "cobalt-blue": "hsl(234, 85%, 45%)",
-        "dark-gray-blue": "hsl(224, 30%, 27%)",
-        "purple": "hsl(259, 100%, 65%)",
+        purple: "hsl(259, 100%, 65%)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
