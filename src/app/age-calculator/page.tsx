@@ -1,5 +1,6 @@
 import { Card } from "@/app/age-calculator/_components/card"
 import { Poppins } from "next/font/google"
+import { cn } from "@/app/utils"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,8 +22,11 @@ const styles = {
 export default function Page() {
   return (
     <div
-      className={`flex h-screen max-h-screen w-full items-center justify-center overflow-hidden bg-gray-100 ${poppins.className} p-4`}
       style={styles}
+      className={cn(
+        "flex min-h-screen w-full items-center justify-center bg-gray-100 p-4",
+        poppins.className
+      )}
     >
       <Card />
     </div>

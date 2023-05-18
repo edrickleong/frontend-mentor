@@ -87,9 +87,11 @@ export function Card() {
             placeholder="DD"
             {...register("day", { valueAsNumber: true })}
           />
-          <span className="mt-2 h-5 text-sm text-[--light-red]">
-            {errors.day ? (errors.day as FieldError).message : ""}
-          </span>
+          {errors.day && (
+            <span className="mt-2 text-sm text-[--light-red]">
+              {(errors.day as FieldError).message}
+            </span>
+          )}
         </div>
         <div className="flex flex-col">
           <label
@@ -110,9 +112,11 @@ export function Card() {
             placeholder="MM"
             {...register("month", { valueAsNumber: true })}
           />
-          <span className="mt-2 h-5 text-sm text-[--light-red]">
-            {errors.month ? (errors.month as FieldError).message : ""}
-          </span>
+          {errors.month && (
+            <span className="mt-2 text-sm text-[--light-red]">
+              {(errors.month as FieldError).message}
+            </span>
+          )}
         </div>
         <div className="flex flex-col">
           <label
@@ -133,13 +137,16 @@ export function Card() {
             placeholder="YYYY"
             {...register("year", { valueAsNumber: true })}
           />
-          <span className="mt-2 h-5 text-sm text-[--light-red]">
-            {errors.year ? (errors.year as FieldError).message : ""}
-          </span>
+          {errors.year && (
+            <span className="mt-2 text-sm text-[--light-red]">
+              {(errors.year as FieldError).message}
+            </span>
+          )}
         </div>
       </div>
-      <div className="relative mt-12 h-[1px] w-full bg-[--light-grey]">
-        <button className="absolute bottom-0 right-1/2 flex h-16 w-16 translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-[--purple] outline-offset-2 hover:bg-[--purple-90] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--purple] focus-visible:ring-offset-2 sm:right-0 sm:h-24 sm:w-24 sm:translate-x-0">
+      <div className="relative isolate mt-4 flex justify-center sm:justify-end">
+        <div className="absolute top-1/2 -z-10 h-[1px] w-full bg-[--light-grey]"></div>
+        <button className="flex h-16 w-16 items-center justify-center rounded-full bg-[--purple] hover:bg-[--purple-90] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--purple] focus-visible:ring-offset-2 sm:h-24 sm:w-24">
           <Image
             src={arrow}
             alt=""
@@ -149,7 +156,7 @@ export function Card() {
           />
         </button>
       </div>
-      <div className="mt-[68px] text-5xl font-bold italic">
+      <div className="mt-9 text-5xl font-bold italic">
         <div>
           <span className="text-[--purple]">{age?.years ?? "- -"}</span>
           <span className=""> years</span>
