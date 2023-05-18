@@ -2,9 +2,10 @@
 import arrow from "#/age-calculator/icon-arrow.svg"
 import Image from "next/image"
 import { FieldError, useForm } from "react-hook-form"
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { cn } from "@/app/utils"
 
 type Age = {
   years: number
@@ -19,7 +20,8 @@ const ageSchema = z
         required_error: "This field is required",
         invalid_type_error: "Must be a valid day",
       })
-      .min(1, { message: "Must be a valid day" }),
+      .min(1, { message: "Must be a valid day" })
+      .max(31, { message: "Must be a valid day" }),
     month: z
       .number({
         required_error: "This field is required",
@@ -56,88 +58,88 @@ export function Card() {
   })
   const [age, setAge] = useState<Age>()
 
-  const today = useMemo(() => new Date(), [])
-
   return (
     <form
       className="w-full max-w-[840px] rounded-3xl rounded-br-[96px] bg-white px-6 pb-12 pt-[52px]"
       onSubmit={handleSubmit((it) => {
         const birthDate = new Date(it.year, it.month - 1, it.day)
-        const { years, months, days } = getAge(birthDate, today)
+        const { years, months, days } = getAge(birthDate, new Date())
         setAge({ years, months, days })
       })}
     >
-      <div className="flex w-full flex-row gap-4">
+      <div className="flex flex-row gap-4">
         <div className="flex flex-col">
           <label
             htmlFor="day"
-            className={`text-sm font-semibold uppercase text-[--smokey-grey] ${
+            className={cn(
+              "text-sm font-semibold uppercase text-[--smokey-grey]",
               errors.day && "text-[--light-red]"
-            }`}
+            )}
           >
             Day
           </label>
           <input
-            type="number"
-            className={`mt-2 h-[54px] w-full max-w-[160px] rounded border border-[--light-grey] p-4 font-bold outline-purple ${
-              errors.day && "border-[--light-red] "
-            }`}
+            className={cn(
+              "mt-2 w-full max-w-[160px] rounded border border-[--light-grey] p-4 font-bold",
+              errors.day && "ring-2 ring-[--light-red]",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--purple]"
+            )}
             placeholder="DD"
             {...register("day", { valueAsNumber: true })}
           />
-          {errors.day && (
-            <span className="mt-2 text-sm text-[--light-red]">
-              {(errors.day as FieldError).message}
-            </span>
-          )}
+          <span className="mt-2 h-5 text-sm text-[--light-red]">
+            {errors.day ? (errors.day as FieldError).message : ""}
+          </span>
         </div>
         <div className="flex flex-col">
           <label
             htmlFor="month"
-            className={`w-full text-sm font-semibold uppercase text-[--smokey-grey] ${
+            className={cn(
+              "w-full text-sm font-semibold uppercase text-[--smokey-grey]",
               errors.month && "text-[--light-red]"
-            }`}
+            )}
           >
             Month
           </label>
           <input
-            className={`mt-2 h-[54px] w-full max-w-[160px] rounded border border-[--light-grey] p-4 font-bold outline-purple ${
-              errors.month && "border-[--light-red] "
-            }`}
+            className={cn(
+              "mt-2 w-full max-w-[160px] rounded border border-[--light-grey] p-4 font-bold",
+              errors.month && "ring-2 ring-[--light-red]",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--purple]"
+            )}
             placeholder="MM"
             {...register("month", { valueAsNumber: true })}
           />
-          {errors.month && (
-            <span className="mt-2 text-sm text-[--light-red]">
-              {(errors.month as FieldError).message}
-            </span>
-          )}
+          <span className="mt-2 h-5 text-sm text-[--light-red]">
+            {errors.month ? (errors.month as FieldError).message : ""}
+          </span>
         </div>
         <div className="flex flex-col">
           <label
             htmlFor="year"
-            className={`w-full text-sm font-semibold uppercase text-[--smokey-grey] ${
+            className={cn(
+              "w-full text-sm font-semibold uppercase text-[--smokey-grey]",
               errors.year && "text-[--light-red]"
-            }`}
+            )}
           >
             Year
           </label>
           <input
-            className={`mt-2 h-[54px] w-full max-w-[160px] rounded border border-[--light-grey] p-4 font-bold outline-purple ${
-              errors.year && "border-[--light-red] "
-            }`}
+            className={cn(
+              "mt-2 w-full max-w-[160px] rounded border border-[--light-grey] p-4 font-bold",
+              errors.year && "ring-2 ring-[--light-red]",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--purple]"
+            )}
             placeholder="YYYY"
             {...register("year", { valueAsNumber: true })}
           />
-          {errors.year && (
-            <span className="mt-2 text-sm text-[--light-red]">
-              {(errors.year as FieldError).message}
-            </span>
-          )}
+          <span className="mt-2 h-5 text-sm text-[--light-red]">
+            {errors.year ? (errors.year as FieldError).message : ""}
+          </span>
         </div>
       </div>
       <div className="relative mt-12 h-[1px] w-full bg-[--light-grey]">
-        <button className="absolute bottom-0 right-1/2 flex h-16 w-16 translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-purple outline-offset-2 outline-purple hover:bg-purple/90 sm:right-0 sm:h-24 sm:w-24 sm:translate-x-0">
+        <button className="absolute bottom-0 right-1/2 flex h-16 w-16 translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-[--purple] outline-offset-2 hover:bg-[--purple-90] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--purple] focus-visible:ring-offset-2 sm:right-0 sm:h-24 sm:w-24 sm:translate-x-0">
           <Image
             src={arrow}
             alt=""
@@ -149,15 +151,15 @@ export function Card() {
       </div>
       <div className="mt-[68px] text-5xl font-bold italic">
         <div>
-          <span className="text-purple">{age?.years ?? "- -"}</span>
+          <span className="text-[--purple]">{age?.years ?? "- -"}</span>
           <span className=""> years</span>
         </div>
         <div>
-          <span className="text-purple">{age?.months ?? "- -"}</span>
+          <span className="text-[--purple]">{age?.months ?? "- -"}</span>
           <span className=""> months</span>
         </div>
         <div>
-          <span className="text-purple">{age?.days ?? "- -"}</span>
+          <span className="text-[--purple]">{age?.days ?? "- -"}</span>
           <span className=""> days</span>
         </div>
       </div>
