@@ -26,7 +26,7 @@
 - [x] 📱 Huddle landing page with a single introductory section
 - [x] 🪙 NFT preview card
 - [x] 🛍️ Order Summary component
-- [x] 🔢 State preview card component
+- [x] 🔢 Stats preview card component
 
 ## 🔧 Built with
 

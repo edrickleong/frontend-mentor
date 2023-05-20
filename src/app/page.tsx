@@ -82,7 +82,7 @@ const projects = [
     preview: orderSummary,
     link: "/order-summary",
   },{
-    title: "State preview card component",
+    title: "Stats preview card component",
     preview: statsPreview,
     link: "/stats-preview",
   },
