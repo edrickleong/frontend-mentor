@@ -10,6 +10,7 @@ import product from "#/product-card/desktop-preview.jpg"
 import huddlePreview from "#/huddle-landing-page/desktop-preview.jpg"
 import nftPreview from "#/nft-preview/desktop-preview.jpg"
 import orderSummary from "#/order-summary/desktop-preview.jpg"
+import statsPreview from "#/stats-preview/desktop-preview.jpg"
 import Image from "next/image"
 import Link from "next/link"
 import { DM_Sans } from "next/font/google"
@@ -80,6 +81,10 @@ const projects = [
     title: "Order summary component",
     preview: orderSummary,
     link: "/order-summary",
+  },{
+    title: "State preview card component",
+    preview: statsPreview,
+    link: "/stats-preview",
   },
 ]
 
