@@ -12,6 +12,7 @@ import nftPreview from "#/nft-preview/desktop-preview.jpg"
 import orderSummary from "#/order-summary/desktop-preview.jpg"
 import statsPreview from "#/stats-preview/desktop-preview.jpg"
 import threeColumnPreview from "#/three-column-preview/desktop-preview.jpg"
+import faqAccordion from "#/faq-accordion/desktop-preview.jpg"
 import Image from "next/image"
 import Link from "next/link"
 import { DM_Sans } from "next/font/google"
@@ -92,6 +93,10 @@ const projects = [
     title: "Three column preview card component",
     preview: threeColumnPreview,
     link: "/three-column-preview",
+  }, {
+    title: "FAQ accordion card",
+    preview: faqAccordion,
+    link: "/faq-accordion",
   },
 ]
 
