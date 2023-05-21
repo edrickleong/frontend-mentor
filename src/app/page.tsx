@@ -11,13 +11,14 @@ import huddlePreview from "#/huddle-landing-page/desktop-preview.jpg"
 import nftPreview from "#/nft-preview/desktop-preview.jpg"
 import orderSummary from "#/order-summary/desktop-preview.jpg"
 import statsPreview from "#/stats-preview/desktop-preview.jpg"
+import threeColumnPreview from "#/three-column-preview/desktop-preview.jpg"
 import Image from "next/image"
 import Link from "next/link"
 import { DM_Sans } from "next/font/google"
 import { cn } from "@/app/utils"
 
 const dmSans = DM_Sans({
-  subsets: ["latin-ext"],
+  subsets: ["latin"],
   weight: ["400", "500"],
 })
 
@@ -81,10 +82,16 @@ const projects = [
     title: "Order summary component",
     preview: orderSummary,
     link: "/order-summary",
-  },{
+  },
+  {
     title: "Stats preview card component",
     preview: statsPreview,
     link: "/stats-preview",
+  },
+  {
+    title: "Three column preview card component",
+    preview: threeColumnPreview,
+    link: "/three-column-preview",
   },
 ]
 
