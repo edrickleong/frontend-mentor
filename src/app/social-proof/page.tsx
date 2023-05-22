@@ -54,10 +54,26 @@ export default function Page() {
         leagueSpartan.className
       )}
     >
-      <Image  className="absolute top-0 left-0 lg:hidden" src={bgPatternTopMobile} alt={""} />
-      <Image  className="absolute top-0 left-0 hidden lg:block" src={bgPatternTopDesktop} alt={""} />
-      <Image  className="absolute bottom-0 right-0 lg:hidden" src={bgPatternBottomMobile} alt={""} />
-      <Image  className="absolute bottom-0 right-0 hidden lg:block" src={bgPatternBottomDesktop} alt={""} />
+      <Image
+        className="absolute left-0 top-0 lg:hidden"
+        src={bgPatternTopMobile}
+        alt={""}
+      />
+      <Image
+        className="absolute left-0 top-0 hidden lg:block"
+        src={bgPatternTopDesktop}
+        alt={""}
+      />
+      <Image
+        className="absolute bottom-0 right-0 lg:hidden"
+        src={bgPatternBottomMobile}
+        alt={""}
+      />
+      <Image
+        className="absolute bottom-0 right-0 hidden lg:block"
+        src={bgPatternBottomDesktop}
+        alt={""}
+      />
       <div className="w-full max-w-[1110px]">
         <div className="flex flex-col items-center lg:flex-row lg:justify-between">
           <div className="flex max-w-[445px] flex-col">
