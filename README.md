@@ -28,7 +28,7 @@
 - [x] 🛍️ Order Summary component
 - [x] 🔢 Stats preview card component
 - [x] ❓ FAQ Accordion card component
-- [ ] 📝 Social proof section
+- [x] 📝 Social proof section
 
 ## 🔧 Built with
 
