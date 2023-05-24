@@ -14,6 +14,7 @@ import statsPreview from "#/stats-preview/desktop-preview.jpg"
 import threeColumnPreview from "#/three-column-preview/desktop-preview.jpg"
 import faqAccordion from "#/faq-accordion/desktop-preview.jpg"
 import socialProof from "#/social-proof/desktop-preview.jpg"
+import articlePreview from "#/article-preview/desktop-preview.jpg"
 import Image from "next/image"
 import Link from "next/link"
 import { DM_Sans } from "next/font/google"
@@ -104,6 +105,16 @@ const projects = [
     title: "Social proof section",
     preview: socialProof,
     link: "/social-proof",
+  },
+  {
+    title: "Article preview",
+    preview: articlePreview,
+    link: "/article-preview",
+  },
+  {
+    title: "Workit landing page",
+    preview: "",
+    link: "/workit",
   },
 ]
 

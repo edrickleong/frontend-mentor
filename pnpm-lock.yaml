@@ -16,6 +16,9 @@ dependencies:
   '@radix-ui/react-tooltip':
     specifier: 1.0.5
     version: 1.0.5(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0)
+  '@tw-classed/react':
+    specifier: 1.5.0
+    version: 1.5.0(react@18.2.0)
   '@types/node':
     specifier: 20.1.5
     version: 20.1.5
@@ -886,6 +889,19 @@ packages:
     resolution: {integrity: sha512-sJ902EfIzn1Fa+qYmjdQqh8tPsoxyBz+8yBKC2HKUxyezKJFwPGOn7pv4WY6QuQW//ySQi5lJjA/ZT9sNWWNTg==}
     dependencies:
       tslib: 2.5.0
+    dev: false
+
+  /@tw-classed/core@1.5.0:
+    resolution: {integrity: sha512-j4QdsVkJuUt4xR/4aRLsEB3kFuDkyjxiD0azTbuOSh7zJj3BliDpR4reKV+nYbIj1md90rvuJsHPJ/n/Iv55Lw==}
+    dev: false
+
+  /@tw-classed/react@1.5.0(react@18.2.0):
+    resolution: {integrity: sha512-QxN6Vfb58Lr6dcE5VaMyzJievCo4Fydog9zyGWAGd0raglR6vYIQamFkSM2qVZMWdsVQKpALqiwgjNEfaIGdww==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      '@tw-classed/core': 1.5.0
+      react: 18.2.0
     dev: false
 
   /@types/json5@0.0.29:
