@@ -24,6 +24,27 @@ const styles = {
   "--ghost-white": "#FCF8FF",
 } as React.CSSProperties
 
+const features = [
+  {
+    index: 1,
+    title: "Actionable insights",
+    description:
+      "Optimize your products, improve customer satisfaction and stay ahead of the competition with our product data analytics.",
+  },
+  {
+    index: 2,
+    title: "Data-driven decisions",
+    description:
+      "Make data-driven decisions with our product data analytics. Our AI-generated reports help you unlock insights hidden in your product data.",
+  },
+  {
+    index: 3,
+    title: "Always affordable",
+    description:
+      "Always affordable pricing that scales with your business. Get top-quality product data analytics services without hidden costs or unexpected fees.",
+  },
+]
+
 export default function Page() {
   return (
     <div
@@ -52,62 +73,38 @@ export default function Page() {
         </HeadingL>
         <PrimaryButton className="mt-10">Learn more</PrimaryButton>
       </div>
-      <div className="flex w-full flex-col items-center bg-[--ghost-white] px-4 pb-[72px]">
+      <div className="flex w-full flex-col items-center bg-[--ghost-white] px-4 pb-[72px] md:px-24">
         <Image
           src={illustrationHero}
           className="w-full max-w-[514px] -translate-y-[92px]"
           alt={""}
         />
         <div className="flex flex-col gap-10">
-          <div className="flex flex-col items-center">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[--davys-grey] text-xl font-semibold leading-[36px] text-[--dark-purple] [font-family:var(--font-fraunces)]">
-              1
+          {features.map((it) => (
+            <div
+              key={it.index}
+              className="flex flex-col items-center gap-y-4 md:flex-row md:items-start md:gap-x-8"
+            >
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[--davys-grey] text-xl font-semibold leading-[36px] text-[--dark-purple] [font-family:var(--font-fraunces)] md:mt-[44px]">
+                {it.index}
+              </div>
+              <div className="flex flex-col items-center md:items-start">
+                <HeadingS>{it.title}</HeadingS>
+                <div className="mt-4 leading-[28px]">{it.description}</div>
+              </div>
             </div>
-            <div className="mt-4 text-[28px] font-semibold leading-[36px] [font-family:var(--font-fraunces)]">
-              Actionable insights
-            </div>
-            <div className="mt-4 leading-[28px]">
-              Optimize your products, improve customer satisfaction and stay
-              ahead of the competition with our product data analytics.
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[--davys-grey] text-xl font-semibold leading-[36px] text-[--dark-purple] [font-family:var(--font-fraunces)]">
-              2
-            </div>
-            <div className="mt-4 text-[28px] font-semibold leading-[36px] [font-family:var(--font-fraunces)]">
-              Data-driven decisions
-            </div>
-            <div className="mt-4 leading-[28px]">
-              Make data-driven decisions with our product data analytics. Our
-              AI-generated reports help you unlock insights hidden in your
-              product data.
-            </div>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[--davys-grey] text-xl font-semibold leading-[36px] text-[--dark-purple] [font-family:var(--font-fraunces)]">
-              3
-            </div>
-            <div className="mt-4 text-[28px] font-semibold leading-[36px] [font-family:var(--font-fraunces)]">
-              Always affordable
-            </div>
-            <div className="mt-4 leading-[28px]">
-              Always affordable pricing that scales with your business. Get
-              top-quality product data analytics services without hidden costs
-              or unexpected fees.
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-      <div className="isolate mt-[100px] flex flex-col items-center">
+      <div className="isolate mt-[100px] flex w-full flex-col px-4 md:px-10 md:max-w-screen-md items-center">
         <Image
-          className="-z-10 h-[281px] w-[281px] translate-y-[54px]"
+          className="-z-10 h-[281px] w-[281px] translate-y-[54px] md:translate-y-1/2 md:self-start"
           src={imageLouis}
           alt={""}
         />
-        <div className="mx-4 flex flex-col items-center bg-[--dark-purple] px-8 py-8 text-white">
-          <HeadingM className="text-white">Be the first to test</HeadingM>
-          <Body className="text-center">
+        <div className="flex flex-col items-center bg-[--dark-purple] px-8 py-8 text-center text-white md:max-w-[514px] md:self-end md:px-12 md:pb-14 md:pt-12 md:text-left">
+          <HeadingM>Be the first to test</HeadingM>
+          <Body className="mt-4 md:mt-6">
             Hi, I&apos;m Louis Graham, the founder of the company. Book a demo
             call with me to become a beta tester for our app and kickstart your
             company. Apply for access below and I’ll be in touch to schedule a
@@ -143,7 +140,11 @@ const HeadingL = classed.div(
 )
 
 const HeadingM = classed.div(
-  "font-semibold [font-family:var(--font-fraunces)] text-[32px] leading-[48px] lg:text-[56px] lg:leading-[64px]"
+  "font-semibold [font-family:var(--font-fraunces)] text-[32px] leading-[48px] text-[48px] leading-[56px] lg:text-[56px] lg:leading-[64px]"
+)
+
+const HeadingS = classed.div(
+  "text-[28px] font-semibold leading-[36px] [font-family:var(--font-fraunces)]"
 )
 
 const Body = classed.div(
