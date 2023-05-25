@@ -55,7 +55,7 @@ export default function Page() {
         "flex min-h-screen w-full flex-col items-center bg-white [font-family:var(--font-manrope)]"
       )}
     >
-      <header className="flex w-full flex-row justify-between bg-[--dark-purple] px-4 py-8">
+      <header className="flex w-full flex-row justify-between bg-[--dark-purple] px-4 py-8 md:px-10">
         <div className="text-white">
           <Logo />
         </div>
@@ -69,7 +69,7 @@ export default function Page() {
           <span className="underline decoration-[--eucalyptus] decoration-[3px]">
             tailored
           </span>{" "}
-          to your needs.
+          to <br /> your needs.
         </HeadingL>
         <PrimaryButton className="mt-10">Learn more</PrimaryButton>
       </div>
@@ -79,16 +79,16 @@ export default function Page() {
           className="w-full max-w-[514px] -translate-y-[92px]"
           alt={""}
         />
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-10 lg:flex-row">
           {features.map((it) => (
             <div
               key={it.index}
-              className="flex flex-col items-center gap-y-4 md:flex-row md:items-start md:gap-x-8"
+              className="flex flex-col items-center gap-y-4 md:flex-row md:items-start md:gap-x-8 lg:flex-col lg:items-center"
             >
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[--davys-grey] text-xl font-semibold leading-[36px] text-[--dark-purple] [font-family:var(--font-fraunces)] md:mt-[44px]">
                 {it.index}
               </div>
-              <div className="flex flex-col items-center md:items-start">
+              <div className="flex flex-col items-center text-center md:items-start md:text-left lg:items-center lg:text-center">
                 <HeadingS>{it.title}</HeadingS>
                 <div className="mt-4 leading-[28px]">{it.description}</div>
               </div>
@@ -96,13 +96,13 @@ export default function Page() {
           ))}
         </div>
       </div>
-      <div className="isolate mt-[100px] flex w-full flex-col px-4 md:px-10 md:max-w-screen-md items-center">
+      <div className="isolate mt-[100px] flex w-full flex-col items-center px-4 md:max-w-screen-md md:px-10 lg:max-w-screen-lg">
         <Image
-          className="-z-10 h-[281px] w-[281px] translate-y-[54px] md:translate-y-1/2 md:self-start"
+          className="stranslate-y-[54px] -z-10 h-[281px] w-[281px] md:translate-y-1/2 md:self-start lg:h-[477px] lg:w-[477px]"
           src={imageLouis}
           alt={""}
         />
-        <div className="flex flex-col items-center bg-[--dark-purple] px-8 py-8 text-center text-white md:max-w-[514px] md:self-end md:px-12 md:pb-14 md:pt-12 md:text-left">
+        <div className="flex flex-col items-center bg-[--dark-purple] px-8 py-8 text-center text-white md:max-w-[514px] md:items-start md:self-end md:px-12 md:pb-14 md:pt-12 md:text-left lg:max-w-[730px]">
           <HeadingM>Be the first to test</HeadingM>
           <Body className="mt-4 md:mt-6">
             Hi, I&apos;m Louis Graham, the founder of the company. Book a demo
