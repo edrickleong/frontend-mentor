@@ -3,6 +3,7 @@ import { Space_Mono } from "next/font/google"
 import MoonIcon from "@/app/github-user-search/_components/icon-moon.svg"
 import { GithubSearch } from "@/app/github-user-search/_components/GithubSearch"
 import { userSchema } from "@/app/github-user-search/_types/user"
+import { ThemeProvider } from "next-themes"
 
 const styles = {
   "--blue": "hsl(212,100%,50%)",
@@ -11,6 +12,10 @@ const styles = {
   "--dark-grey": "hsl(217,21%,21%)",
   "--light-blue": "hsl(227,100%,98%)",
   "--ghost-white": "hsl(0,0%,100%)",
+  "--dark-mode-blue": "hsl(212,100%,50%)",
+  "--dark-mode-white": "hsl(0,0%,100%)",
+  "--dark-mode-black": "hsl(220,40%,13%)",
+  "--dark-mode-dark-blue": "hsl(222,41%,20%)",
 } as React.CSSProperties
 
 const spaceMono = Space_Mono({
@@ -30,24 +35,26 @@ export default async function Page({ searchParams }: Props) {
   const data = await getUser(username ?? "octocat")
 
   return (
-    <div
-      style={styles}
-      className={cn(
-        "flex min-h-screen w-full flex-col items-center bg-[--light-blue] px-6 md:pt-[140px]",
-        spaceMono.className
-      )}
-    >
-      <div className="flex w-full max-w-[573px] flex-col lg:max-w-[730px]">
-        <header className="mt-8 flex w-full items-center justify-between">
-          <div className="text-[26px] font-bold leading-[1.2]">devfinder</div>
-          <button className="flex flex-row items-center gap-4 text-[13px] font-bold uppercase text-[--grey]">
-            Dark
-            <MoonIcon />
-          </button>
-        </header>
-        <GithubSearch initialUsername={username} user={data} />
+    <ThemeProvider>
+      <div
+        style={styles}
+        className={cn(
+          "flex min-h-screen w-full flex-col items-center bg-[--light-blue] px-6 md:pt-[140px]",
+          spaceMono.className
+        )}
+      >
+        <div className="flex w-full max-w-[573px] flex-col lg:max-w-[730px]">
+          <header className="mt-8 flex w-full items-center justify-between">
+            <div className="text-[26px] font-bold leading-[1.2]">devfinder</div>
+            <button className="flex flex-row items-center gap-4 text-[13px] font-bold uppercase text-[--grey]">
+              Dark
+              <MoonIcon />
+            </button>
+          </header>
+          <GithubSearch initialUsername={username} user={data} />
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   )
 }
 

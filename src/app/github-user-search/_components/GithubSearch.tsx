@@ -21,7 +21,7 @@ export function GithubSearch({ initialUsername, user }: Props) {
   return (
     <main className="mt-9 w-full">
       <form
-        className="relative flex flex-row items-center overflow-hidden rounded-2xl bg-white drop-shadow-[0_16px_30px_rgba(70,96,187,0.1986)]"
+        className="relative flex flex-row items-center overflow-hidden rounded-2xl bg-white drop-shadow-[0_16px_30px_rgba(70,96,187,0.1986)] dark:drop-shadow-none"
         action={async (formData: FormData) => {
           const username = formData.get("username")
           await push(pathname + (username ? `?username=${username}` : ""))
@@ -41,7 +41,7 @@ export function GithubSearch({ initialUsername, user }: Props) {
           </button>
         </div>
       </form>
-      <div className="mt-4 rounded-2xl bg-white px-6 py-8 drop-shadow-[0_16px_30px_rgba(70,96,187,0.1986)]">
+      <div className="mt-4 rounded-2xl bg-white px-6 py-8 drop-shadow-[0_16px_30px_rgba(70,96,187,0.1986)] dark:drop-shadow-none">
         {!user ? (
           <div className="text-[15px] font-bold text-[#F74646]">
             No results found
