@@ -116,6 +116,11 @@ const projects = [
     preview: null,
     link: "/workit",
   },
+  {
+    title: "Github User Search",
+    preview: null,
+    link: "/github-user-search",
+  },
 ]
 
 export default function Home() {
