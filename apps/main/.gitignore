@@ -36,6 +36,3 @@ next-env.d.ts
 
 # jetbrains ide
 .idea
-
-# turborepo
-.turbo

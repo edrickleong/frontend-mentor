@@ -1,45 +1,12 @@
 {
-  "name": "frontend-mentor",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@hookform/resolvers": "3.1.0",
-    "@radix-ui/react-accordion": "1.1.1",
-    "@radix-ui/react-radio-group": "1.1.2",
-    "@radix-ui/react-tabs": "1.0.3",
-    "@radix-ui/react-tooltip": "1.0.5",
-    "@tw-classed/react": "1.5.0",
-    "@types/node": "20.1.5",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
-    "@vercel/analytics": "1.0.1",
-    "autoprefixer": "10.4.14",
-    "clsx": "1.2.1",
-    "eslint": "8.40.0",
-    "eslint-config-next": "13.4.2",
-    "lucide-react": "0.216.0",
-    "next": "13.4.2",
-    "next-themes": "0.2.1",
-    "postcss": "8.4.23",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-hook-form": "7.43.9",
-    "tailwind-merge": "1.12.0",
-    "tailwindcss": "3.3.2",
-    "typescript": "5.0.4",
-    "zod": "3.21.4"
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint"
   },
   "devDependencies": {
-    "@hookform/devtools": "4.3.1",
-    "@svgr/webpack": "8.0.1",
-    "eslint-config-prettier": "8.8.0",
-    "prettier": "2.8.8",
-    "prettier-plugin-tailwindcss": "0.3.0"
-  }
+    "turbo": "1.9.9"
+  },
+  "name": "frontend-mentor"
 }

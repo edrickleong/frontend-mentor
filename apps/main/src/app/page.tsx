@@ -113,7 +113,7 @@ const projects = [
   },
   {
     title: "Workit landing page",
-    preview: "",
+    preview: null,
     link: "/workit",
   },
 ]
@@ -137,7 +137,9 @@ export default function Home() {
             key={project.title}
             href={project.link}
           >
-            <Image src={project.preview} alt={project.title} />
+            {project.preview && (
+              <Image src={project.preview} alt={project.title} />
+            )}
             <h2 className="text-medium mt-4 text-center">{project.title}</h2>
           </Link>
         ))}

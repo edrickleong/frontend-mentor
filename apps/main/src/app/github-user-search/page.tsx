@@ -3,7 +3,6 @@ import { Space_Mono } from "next/font/google"
 import MoonIcon from "@/app/github-user-search/_components/icon-moon.svg"
 import { GithubSearch } from "@/app/github-user-search/_components/GithubSearch"
 import { userSchema } from "@/app/github-user-search/_types/user"
-import { ThemeProvider } from "next-themes"
 
 const styles = {
   "--blue": "hsl(212,100%,50%)",
@@ -35,26 +34,24 @@ export default async function Page({ searchParams }: Props) {
   const data = await getUser(username ?? "octocat")
 
   return (
-    <ThemeProvider>
-      <div
-        style={styles}
-        className={cn(
-          "flex min-h-screen w-full flex-col items-center bg-[--light-blue] px-6 md:pt-[140px]",
-          spaceMono.className
-        )}
-      >
-        <div className="flex w-full max-w-[573px] flex-col lg:max-w-[730px]">
-          <header className="mt-8 flex w-full items-center justify-between">
-            <div className="text-[26px] font-bold leading-[1.2]">devfinder</div>
-            <button className="flex flex-row items-center gap-4 text-[13px] font-bold uppercase text-[--grey]">
-              Dark
-              <MoonIcon />
-            </button>
-          </header>
-          <GithubSearch initialUsername={username} user={data} />
-        </div>
+    <div
+      style={styles}
+      className={cn(
+        "flex min-h-screen w-full flex-col items-center bg-[--light-blue] px-6 md:pt-[140px]",
+        spaceMono.className
+      )}
+    >
+      <div className="flex w-full max-w-[573px] flex-col lg:max-w-[730px]">
+        <header className="mt-8 flex w-full items-center justify-between">
+          <div className="text-[26px] font-bold leading-[1.2]">devfinder</div>
+          <button className="flex flex-row items-center gap-4 text-[13px] font-bold uppercase text-[--grey]">
+            Dark
+            <MoonIcon />
+          </button>
+        </header>
+        <GithubSearch initialUsername={username} user={data} />
       </div>
-    </ThemeProvider>
+    </div>
   )
 }
 
@@ -73,7 +70,7 @@ async function getUser(username: string) {
   }
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data")
+    throw new Error(`Failed to fetch data ${res.status}`)
   }
 
   const body = await res.json()
