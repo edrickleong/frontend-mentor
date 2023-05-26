@@ -1,11 +1,11 @@
 "use client"
-import SearchIcon from "@/app/github-user-search/_components/icon-search.svg"
+import iconSearch from "#/github-user-search/icon-search.svg"
 import Image from "next/image"
 import { cn } from "@/app/utils"
-import LocationIcon from "@/app/github-user-search/_components/icon-location.svg"
-import WebsiteIcon from "@/app/github-user-search/_components/icon-website.svg"
-import TwitterIcon from "@/app/github-user-search/_components/icon-twitter.svg"
-import CompanyIcon from "@/app/github-user-search/_components/icon-company.svg"
+import iconLocation from "#/github-user-search/icon-location.svg"
+import iconWebsite from "#/github-user-search/icon-website.svg"
+import iconTwitter from "#/github-user-search/icon-twitter.svg"
+import iconCompany from "#/github-user-search/icon-company.svg"
 import { usePathname, useRouter } from "next/navigation"
 import { User } from "@/app/github-user-search/_types/user"
 
@@ -27,7 +27,7 @@ export function GithubSearch({ initialUsername, user }: Props) {
           await push(pathname + (username ? `?username=${username}` : ""))
         }}
       >
-        <SearchIcon className="absolute ml-4 h-4 w-4" />
+        <Image className="absolute ml-4 h-4 w-4" src={iconSearch} alt={""} />
         <input
           type="text"
           name="username"
@@ -107,11 +107,11 @@ function CardContent({ user }: { user: User }) {
         <div
           className={cn("flex flex-row gap-3", !user.location && "opacity-50")}
         >
-          <LocationIcon className="h-5 w-5 shrink-0" />
+          <Image src={iconLocation} alt={""} className="h-5 w-5 shrink-0" />
           <div>{user.location ?? "Not available"}</div>
         </div>
         <div className={cn("flex flex-row gap-3", !user.blog && "opacity-50")}>
-          <WebsiteIcon className="h-5 w-5" />
+          <Image src={iconWebsite} alt="" className="h-5 w-5" />
           <div>{user.blog?.length !== 0 ? user.blog : "Not available"}</div>
         </div>
         <div
@@ -120,13 +120,13 @@ function CardContent({ user }: { user: User }) {
             !user.twitter_username && "opacity-50"
           )}
         >
-          <TwitterIcon className="h-5 w-5" />
+          <Image src={iconTwitter} alt={""} className="h-5 w-5" />
           <div>{user.twitter_username ?? "Not available"}</div>
         </div>
         <div
           className={cn("flex flex-row gap-3", !user.company && "opacity-50")}
         >
-          <CompanyIcon className="h-5 w-5" />
+          <Image src={iconCompany} alt={""} className="h-5 w-5" />
           <div>{user.company ?? "Not available"}</div>
         </div>
       </div>

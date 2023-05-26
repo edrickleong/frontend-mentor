@@ -1,8 +1,9 @@
 import { cn } from "@/app/utils"
 import { Space_Mono } from "next/font/google"
-import MoonIcon from "@/app/github-user-search/_components/icon-moon.svg"
+import iconMoon from "#/github-user-search/icon-moon.svg"
 import { GithubSearch } from "@/app/github-user-search/_components/GithubSearch"
 import { userSchema } from "@/app/github-user-search/_types/user"
+import Image from "next/image"
 
 const styles = {
   "--blue": "hsl(212,100%,50%)",
@@ -46,7 +47,7 @@ export default async function Page({ searchParams }: Props) {
           <div className="text-[26px] font-bold leading-[1.2]">devfinder</div>
           <button className="flex flex-row items-center gap-4 text-[13px] font-bold uppercase text-[--grey]">
             Dark
-            <MoonIcon />
+            <Image src={iconMoon} alt={""} />
           </button>
         </header>
         <GithubSearch initialUsername={username} user={data} />
