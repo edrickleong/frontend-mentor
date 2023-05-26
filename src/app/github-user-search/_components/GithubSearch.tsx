@@ -6,7 +6,7 @@ import LocationIcon from "@/app/github-user-search/_components/icon-location.svg
 import WebsiteIcon from "@/app/github-user-search/_components/icon-website.svg"
 import TwitterIcon from "@/app/github-user-search/_components/icon-twitter.svg"
 import CompanyIcon from "@/app/github-user-search/_components/icon-company.svg"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { User } from "@/app/github-user-search/_types/user"
 
 type Props = {
@@ -15,6 +15,7 @@ type Props = {
 }
 
 export function GithubSearch({ initialUsername, user }: Props) {
+  const pathname = usePathname()
   const { push } = useRouter()
 
   return (
@@ -23,7 +24,7 @@ export function GithubSearch({ initialUsername, user }: Props) {
         className="relative flex flex-row items-center overflow-hidden rounded-2xl bg-white drop-shadow-[0_16px_30px_rgba(70,96,187,0.1986)]"
         action={async (formData: FormData) => {
           const username = formData.get("username")
-          await push(`/github-user-search?username=${username?.toString()}`)
+          await push(pathname + (username ? `?username=${username}` : ""))
         }}
       >
         <SearchIcon className="absolute ml-4 h-4 w-4" />
@@ -102,11 +103,11 @@ function CardContent({ user }: { user: User }) {
           </div>
         </div>
       </div>
-      <div className="mt-6 flex flex-col gap-4 text-[13px] text-[--desaturated-blue]">
+      <div className="mt-6 flex flex-col gap-4 text-[13px] text-[--desaturated-blue] md:grid md:grid-cols-2">
         <div
           className={cn("flex flex-row gap-3", !user.location && "opacity-50")}
         >
-          <LocationIcon className="h-5 w-5" />
+          <LocationIcon className="h-5 w-5 shrink-0" />
           <div>{user.location ?? "Not available"}</div>
         </div>
         <div className={cn("flex flex-row gap-3", !user.blog && "opacity-50")}>

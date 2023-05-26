@@ -33,17 +33,20 @@ export default async function Page({ searchParams }: Props) {
     <div
       style={styles}
       className={cn(
-        "flex min-h-screen w-full flex-col items-center bg-[--light-blue] px-6",
+        "flex min-h-screen w-full flex-col items-center bg-[--light-blue] px-6 md:pt-[140px]",
         spaceMono.className
       )}
     >
-      <header className="mt-8 flex w-full items-center justify-between">
-        <div className="text-[26px] font-bold leading-[1.2]">devfinder</div>
-        <button>
-          <MoonIcon />
-        </button>
-      </header>
-      <GithubSearch initialUsername={username} user={data} />
+      <div className="flex w-full max-w-[573px] flex-col lg:max-w-[730px]">
+        <header className="mt-8 flex w-full items-center justify-between">
+          <div className="text-[26px] font-bold leading-[1.2]">devfinder</div>
+          <button className="flex flex-row items-center gap-4 text-[13px] font-bold uppercase text-[--grey]">
+            Dark
+            <MoonIcon />
+          </button>
+        </header>
+        <GithubSearch initialUsername={username} user={data} />
+      </div>
     </div>
   )
 }
