@@ -23,12 +23,12 @@ export default async function Page({ searchParams }: Props) {
   return (
     <div
       className={cn(
-        "bg-background flex min-h-screen w-full flex-col items-center px-6 md:pt-[140px]",
+        "bg-background flex min-h-screen w-full flex-col items-center px-6 pt-8",
         spaceMono.className
       )}
     >
       <div className="flex w-full max-w-[573px] flex-col lg:max-w-[730px]">
-        <header className="mt-8 flex w-full items-baseline justify-between">
+        <header className="flex w-full items-baseline justify-between">
           <div className="text-[26px] font-bold leading-[1.2] text-[#222731] dark:text-white">
             devfinder
           </div>
