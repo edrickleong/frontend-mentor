@@ -1,13 +1,13 @@
 "use client"
-import iconSearch from "#/github-user-search/icon-search.svg"
+import iconSearch from "#/icon-search.svg"
 import Image from "next/image"
-import { cn } from "@/app/utils"
-import iconLocation from "#/github-user-search/icon-location.svg"
-import iconWebsite from "#/github-user-search/icon-website.svg"
-import iconTwitter from "#/github-user-search/icon-twitter.svg"
-import iconCompany from "#/github-user-search/icon-company.svg"
+import { cn } from "@/lib/utils"
+import iconLocation from "#/icon-location.svg"
+import iconWebsite from "#/icon-website.svg"
+import iconTwitter from "#/icon-twitter.svg"
+import iconCompany from "#/icon-company.svg"
 import { usePathname, useRouter } from "next/navigation"
-import { User } from "@/app/github-user-search/_types/user"
+import { User } from "@/types/user"
 
 type Props = {
   initialUsername: string
@@ -35,7 +35,7 @@ export function GithubSearch({ initialUsername, user }: Props) {
           defaultValue={initialUsername}
           className="w-full truncate py-5 pl-11 pr-[108px] text-[13px] leading-[25px] outline-none"
         />
-        <div className="flex-roww absolute right-4 flex items-center gap-4">
+        <div className="flex-row absolute right-4 flex items-center gap-4">
           <button className="flex items-center justify-center rounded-[10px] bg-[--blue] px-4 py-3 pl-4 text-sm font-bold text-white ">
             Search
           </button>

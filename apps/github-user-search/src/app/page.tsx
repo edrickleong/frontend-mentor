@@ -1,8 +1,8 @@
-import { cn } from "@/app/utils"
+import { cn } from "@/lib/utils"
 import { Space_Mono } from "next/font/google"
-import iconMoon from "#/github-user-search/icon-moon.svg"
-import { GithubSearch } from "@/app/github-user-search/_components/GithubSearch"
-import { userSchema } from "@/app/github-user-search/_types/user"
+import iconMoon from "#/icon-moon.svg"
+import { GithubSearch } from "@/components/GithubSearch"
+import { userSchema } from "@/types/user"
 import Image from "next/image"
 
 const styles = {
@@ -57,21 +57,14 @@ export default async function Page({ searchParams }: Props) {
 }
 
 async function getUser(username: string) {
-  const token = process.env.GITHUB_TOKEN
-  const res = await fetch(`https://api.github.com/users/${username}`, {
-    headers: {
-      Accept: "application/vnd.github+json",
-      Authorization: `Bearer ${token}`,
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
-  })
+  const res = await fetch(`https://api.github.com/users/${username}`)
 
   if (res.status === 404) {
     return null
   }
 
   if (!res.ok) {
-    throw new Error(`Failed to fetch data ${res.status}`)
+    throw new Error(`Failed to fetch data`)
   }
 
   const body = await res.json()

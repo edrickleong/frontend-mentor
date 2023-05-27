@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+
+
+    --blue: 212, 100%, 50%;
+    --grey: 217, 20%, 51%;
+    --desaturated-blue: 217, 35%, 45%;
+    --dark-grey: 217, 21%, 21%;
+    --light-blue: 227, 100%, 98%;
+    --ghost-white: 0, 0%, 100%;
+    --dark-mode-blue: 212, 100%, 50%;
+    --dark-mode-white: 0, 0%, 100%;
+    --dark-mode-black: 220, 40%, 13%;
+    --dark-mode-dark-blue: 222, 41%, 20%;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
