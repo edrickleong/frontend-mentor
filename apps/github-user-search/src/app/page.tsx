@@ -1,22 +1,8 @@
 import { cn } from "@/lib/utils"
 import { Space_Mono } from "next/font/google"
-import iconMoon from "#/icon-moon.svg"
 import { GithubSearch } from "@/components/GithubSearch"
 import { userSchema } from "@/types/user"
-import Image from "next/image"
-
-const styles = {
-  "--blue": "hsl(212,100%,50%)",
-  "--grey": "hsl(217,20%,51%)",
-  "--desaturated-blue": "hsl(217,35%,45%)",
-  "--dark-grey": "hsl(217,21%,21%)",
-  "--light-blue": "hsl(227,100%,98%)",
-  "--ghost-white": "hsl(0,0%,100%)",
-  "--dark-mode-blue": "hsl(212,100%,50%)",
-  "--dark-mode-white": "hsl(0,0%,100%)",
-  "--dark-mode-black": "hsl(220,40%,13%)",
-  "--dark-mode-dark-blue": "hsl(222,41%,20%)",
-} as React.CSSProperties
+import { ToggleThemeButton } from "@/components/ToggleThemeButton"
 
 const spaceMono = Space_Mono({
   subsets: ["latin"],
@@ -36,19 +22,17 @@ export default async function Page({ searchParams }: Props) {
 
   return (
     <div
-      style={styles}
       className={cn(
-        "flex min-h-screen w-full flex-col items-center bg-[--light-blue] px-6 md:pt-[140px]",
+        "bg-background flex min-h-screen w-full flex-col items-center px-6 md:pt-[140px]",
         spaceMono.className
       )}
     >
       <div className="flex w-full max-w-[573px] flex-col lg:max-w-[730px]">
-        <header className="mt-8 flex w-full items-center justify-between">
-          <div className="text-[26px] font-bold leading-[1.2]">devfinder</div>
-          <button className="flex flex-row items-center gap-4 text-[13px] font-bold uppercase text-[--grey]">
-            Dark
-            <Image src={iconMoon} alt={""} />
-          </button>
+        <header className="mt-8 flex w-full items-baseline justify-between">
+          <div className="text-[26px] font-bold leading-[1.2] text-[#222731] dark:text-white">
+            devfinder
+          </div>
+          <ToggleThemeButton />
         </header>
         <GithubSearch initialUsername={username} user={data} />
       </div>
