@@ -210,6 +210,48 @@ importers:
         specifier: 8.8.0
         version: 8.8.0(eslint@8.41.0)
 
+  apps/template:
+    dependencies:
+      '@types/node':
+        specifier: 20.2.5
+        version: 20.2.5
+      '@types/react':
+        specifier: 18.2.7
+        version: 18.2.7
+      '@types/react-dom':
+        specifier: 18.2.4
+        version: 18.2.4
+      autoprefixer:
+        specifier: 10.4.14
+        version: 10.4.14(postcss@8.4.23)
+      eslint:
+        specifier: 8.41.0
+        version: 8.41.0
+      eslint-config-next:
+        specifier: 13.4.4
+        version: 13.4.4(eslint@8.41.0)(typescript@5.0.4)
+      eslint-config-prettier:
+        specifier: 8.8.0
+        version: 8.8.0(eslint@8.41.0)
+      next:
+        specifier: 13.4.4
+        version: 13.4.4(react-dom@18.2.0)(react@18.2.0)
+      postcss:
+        specifier: 8.4.23
+        version: 8.4.23
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+      tailwindcss:
+        specifier: 3.3.2
+        version: 3.3.2
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
+
 packages:
 
   /@alloc/quick-lru@5.2.0:
@@ -1905,7 +1947,6 @@ packages:
       eslint: '>=7.0.0'
     dependencies:
       eslint: 8.41.0
-    dev: true
 
   /eslint-import-resolver-node@0.3.7:
     resolution: {integrity: sha512-gozW2blMLJCeFpBwugLTGyvVjNoeo1knonXAcatC6bjPBZitotxdWf7Gimr25N4c0AAOo4eOUfaG82IJPDpqCA==}
