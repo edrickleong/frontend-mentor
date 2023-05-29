@@ -133,6 +133,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: 1.0.2
         version: 1.0.2(@types/react@18.2.7)(react@18.2.0)
+      '@tw-classed/react':
+        specifier: 1.5.0
+        version: 1.5.0(react@18.2.0)
       '@types/node':
         specifier: 20.2.5
         version: 20.2.5
