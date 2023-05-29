@@ -1,6 +1,6 @@
 "use client"
 import { useTheme } from "next-themes"
-import { Switch } from "@/components/Switch"
+import { Switch } from "@/components/ui/switch"
 import { useEffect, useState } from "react"
 import { MoonIcon } from "@/components/MoonIcon"
 

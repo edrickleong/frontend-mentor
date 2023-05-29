@@ -4,8 +4,9 @@ import Image from "next/image"
 import { wordSchema } from "@/types/word"
 import { classed } from "@tw-classed/react"
 import * as React from "react"
-import { Input } from "@/components/Input"
+import { Input } from "@/components/ui/input"
 import { ToggleThemeButton } from "@/components/ToggleThemeButton"
+import { redirect } from "next/navigation"
 
 type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -15,10 +16,10 @@ export default async function Page({ searchParams }: Props) {
   if (Array.isArray(searchParams)) {
     throw new Error("Invalid search params")
   }
-  const keyword = searchParams["keyword"] as string
+  const word = searchParams["word"] as string
 
   const response = await fetch(
-    `https://api.dictionaryapi.dev/api/v2/entries/en/${keyword ?? "keyboard"}`
+    `https://api.dictionaryapi.dev/api/v2/entries/en/${word ?? "keyboard"}`
   )
 
   if (!response.ok) {
@@ -26,8 +27,8 @@ export default async function Page({ searchParams }: Props) {
   }
 
   const data = await response.json()
-  const words = wordSchema.parse(data)
-  const word = words[0]
+  const wordsDefinition = wordSchema.parse(data)
+  const wordDefinition = wordsDefinition[0]
 
   return (
     <div className="px-6 py-6">
@@ -39,23 +40,34 @@ export default async function Page({ searchParams }: Props) {
         </div>
       </header>
       <main className="w-full">
-        <Input
-          className="mt-6"
-          placeholder="Search word"
-          defaultValue={keyword}
-        />
+        <form
+          action={async (formData: FormData) => {
+            "use server"
+            const newWord = formData.get("word") as string
+            redirect("/?word=" + newWord)
+          }}
+        >
+          <Input
+            className="mt-6"
+            placeholder="Search word"
+            defaultValue={word}
+            name="word"
+          />
+        </form>
         <div className="mt-6 flex flex-row justify-between">
           <div>
             <HeadingL className="text-foreground font-bold">
-              {word.word}
+              {wordDefinition.word}
             </HeadingL>
-            <HeadingM className="text-primary mt-2">{word.phonetic}</HeadingM>
+            <HeadingM className="text-primary mt-2">
+              {wordDefinition.phonetic}
+            </HeadingM>
           </div>
           <button>
             <Image src={iconPlay} className="h-12 w-12" alt={""} />
           </button>
         </div>
-        {word.meanings.map((meaning, index) => (
+        {wordDefinition.meanings.map((meaning, index) => (
           //  TODO: Change to use different index?
           <div className="mt-8" key={index}>
             <div className="mt-4 flex flex-row items-center gap-4">
@@ -85,7 +97,7 @@ export default async function Page({ searchParams }: Props) {
             {meaning.synonyms.length !== 0 && (
               <div className="mt-6 flex flex-row gap-6">
                 <HeadingS className="text-muted-foreground">Synonyms</HeadingS>
-                <ul>
+                <ul className="flex flex-row gap-2">
                   {meaning.synonyms.map((synonym, index) => (
                     <li key={index}>
                       <HeadingS className="text-primary font-bold">
@@ -101,7 +113,9 @@ export default async function Page({ searchParams }: Props) {
         <div className="bg-border mt-8 h-[1px] w-full"></div>
         <div className="mt-6 flex flex-col gap-2">
           <BodyS className="text-muted-foreground">Source</BodyS>
-          <BodyS className="text-foreground">{word.sourceUrls[0]}</BodyS>
+          <BodyS className="text-foreground">
+            {wordDefinition.sourceUrls[0]}
+          </BodyS>
         </div>
       </main>
     </div>
