@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --primary: 274 82% 60%;
+        --foreground: 0 0% 18%;
+        --muted-foreground: 0 0% 46%;
+        --border: 0 0% 91%;
+        --input: 0 0% 96%;
+    }
+
+    .dark {
+        --background: 0 0% 2%;
+        --foreground: 0 0% 100%;
+        --muted-foreground: 0 0% 46%;
+        --border: 0 0% 23%;
+        --input: 0 0% 12%;
+    }
+}
