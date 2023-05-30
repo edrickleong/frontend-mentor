@@ -29,6 +29,18 @@
 - [x] 🔢 Stats preview card component
 - [x] ❓ FAQ Accordion card component
 - [x] 📝 Social proof section
+- [x] 📄 Article preview component
+- [x] 📱 Workit landing page
+- [x] 🖥️ GitHub user search app
+- [x] 📄 Intro component with sign up form
+- [x] 📰 News homepage
+- [x] 👚 Base Apparel coming soon page
+- [ ] 📖 Dictionary web app
+- [ ] 📃 Ping single column coming soon page
+- [ ] 💲 Single price grid component
+- [ ] 🪧 Four card feature section
+- [ ] 💭 Advice generator app
+- [ ] 📄 Multi-step form
 
 ## 🔧 Built with
 
