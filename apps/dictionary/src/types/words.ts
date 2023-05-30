@@ -1,19 +1,16 @@
 import { z } from "zod"
 
-export const wordSchema = z.array(
+export const wordsSchema = z.array(
   z.object({
     word: z.string(),
-    phonetic: z.string(),
+    phonetic: z.string().optional(),
     phonetics: z.array(
-      z.union([
-        z.object({ text: z.string(), audio: z.string() }),
-        z.object({
-          text: z.string(),
-          audio: z.string(),
-          sourceUrl: z.string(),
-          license: z.object({ name: z.string(), url: z.string() }),
-        }),
-      ])
+      z.object({
+        text: z.string().optional(),
+        audio: z.string(),
+        sourceUrl: z.string().optional(),
+        license: z.object({ name: z.string(), url: z.string() }).optional(),
+      })
     ),
     meanings: z.array(
       z.object({
@@ -34,3 +31,7 @@ export const wordSchema = z.array(
     sourceUrls: z.array(z.string()),
   })
 )
+
+export type Words = z.infer<typeof wordsSchema>
+
+export type Word = Words[0]

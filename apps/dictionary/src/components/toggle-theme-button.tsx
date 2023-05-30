@@ -2,7 +2,7 @@
 import { useTheme } from "next-themes"
 import { Switch } from "@/components/ui/switch"
 import { useEffect, useState } from "react"
-import { MoonIcon } from "@/components/MoonIcon"
+import { MoonIcon } from "@/components/moon-icon"
 
 export function ToggleThemeButton() {
   const [mounted, setMounted] = useState(false)
