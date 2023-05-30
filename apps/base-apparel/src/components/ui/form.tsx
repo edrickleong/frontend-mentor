@@ -1,0 +1,32 @@
+import React from "react"
+import { useFormContext } from "react-hook-form"
+import { cn } from "@/lib/utils"
+
+interface FormMessageProps extends React.HTMLAttributes<HTMLParagraphElement> {
+  name: string
+}
+
+const FormMessage = React.forwardRef<HTMLParagraphElement, FormMessageProps>(
+  ({ className, children, name, ...props }, ref) => {
+    const {
+      formState: { errors },
+    } = useFormContext()
+    const error = errors[name]
+    const body = error ? String(error?.message) : children
+
+    if (!body) return null
+
+    return (
+      <p
+        ref={ref}
+        className={cn("text-[13px] text-soft-red", className)}
+        {...props}
+      >
+        {body}
+      </p>
+    )
+  }
+)
+FormMessage.displayName = "FormMessage"
+
+export { FormMessage }
