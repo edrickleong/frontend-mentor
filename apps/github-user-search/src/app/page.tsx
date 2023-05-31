@@ -23,7 +23,7 @@ export default async function Page({ searchParams }: Props) {
   return (
     <div
       className={cn(
-        "bg-background flex min-h-screen w-full flex-col items-center px-6 pt-8",
+        "flex min-h-screen w-full flex-col items-center bg-background px-6 pt-8",
         spaceMono.className
       )}
     >

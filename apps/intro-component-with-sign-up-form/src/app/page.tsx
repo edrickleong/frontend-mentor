@@ -44,7 +44,7 @@ export default function Page() {
         </div>
       </div>
       <div className="w-full">
-        <div className="bg-blue mt-8 w-full rounded-lg px-4 py-6 text-center">
+        <div className="mt-8 w-full rounded-lg bg-blue px-4 py-6 text-center">
           <span className="font-bold">Try it free 7 days</span> then
           <br />
           $20/mo. thereafter
@@ -135,13 +135,13 @@ export default function Page() {
                 className="mt-2 w-full text-right"
               />
             </div>
-            <button className="bg-green hover:bg-green/90 rounded-xl px-4 py-3 text-lg uppercase">
+            <button className="rounded-xl bg-green px-4 py-3 text-lg uppercase hover:bg-green/90">
               Claim your free trial
             </button>
 
-            <div className="text-grayish-blue text-sm">
+            <div className="text-sm text-grayish-blue">
               By clicking the button, you are agreeing to our{" "}
-              <span className="text-red font-bold">Terms and Services</span>
+              <span className="font-bold text-red">Terms and Services</span>
             </div>
           </form>
         </FormProvider>

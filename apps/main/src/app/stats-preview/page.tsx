@@ -28,9 +28,13 @@ export default function Page() {
         inter.className
       )}
     >
-      <div className="flex max-w-[1110px] flex-col overflow-hidden rounded-lg bg-[--dark-desaturated-blue] text-white items-stretch lg:flex-row">
-        <div className="lg:hidden bg-[--soft-violet]">
-          <Image src={imageHeaderMobile} alt={""} className="w-full object-cover mix-blend-multiply opacity-75" />
+      <div className="flex max-w-[1110px] flex-col items-stretch overflow-hidden rounded-lg bg-[--dark-desaturated-blue] text-white lg:flex-row">
+        <div className="bg-[--soft-violet] lg:hidden">
+          <Image
+            src={imageHeaderMobile}
+            alt={""}
+            className="w-full object-cover opacity-75 mix-blend-multiply"
+          />
         </div>
         <div className="flex flex-col items-center px-7 pb-8 pt-10 text-center lg:p-[72px] lg:text-left ">
           <div
@@ -81,8 +85,12 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className="hidden w-full lg:block bg-[--soft-violet]">
-          <Image className="object-cover mix-blend-multiply opacity-75 h-full" src={imageHeaderDesktop} alt={""} />
+        <div className="hidden w-full bg-[--soft-violet] lg:block">
+          <Image
+            className="h-full object-cover opacity-75 mix-blend-multiply"
+            src={imageHeaderDesktop}
+            alt={""}
+          />
         </div>
       </div>
     </div>

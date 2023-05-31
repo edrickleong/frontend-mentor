@@ -24,7 +24,7 @@ export function ToggleThemeButton() {
       />
       <label
         htmlFor="toggle-theme"
-        className="text-muted-foreground dark:text-primary ml-3 h-5 w-5 cursor-pointer"
+        className="ml-3 h-5 w-5 cursor-pointer text-muted-foreground dark:text-primary"
       >
         <MoonIcon />
       </label>

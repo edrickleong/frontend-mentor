@@ -19,7 +19,7 @@ export const FormMessage = React.forwardRef<
   if (!body) return null
 
   return (
-    <p ref={ref} className={cn("text-red text-sm", className)} {...props}>
+    <p ref={ref} className={cn("text-sm text-red", className)} {...props}>
       {body}
     </p>
   )

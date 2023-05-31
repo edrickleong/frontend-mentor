@@ -29,7 +29,7 @@ export default function Page() {
         redHatDisplay.className
       )}
     >
-      <div className="max-w-[451px] flex flex-col items-center overflow-hidden rounded-3xl bg-white">
+      <div className="flex max-w-[451px] flex-col items-center overflow-hidden rounded-3xl bg-white">
         <Image src={illustrationHero} className="h-40" alt={""} />
         <div className="flex flex-col items-center p-6 sm:p-12">
           <div className="text-xl font-black">Order Summary</div>

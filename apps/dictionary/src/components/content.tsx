@@ -30,10 +30,10 @@ export function Content({ wordDefinition }: Props) {
     <>
       <div className="mt-6 flex flex-row justify-between md:mt-[50px]">
         <div>
-          <HeadingL className="text-foreground font-bold">
+          <HeadingL className="font-bold text-foreground">
             {wordDefinition.word}
           </HeadingL>
-          <HeadingM className="text-primary mt-2">
+          <HeadingM className="mt-2 text-primary">
             {wordDefinition.phonetic}
           </HeadingM>
         </div>
@@ -50,21 +50,21 @@ export function Content({ wordDefinition }: Props) {
       {wordDefinition.meanings.map((meaning, index) => (
         <div className="mt-8 md:mt-10" key={index}>
           <div className="flex flex-row items-center gap-4">
-            <HeadingM className="text-foreground font-bold italic">
+            <HeadingM className="font-bold italic text-foreground">
               {meaning.partOfSpeech}
             </HeadingM>
-            <div className="bg-border h-[1px] w-full"></div>
+            <div className="h-[1px] w-full bg-border"></div>
           </div>
           <div className="mt-8 flex flex-col md:mt-[38px]">
             <HeadingS className="text-muted-foreground">Meaning</HeadingS>
             <ul className="mt-4 md:mt-6">
               {meaning.definitions.map((definition, index) => (
                 <li key={index} className="flex flex-row gap-5 md:gap-4">
-                  <div className="bg-primary h-[5px] w-[5px] shrink-0 translate-y-[10px] rounded-full"></div>
+                  <div className="h-[5px] w-[5px] shrink-0 translate-y-[10px] rounded-full bg-primary"></div>
                   <div>
                     <BodyM>{definition.definition}</BodyM>
                     {definition.example && (
-                      <BodyM className="text-muted-foreground mt-3">
+                      <BodyM className="mt-3 text-muted-foreground">
                         {`"${definition.example}"`}
                       </BodyM>
                     )}
@@ -81,7 +81,7 @@ export function Content({ wordDefinition }: Props) {
                   <li key={index}>
                     <HeadingS
                       as={Link}
-                      className="text-primary font-bold hover:underline"
+                      className="font-bold text-primary hover:underline"
                       href={"#"}
                     >
                       {synonym}
@@ -93,7 +93,7 @@ export function Content({ wordDefinition }: Props) {
           )}
         </div>
       ))}
-      <div className="bg-border mt-8 h-[1px] w-full md:mt-10"></div>
+      <div className="mt-8 h-[1px] w-full bg-border md:mt-10"></div>
       <div className="mt-6 flex flex-col gap-5 md:flex-row">
         <BodyS className="text-muted-foreground">Source</BodyS>
         <BodyS

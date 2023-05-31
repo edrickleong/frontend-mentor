@@ -11,7 +11,7 @@ const spaceMono = Space_Mono({
 export default function Page() {
   return (
     <div
-      className={`flex w-full min-h-screen flex-col pt-8 gap-8 items-center bg-[--light-grayish-cyan] sm:justify-center ${spaceMono.className} sm:p-6 sm:pt-8`}
+      className={`flex min-h-screen w-full flex-col items-center gap-8 bg-[--light-grayish-cyan] pt-8 sm:justify-center ${spaceMono.className} sm:p-6 sm:pt-8`}
       style={
         {
           "--strong-cyan": "hsl(172, 67%, 45%)",

@@ -40,7 +40,7 @@ export default async function Page({ searchParams }: Props) {
     <div className="flex flex-col items-center px-6 py-6 md:px-10 md:pt-14">
       <header className="flex w-full max-w-[737px] flex-row items-center justify-between">
         <Image src={logo} className="h-8 w-auto" alt={""} />
-        <div className="divide-border flex flex-row items-center divide-x">
+        <div className="flex flex-row items-center divide-x divide-border">
           <BodyS className="mr-4 font-bold">Sans Serif</BodyS>
           <ToggleThemeButton />
         </div>
@@ -50,10 +50,10 @@ export default async function Page({ searchParams }: Props) {
         {!wordDefinition ? (
           <div className="mt-[132px] flex flex-col items-center text-center">
             <div className="text-[64px]">🙁</div>
-            <HeadingS className="text-foreground mt-[44px]">
+            <HeadingS className="mt-[44px] text-foreground">
               No Definitions Found
             </HeadingS>
-            <BodyM className="text-muted-foreground mt-6">
+            <BodyM className="mt-6 text-muted-foreground">
               Sorry pal, we {"couldn't"} find definitions for the word you were
               looking for. You can try the search again at later time or head to
               the web instead.

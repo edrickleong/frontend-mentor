@@ -7,7 +7,7 @@ export function ToggleThemeButton() {
   const { theme, setTheme } = useTheme()
   return (
     <button
-      className="text-foreground flex flex-row items-center gap-4 text-[13px] font-bold uppercase hover:text-[#222731] dark:hover:text-[#90A4D4]"
+      className="flex flex-row items-center gap-4 text-[13px] font-bold uppercase text-foreground hover:text-[#222731] dark:hover:text-[#90A4D4]"
       onClick={() => {
         setTheme(theme === "dark" ? "light" : "dark")
       }}

@@ -73,7 +73,9 @@ export default function Page() {
                   sideOffset={16}
                   className="animate-in fade-in-50 z-50 flex flex-row overflow-hidden rounded-[10px] bg-[--very-dark-grayish-blue] px-[36px] py-[18px] shadow-md"
                 >
-                  <div className="text-[13px] font-bold uppercase leading-5 tracking-[5px] text-[--grayish-blue]">Share</div>
+                  <div className="text-[13px] font-bold uppercase leading-5 tracking-[5px] text-[--grayish-blue]">
+                    Share
+                  </div>
                   <div className="ml-5 flex flex-row gap-4">
                     <button>
                       <Image src={iconFacebook} alt={""} />

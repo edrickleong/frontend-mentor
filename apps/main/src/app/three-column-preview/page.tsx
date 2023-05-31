@@ -56,7 +56,7 @@ export default function Page() {
         lexendDeca.className
       )}
     >
-      <div className="flex flex-col overflow-hidden md:flex-row rounded-lg">
+      <div className="flex flex-col overflow-hidden rounded-lg md:flex-row">
         {sections.map((it) => (
           <div
             key={it.title}
@@ -81,7 +81,7 @@ export default function Page() {
             >
               {it.description}
             </div>
-            <button className="mt-[25px] md:mt-[83px] h-[48px] rounded-[25px] bg-[--very-light-gray] px-8 text-[15px] leading-[25px] text-[--primary] hover:border-2 hover:border-white hover:bg-[--primary] hover:text-white">
+            <button className="mt-[25px] h-[48px] rounded-[25px] bg-[--very-light-gray] px-8 text-[15px] leading-[25px] text-[--primary] hover:border-2 hover:border-white hover:bg-[--primary] hover:text-white md:mt-[83px]">
               Learn More
             </button>
           </div>

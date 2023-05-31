@@ -23,7 +23,7 @@ export function GithubSearch({ initialUsername, user }: Props) {
   return (
     <main className="mt-9 w-full">
       <form
-        className="bg-card relative flex flex-row items-center overflow-hidden rounded-2xl drop-shadow-[0_16px_30px_rgba(70,96,187,0.1986)] dark:drop-shadow-none"
+        className="relative flex flex-row items-center overflow-hidden rounded-2xl bg-card drop-shadow-[0_16px_30px_rgba(70,96,187,0.1986)] dark:drop-shadow-none"
         action={async (formData: FormData) => {
           const username = formData.get("username")
           await push(pathname + (username ? `?username=${username}` : ""))
@@ -39,15 +39,15 @@ export function GithubSearch({ initialUsername, user }: Props) {
           name="username"
           placeholder={"Search GitHub username…"}
           defaultValue={initialUsername}
-          className="bg-card w-full truncate py-5 pl-11 pr-[108px] text-[13px] leading-[25px] outline-none md:py-6 md:pl-20 md:text-[18px]"
+          className="w-full truncate bg-card py-5 pl-11 pr-[108px] text-[13px] leading-[25px] outline-none md:py-6 md:pl-20 md:text-[18px]"
         />
         <div className="absolute right-4 flex flex-row items-center gap-4">
-          <button className="bg-primary hover:bg-primary/90 flex items-center justify-center rounded-[10px] px-4 py-3 pl-4 text-sm font-bold text-white md:px-6 md:text-base ">
+          <button className="flex items-center justify-center rounded-[10px] bg-primary px-4 py-3 pl-4 text-sm font-bold text-white hover:bg-primary/90 md:px-6 md:text-base ">
             Search
           </button>
         </div>
       </form>
-      <div className="bg-card mt-4 rounded-2xl px-6 py-8 drop-shadow-[0_16px_30px_rgba(70,96,187,0.1986)] dark:drop-shadow-none md:mt-6 md:p-10 lg:p-12">
+      <div className="mt-4 rounded-2xl bg-card px-6 py-8 drop-shadow-[0_16px_30px_rgba(70,96,187,0.1986)] dark:drop-shadow-none md:mt-6 md:p-10 lg:p-12">
         {!user ? (
           <div className="text-[15px] font-bold text-[#F74646]">
             No results found
@@ -81,14 +81,14 @@ function CardContent({ user }: { user: User }) {
           />
           <div className="flex w-full flex-col lg:flex-row lg:items-baseline lg:justify-between">
             <div className="flex flex-col">
-              <div className="text-card-foreground font-bold md:text-[26px]">
+              <div className="font-bold text-card-foreground md:text-[26px]">
                 {user.name}
               </div>
-              <div className="text-primary text-[13px] md:text-base">
+              <div className="text-[13px] text-primary md:text-base">
                 @{user.login}
               </div>
             </div>
-            <div className="text-muted-foreground text-[13px] md:text-[15px]">
+            <div className="text-[13px] text-muted-foreground md:text-[15px]">
               Joined{" "}
               {new Date(user.created_at).toLocaleDateString("en-US", {
                 day: "numeric",
@@ -98,38 +98,38 @@ function CardContent({ user }: { user: User }) {
             </div>
           </div>
         </div>
-        <div className="text-muted-foreground mt-8 text-[13px] leading-[25px] md:text-[15px]">
+        <div className="mt-8 text-[13px] leading-[25px] text-muted-foreground md:text-[15px]">
           {user.bio}
         </div>
-        <div className="bg-background mt-6 rounded-[10px]">
+        <div className="mt-6 rounded-[10px] bg-background">
           <div className="flex w-full flex-row px-4 py-5 text-center">
             <div className="flex-1">
-              <div className="text-muted-foreground text-[11px] md:text-[13px]">
+              <div className="text-[11px] text-muted-foreground md:text-[13px]">
                 Repos
               </div>
-              <div className="text-card-foreground mt-2 font-bold md:text-[22px]">
+              <div className="mt-2 font-bold text-card-foreground md:text-[22px]">
                 {user.public_repos}
               </div>
             </div>
             <div className="flex-1">
-              <div className="text-muted-foreground text-[11px] md:text-[13px]">
+              <div className="text-[11px] text-muted-foreground md:text-[13px]">
                 Followers
               </div>
-              <div className="text-card-foreground mt-2 font-bold md:text-[22px]">
+              <div className="mt-2 font-bold text-card-foreground md:text-[22px]">
                 {user.followers}
               </div>
             </div>
             <div className="flex-1">
-              <div className="text-muted-foreground text-[11px] md:text-[13px]">
+              <div className="text-[11px] text-muted-foreground md:text-[13px]">
                 Following
               </div>
-              <div className="text-card-foreground mt-2 font-bold md:text-[22px]">
+              <div className="mt-2 font-bold text-card-foreground md:text-[22px]">
                 {user.following}
               </div>
             </div>
           </div>
         </div>
-        <div className="text-muted-foreground mt-6 flex flex-col gap-4 text-[13px] md:grid md:grid-cols-2 md:text-[15px]">
+        <div className="mt-6 flex flex-col gap-4 text-[13px] text-muted-foreground md:grid md:grid-cols-2 md:text-[15px]">
           <div
             className={cn(
               "flex flex-row gap-3",

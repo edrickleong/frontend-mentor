@@ -38,7 +38,7 @@ function Card() {
   }, [bill, customTip, people, tip])
 
   return (
-    <div className="flex w-full max-w-[920px] flex-col gap-x-6 sm:flex-row sm:p-12 rounded-t-3xl bg-white p-6 gap-y-12 sm:rounded-3xl">
+    <div className="flex w-full max-w-[920px] flex-col gap-x-6 gap-y-12 rounded-t-3xl bg-white p-6 sm:flex-row sm:rounded-3xl sm:p-12">
       <div className="w-full">
         <div className="flex flex-col">
           <div className="flex flex-row justify-between">
@@ -83,7 +83,7 @@ function Card() {
               const number = Number(value)
               setTip(isNaN(number) ? "" : number)
             }}
-            className="mt-1.5 grid grid-cols-2 sm:grid-cols-3 gap-4"
+            className="mt-1.5 grid grid-cols-2 gap-4 sm:grid-cols-3"
           >
             {[5, 10, 15, 25, 50].map((it) => (
               <RadioGroup.Item
@@ -142,12 +142,14 @@ function Card() {
           </div>
         </div>
       </div>
-      <div className="rounded-xl bg-[--very-dark-cyan] px-4 py-6 sm:p-10 w-full flex flex-col justify-between">
+      <div className="flex w-full flex-col justify-between rounded-xl bg-[--very-dark-cyan] px-4 py-6 sm:p-10">
         <div>
           <div className="flex flex-row items-end justify-between">
             <div>
               <div className="text-sm text-white">Tip Amount</div>
-              <div className="text-xs text-[--light-grayish-cyan]">/ person</div>
+              <div className="text-xs text-[--light-grayish-cyan]">
+                / person
+              </div>
             </div>
             <div className="text-2xl text-[--strong-cyan]">
               ${(tipPerPerson ?? 0).toFixed(2)}
@@ -156,7 +158,9 @@ function Card() {
           <div className="mt-4 flex flex-row items-end justify-between">
             <div>
               <div className="text-sm text-white">Total</div>
-              <div className="text-xs text-[--light-grayish-cyan]">/ person</div>
+              <div className="text-xs text-[--light-grayish-cyan]">
+                / person
+              </div>
             </div>
             <div className="text-2xl text-[--strong-cyan]">
               ${(totalPerPerson ?? 0).toFixed(2)}

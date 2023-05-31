@@ -43,7 +43,11 @@ export default function Page() {
             return (
               <div className="w-full text-center text-gray-400" key={day}>
                 <div
-                  className={`rounded ${day === today ? "bg-[--cyan] hover:bg-[--cyan-80]" : "bg-[--soft-red] hover:bg-[--soft-red-80]"}`}
+                  className={`rounded ${
+                    day === today
+                      ? "bg-[--cyan] hover:bg-[--cyan-80]"
+                      : "bg-[--soft-red] hover:bg-[--soft-red-80]"
+                  }`}
                   style={{ height: amount * 4 }}
                 ></div>
                 <div>{day}</div>

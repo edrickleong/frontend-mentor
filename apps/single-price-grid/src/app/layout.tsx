@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${karla.className} bg-light-gray flex min-h-screen flex-col items-center justify-center px-8`}
+        className={`${karla.className} flex min-h-screen flex-col items-center justify-center bg-light-gray px-8`}
       >
         {children}
       </body>

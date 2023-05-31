@@ -3,10 +3,10 @@ export default function Page() {
     <main className="grid max-w-[635px] overflow-hidden rounded-[5px] md:grid-cols-2">
       <div className="bg-white px-6 pb-8 pt-7 md:col-span-2">
         <div className="text-xl font-bold md:text-2xl">Join our community</div>
-        <div className="text-bright-yellow mt-6 text-[15px] font-bold leading-[20px] md:text-[18px] md:leading-[1.2]">
+        <div className="mt-6 text-[15px] font-bold leading-[20px] text-bright-yellow md:text-[18px] md:leading-[1.2]">
           30-day, hassle-free money back guarantee
         </div>
-        <div className="text-grayish-blue mt-4 text-sm leading-[26px]">
+        <div className="mt-4 text-sm leading-[26px] text-grayish-blue">
           Gain access to our full library of tutorials along with expert code
           reviews. Perfect for any developers who are serious about honing their
           skills.
@@ -25,7 +25,7 @@ export default function Page() {
         <div className="mt-1 leading-[26px] text-white">
           Full access for less than $1 a day
         </div>
-        <button className="hover:bg-bright-yellow/90 bg-bright-yellow mt-[26px] flex h-12 w-full flex-row items-center justify-center rounded-[5px] font-bold text-white drop-shadow-[0_10_10_#000000/0.0973]">
+        <button className="mt-[26px] flex h-12 w-full flex-row items-center justify-center rounded-[5px] bg-bright-yellow font-bold text-white drop-shadow-[0_10_10_#000000/0.0973] hover:bg-bright-yellow/90">
           Sign Up
         </button>
       </div>
