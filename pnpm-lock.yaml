@@ -437,6 +437,66 @@ importers:
         specifier: 1.0.5
         version: 1.0.5(tailwindcss@3.3.2)
 
+  apps/ping:
+    dependencies:
+      '@hookform/resolvers':
+        specifier: 3.1.0
+        version: 3.1.0(react-hook-form@7.44.2)
+      '@types/node':
+        specifier: 20.2.5
+        version: 20.2.5
+      '@types/react':
+        specifier: 18.2.7
+        version: 18.2.7
+      '@types/react-dom':
+        specifier: 18.2.4
+        version: 18.2.4
+      autoprefixer:
+        specifier: 10.4.14
+        version: 10.4.14(postcss@8.4.24)
+      clsx:
+        specifier: 1.2.1
+        version: 1.2.1
+      eslint:
+        specifier: 8.41.0
+        version: 8.41.0
+      eslint-config-next:
+        specifier: 13.4.4
+        version: 13.4.4(eslint@8.41.0)(typescript@5.0.4)
+      eslint-config-prettier:
+        specifier: 8.8.0
+        version: 8.8.0(eslint@8.41.0)
+      lucide-react:
+        specifier: 0.224.0
+        version: 0.224.0(react@18.2.0)
+      next:
+        specifier: 13.4.4
+        version: 13.4.4(react-dom@18.2.0)(react@18.2.0)
+      postcss:
+        specifier: 8.4.24
+        version: 8.4.24
+      react:
+        specifier: 18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-hook-form:
+        specifier: 7.44.2
+        version: 7.44.2(react@18.2.0)
+      tailwind-merge:
+        specifier: 1.12.0
+        version: 1.12.0
+      tailwindcss:
+        specifier: 3.3.2
+        version: 3.3.2
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
+      zod:
+        specifier: 3.21.4
+        version: 3.21.4
+
   apps/single-price-grid:
     dependencies:
       '@types/node':
