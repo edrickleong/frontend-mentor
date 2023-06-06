@@ -6,9 +6,9 @@
     "lint": "turbo run lint"
   },
   "devDependencies": {
-    "turbo": "1.9.9",
     "prettier": "2.8.8",
-    "prettier-plugin-tailwindcss": "0.3.0"
+    "prettier-plugin-tailwindcss": "0.3.0",
+    "turbo": "1.10.1"
   },
   "name": "frontend-mentor"
 }
