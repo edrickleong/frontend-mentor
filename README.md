@@ -36,10 +36,10 @@
 - [x] 📰 News homepage
 - [x] 👚 Base Apparel coming soon page
 - [ ] 📖 Dictionary web app
-- [ ] 📃 Ping single column coming soon page
-- [ ] 💲 Single price grid component
-- [ ] 🪧 Four card feature section
-- [ ] 💭 Advice generator app
+- [x] 📃 Ping single column coming soon page
+- [x] 💲 Single price grid component
+- [x] 🪧 Four card feature section
+- [x] 💭 Advice generator app
 - [ ] 📄 Multi-step form
 
 ## 🔧 Built with
