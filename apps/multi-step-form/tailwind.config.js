@@ -25,7 +25,7 @@ module.exports = {
       },
       fontSize: {
         heading: ["2rem", { lineHeight: 1.2 }],
-        "body-l": ["1rem", { lineHeight: 1.2 }],
+        "body-l": ["1rem", { lineHeight: 1.5625 }],
         "body-m": ["0.875rem", { lineHeight: 1.2 }],
         "body-s": ["0.75rem", { lineHeight: 1.2 }],
       },
