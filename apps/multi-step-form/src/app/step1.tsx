@@ -2,7 +2,7 @@ import { z } from "zod"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import React from "react"
-import { classed } from "@/app/classed"
+import { classed } from "@/lib/classed"
 
 export const step1Schema = z.object({
   name: z.string().min(1, { message: "This field is required" }),
