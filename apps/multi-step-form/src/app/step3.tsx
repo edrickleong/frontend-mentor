@@ -36,16 +36,16 @@ export function Step3({
   })
 
   return (
-    <>
-      <div className="text-heading font-bold">Pick add-ons</div>
-      <div className="mt-2 text-body-l text-grey">
-        Add-ons help enhance your gaming experience.
-      </div>
-      <form
-        className="mt-6"
-        onSubmit={handleSubmit((data) => onSubmit(data as Step3Data))}
-      >
-        <div className="grid gap-4">
+    <form
+      className="flex h-full flex-col"
+      onSubmit={handleSubmit((data) => onSubmit(data as Step3Data))}
+    >
+      <div className="mb-auto">
+        <div className="text-heading font-bold">Pick add-ons</div>
+        <div className="mt-2 text-body-l text-grey lg:mt-3">
+          Add-ons help enhance your gaming experience.
+        </div>
+        <div className="mt-6 grid gap-4 lg:mt-9">
           <Controller
             name="addons"
             control={control}
@@ -91,19 +91,19 @@ export function Step3({
             )}
           />
         </div>
-        <div className="fixed inset-x-0 bottom-0 flex h-[72px] justify-between bg-white px-4 py-4">
-          <button
-            type="button"
-            className="text-body-m font-medium text-grey hover:text-denim"
-            onClick={onBack}
-          >
-            Go Back
-          </button>
-          <button className="rounded bg-denim px-4 text-body-m font-medium text-white hover:bg-denim/90">
-            Next Step
-          </button>
-        </div>
-      </form>
-    </>
+      </div>
+      <div className="fixed inset-x-0 bottom-0 flex h-[72px] justify-between bg-white p-4 lg:static lg:h-auto lg:p-0">
+        <button
+          type="button"
+          className="text-body-m font-medium text-grey hover:text-denim"
+          onClick={onBack}
+        >
+          Go Back
+        </button>
+        <button className="h-10 rounded-lg bg-denim px-4 text-body-m font-medium text-white hover:bg-denim/90 lg:h-12 lg:px-6">
+          Next Step
+        </button>
+      </div>
+    </form>
   )
 }

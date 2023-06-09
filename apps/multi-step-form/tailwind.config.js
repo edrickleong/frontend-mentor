@@ -29,6 +29,9 @@ module.exports = {
         "body-m": ["0.875rem", { lineHeight: 1.2 }],
         "body-s": ["0.75rem", { lineHeight: 1.2 }],
       },
+      boxShadow: {
+        card: "0px 25px 40px -20px rgba(0, 0, 0, 0.0951141)",
+      },
     },
   },
   plugins: [],

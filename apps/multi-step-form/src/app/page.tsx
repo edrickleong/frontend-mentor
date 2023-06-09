@@ -1,5 +1,6 @@
 "use client"
 import bgSidebarMobile from "#/bg-sidebar-mobile.svg"
+import bgSidebarDesktop from "#/bg-sidebar-desktop.svg"
 import Image from "next/image"
 import React, { useState } from "react"
 import { Step1 } from "@/app/step1"
@@ -57,13 +58,13 @@ export default function Page() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center bg-background pb-[96px]">
+    <div className="flex min-h-screen flex-col items-center bg-background px-4 pb-[96px] lg:justify-center">
       <Image
         src={bgSidebarMobile}
         alt=""
-        className="fixed inset-x-0 top-0 w-full"
+        className="fixed inset-x-0 top-0 w-full lg:hidden"
       />
-      <div className="relative mt-8 flex flex-row gap-4">
+      <div className="relative mt-8 flex flex-row gap-4 lg:hidden">
         {[1, 2, 3, 4].map((it) => (
           <div
             key={it}
@@ -78,8 +79,11 @@ export default function Page() {
           </div>
         ))}
       </div>
-      <main className="relative mx-4 mt-8 rounded-[10px] bg-white px-6 py-8 shadow-[0px_25px_40px_-20px_rgba(0,0,0,0.0951141)]">
-        {steps[stepIndex]}
+      <main className="relative mt-8 flex w-full max-w-[940px] flex-row rounded-[10px] bg-white px-6 py-8 shadow-card lg:p-4 lg:shadow-none">
+        <Image src={bgSidebarDesktop} alt="" className="hidden lg:block" />
+        <div className="flex w-full flex-col lg:px-24 lg:pb-4 lg:pt-10">
+          {steps[stepIndex]}
+        </div>
       </main>
     </div>
   )
