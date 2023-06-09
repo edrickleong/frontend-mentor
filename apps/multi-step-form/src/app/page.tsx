@@ -11,6 +11,25 @@ import { FormData } from "@/app/formSchema"
 import { ThankYou } from "@/app/thank-you"
 import { cn } from "@/lib/utils"
 
+const stepTitles = [
+  {
+    number: 1,
+    title: "Your Info",
+  },
+  {
+    number: 2,
+    title: "Select Plan",
+  },
+  {
+    number: 3,
+    title: "Add-Ons",
+  },
+  {
+    number: 4,
+    title: "Summary",
+  },
+]
+
 export default function Page() {
   const [stepIndex, setStepIndex] = useState(0)
   const [formData, setFormData] = useState<FormData>({})
@@ -65,22 +84,46 @@ export default function Page() {
         className="fixed inset-x-0 top-0 w-full lg:hidden"
       />
       <div className="relative mt-8 flex flex-row gap-4 lg:hidden">
-        {[1, 2, 3, 4].map((it) => (
+        {stepTitles.map((it) => (
           <div
-            key={it}
+            key={it.number}
             className={cn(
               "flex h-8 w-8 items-center justify-center rounded-full text-body-m font-bold",
-              stepIndex === it - 1
+              stepIndex === it.number - 1
                 ? "bg-sky-blue text-denim"
                 : "border border-white bg-transparent text-white"
             )}
           >
-            {it}
+            {it.number}
           </div>
         ))}
       </div>
       <main className="relative mt-8 flex w-full max-w-[940px] flex-row rounded-[10px] bg-white px-6 py-8 shadow-card lg:p-4 lg:shadow-none">
         <Image src={bgSidebarDesktop} alt="" className="hidden lg:block" />
+        <div className="absolute hidden flex-col gap-8 px-8 py-10 lg:flex">
+          {stepTitles.map((it) => (
+            <div key={it.number} className="flex flex-row items-center">
+              <div
+                className={cn(
+                  "flex h-8 w-8 items-center justify-center rounded-full text-body-m font-bold",
+                  stepIndex === it.number - 1
+                    ? "bg-sky-blue text-denim"
+                    : "border border-white bg-transparent text-white"
+                )}
+              >
+                {it.number}
+              </div>
+              <div className="ml-4">
+                <div className="text-body-s uppercase text-light-blue">
+                  Step {it.number}
+                </div>
+                <div className="mt-1 text-body-m font-bold uppercase tracking-wide text-white">
+                  {it.title}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
         <div className="flex w-full flex-col lg:px-24 lg:pb-4 lg:pt-10">
           {steps[stepIndex]}
         </div>
