@@ -8,6 +8,7 @@ import { Step3 } from "@/app/step3"
 import { Step4 } from "@/app/step4"
 import { FormData } from "@/app/formSchema"
 import { ThankYou } from "@/app/thank-you"
+import { cn } from "@/lib/utils"
 
 export default function Page() {
   const [stepIndex, setStepIndex] = useState(0)
@@ -56,9 +57,30 @@ export default function Page() {
   }
 
   return (
-    <div className="min-h-screen bg-background pb-[96px]">
-      <Image src={bgSidebarMobile} alt="" className="w-full" />
-      {steps[stepIndex]}
+    <div className="flex min-h-screen flex-col items-center bg-background pb-[96px]">
+      <Image
+        src={bgSidebarMobile}
+        alt=""
+        className="fixed inset-x-0 top-0 w-full"
+      />
+      <div className="relative mt-8 flex flex-row gap-4">
+        {[1, 2, 3, 4].map((it) => (
+          <div
+            key={it}
+            className={cn(
+              "flex h-8 w-8 items-center justify-center rounded-full text-body-m font-bold",
+              stepIndex === it - 1
+                ? "bg-sky-blue text-denim"
+                : "border border-white bg-transparent text-white"
+            )}
+          >
+            {it}
+          </div>
+        ))}
+      </div>
+      <main className="relative mx-4 mt-8 rounded-[10px] bg-white px-6 py-8 shadow-[0px_25px_40px_-20px_rgba(0,0,0,0.0951141)]">
+        {steps[stepIndex]}
+      </main>
     </div>
   )
 }

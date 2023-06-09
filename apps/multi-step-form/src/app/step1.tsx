@@ -29,7 +29,7 @@ export function Step1({
   })
 
   return (
-    <main className="relative mx-4 -mt-[72px] rounded-[10px] bg-white px-6 py-8 shadow-[0px_25px_40px_-20px_rgba(0,0,0,0.0951141)]">
+    <>
       <div className="text-heading font-bold">Personal info</div>
       <div className="mt-2 text-body-l text-grey">
         Please provide your name, email address, and phone number.
@@ -95,7 +95,7 @@ export function Step1({
           </button>
         </div>
       </form>
-    </main>
+    </>
   )
 }
 
