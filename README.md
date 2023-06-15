@@ -40,12 +40,16 @@
 - [x] 💲 Single price grid component
 - [x] 🪧 Four card feature section
 - [x] 💭 Advice generator app
-- [ ] 📄 Multi-step form
+- [x] 📄 Multi-step form
+
+| Difficulty | Challenge                                                       |
+|------------|-----------------------------------------------------------------|
+| Newbie     | [🎙 Pod request access landing page](./apps/pod-request-access) |
 
 ## 🔧 Built with
 
-- [NextJS](https://nextjs.org/) - A framework for building React applications
-- [Tailwind](https://tailwindcss.com/) - A utility-first CSS framework
+- [Next.js](https://nextjs.org/) - A framework for building React applications
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
 
 ## 🚀 Local Development
 
