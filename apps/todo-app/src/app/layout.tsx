@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`bg-[#F2F2F2] flex flex-col overflow-hidden h-screen ${josefinSans.className}`}>
+      <body className={`bg-[#F2F2F2] ${josefinSans.className}`}>
         {children}
       </body>
     </html>
