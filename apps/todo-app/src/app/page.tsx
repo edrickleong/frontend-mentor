@@ -47,7 +47,7 @@ export default function Page() {
   }
 
   return (
-    <div className="flex h-screen flex-col items-center px-6 pb-[4.5rem]">
+    <div className="flex h-[100svh] flex-col items-center px-6 pb-[4.5rem]">
       <Image
         className="absolute -z-10 w-full sm:hidden"
         src={bgMobileLight}
@@ -75,10 +75,11 @@ export default function Page() {
           <div className="flex grow flex-col divide-y divide-[#E3E4F1] overflow-scroll ">
             {viewableTasks.map((task) => (
               <div
-                className="flex h-[52px] shrink-0 items-center px-5 md:h-[64px]"
+                className="flex h-[52px] shrink-0 items-center px-4 md:h-[64px]"
                 key={task.id}
               >
                 <button
+                  className="p-1"
                   onClick={() => {
                     updateTasks((draft) => {
                       const draftTask = draft.find((it) => it.id === task.id)
@@ -105,6 +106,7 @@ export default function Page() {
                   {task.text}
                 </div>
                 <button
+                  className="grid h-6 w-6 place-items-center"
                   onClick={() =>
                     updateTasks((draft) => {
                       return draft.filter((it) => it.id !== task.id)
