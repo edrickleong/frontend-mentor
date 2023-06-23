@@ -848,6 +848,9 @@ importers:
       eslint-config-prettier:
         specifier: 8.8.0
         version: 8.8.0(eslint@8.43.0)
+      immer:
+        specifier: 10.0.2
+        version: 10.0.2
       jotai:
         specifier: 2.2.1
         version: 2.2.1(react@18.2.0)
