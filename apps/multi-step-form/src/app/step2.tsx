@@ -48,7 +48,7 @@ export function Step2({
                 className="grid lg:grid-cols-3"
                 value={field.value}
                 defaultValue={plans[0].id}
-                onValueChange={field.onChange}
+                onValueChange={(value) => field.onChange(value as Step2Data["plan"])}
               >
                 {plans.map((plan) => (
                   <RadioGroupPrimitive.Item
