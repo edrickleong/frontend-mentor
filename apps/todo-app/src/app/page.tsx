@@ -11,14 +11,16 @@ import { z } from "zod"
 import { tasksAtom } from "@/app/tasks-store"
 import { useImmerAtom } from "jotai-immer"
 import { cn } from "@/lib/utils"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs"
 import { useTheme } from "next-themes"
 import { CrossIcon } from "@/lib/icon/cross"
+import { flushSync } from "react-dom"
 
 export default function Page() {
   const [tab, setTab] = useState<string>("all")
   const [tasks, updateTasks] = useImmerAtom(tasksAtom)
+  const ref = useRef<HTMLDivElement>(null)
 
   const form = useForm({
     resolver: zodResolver(
@@ -64,17 +66,26 @@ export default function Page() {
       <main className="mt-10 flex h-0 w-full max-w-[540px] grow flex-col">
         <form
           className="relative z-10 rounded shadow-card"
-          onSubmit={form.handleSubmit((data) => addTodo(data))}
+          onSubmit={form.handleSubmit((data) => {
+            flushSync(() => addTodo(data))
+            ref.current?.scrollTo({
+              top: ref.current?.scrollHeight,
+              behavior: "smooth",
+            })
+          })}
         >
           <div className="absolute inset-y-0 left-4 my-auto h-5 w-5 rounded-full border border-divider sm:h-6 sm:w-6"></div>
           <input
-            className="placeholder:text-placeholder flex h-12 w-full items-center rounded bg-card pl-[48px] sm:pl-[52px] text-[12px]/none text-card-foreground focus-visible:outline-none sm:h-16 sm:text-[18px]/none"
+            className="flex h-12 w-full items-center rounded bg-card pl-[48px] text-[12px]/none text-card-foreground placeholder:text-placeholder focus-visible:outline-none sm:h-16 sm:pl-[52px] sm:text-[18px]/none"
             placeholder="Create a new todo..."
             {...form.register("todo")}
           />
         </form>
         <div className="z-10 mt-4 flex h-0 grow flex-col rounded bg-card shadow-card">
-          <div className="flex grow flex-col divide-y divide-divider overflow-y-scroll ">
+          <div
+            ref={ref}
+            className="flex grow flex-col divide-y divide-divider overflow-y-scroll "
+          >
             {viewableTasks.map((task) => (
               <div
                 className="flex h-[52px] shrink-0 items-center px-4 sm:h-[64px]"
@@ -204,9 +215,9 @@ function Header() {
       </div>
       <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
         {theme === "light" ? (
-            <Image src={iconMoon} className="h-5 w-5" alt="" />
+          <Image src={iconMoon} className="h-5 w-5" alt="" />
         ) : (
-            <Image src={iconSun} className="h-5 w-5" alt="" />
+          <Image src={iconSun} className="h-5 w-5" alt="" />
         )}
       </button>
     </header>
