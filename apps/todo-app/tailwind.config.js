@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,16 +9,23 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "bright-blue": "hsl(220, 98%, 61%)",
-        "very-light-gray": "hsl(0, 0%, 98%)",
-        "very-light-grayish-blue": "hsl(236, 33%, 92%)",
-        "light-grayish-blue": "hsl(233, 11%, 84%)",
-        "dark-grayish-blue": "hsl(236, 9%, 61%)",
-        "very-dark-grayish-blue": "hsl(235, 19%, 35%)",
+        background: "hsl(var(--background) / <alpha-value>)",
+        card: "hsl(var(--card) / <alpha-value>)",
+        "card-foreground": "hsl(var(--card-foreground) / <alpha-value>)",
+        "muted-foreground": "hsl(var(--muted-foreground) / <alpha-value>)",
+        completed: "hsl(var(--completed) / <alpha-value>)",
+        primary: "hsl(var(--primary) / <alpha-value>)",
+        divider: "hsl(var(--divider) / <alpha-value>)",
+        placeholder: "hsl(var(--placeholder) / <alpha-value>)",
       },
       boxShadow: {
-        "card": "0px 35px 50px -15px rgba(194, 195, 214, 0.50)"
-      }
+        card: "var(--shadow-card)",
+      },
+      backgroundImage: {
+        "check-border":
+          "linear-gradient(90deg, hsl(var(--card)), hsl(var(--card))), linear-gradient(135deg, hsl(192,100%,67%), hsl(280,87%,65%))",
+        check: "linear-gradient(135deg, hsl(192,100%,67%), hsl(280,87%,65%))",
+      },
     },
   },
   plugins: [],

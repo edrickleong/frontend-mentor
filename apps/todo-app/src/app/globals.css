@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 95%;
+        --card: 0 0% 100%;
+        --card-foreground: 235 19% 35%;
+        --muted-foreground: 236 9% 61%;
+        --completed: 233 11% 84%;
+        --primary: 220 98% 61%;
+        --divider: 236 33% 92%;
+        --placeholder: 236 9% 61%;
+        --shadow-card: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+    }
+
+    .dark {
+
+        --background: 235 21% 11%;
+        --card: 235 24% 19%;
+        --card-foreground: 234 39% 85%;
+        --muted-foreground: 235 16% 43%;
+        --completed: 233 14% 35%;
+        --divider: 237 14% 26%;
+        --placeholder: 234 11% 52%;
+        --shadow-card: 0px 35px 50px -15px rgba(0, 0, 0, 0.50);
+    }
+}
