@@ -1,6 +1,7 @@
 import { classed } from "@tw-classed/react"
 import Image from "next/image"
-import imageHeroMobile from "#/image-hero-mobile@2x.webp"
+import imageHeroMobile from "#/image-hero-mobile.webp"
+import imageHeroTablet from "#/image-hero-tablet@2x.webp"
 import iconAnimation from "#/icon-animation.svg"
 import iconDesign from "#/icon-design.svg"
 import iconPhotography from "#/icon-photography.svg"
@@ -43,7 +44,7 @@ const sections = [
 export default function Home() {
   return (
     <div>
-      <header className="mt-4 flex items-center px-4">
+      <header className="mt-4 flex items-center px-4 md:px-10">
         <div className="grow text-[28px] font-extrabold text-black">
           skilled
         </div>
@@ -51,24 +52,31 @@ export default function Home() {
           Get Started
         </Button1>
       </header>
-      <main className="px-4 pb-20 pt-[38px]">
-        <HeadingL className="font-extrabold text-black">
-          Maximize skill, minimize budget
-        </HeadingL>
-        <BodyS className="mt-[26px] font-medium text-grey">
-          Our modern courses across a range of in-demand skills will give you
-          the knowledge you need to live the life you want.
-        </BodyS>
-        <Button2 className="mt-6 grid h-[56px] place-items-center px-9 font-bold text-white">
-          Get Started
-        </Button2>
-        <Image className="mt-12" src={imageHeroMobile} alt=""></Image>
-        <div className="mt-[66px] rounded-[10px] bg-gradient-to-b from-orange to-red px-7 pb-8 pt-6">
-          <HeadingS className="font-extrabold text-white">
-            Check out our most popular courses!
-          </HeadingS>
+      <main className="px-4 pb-20 pt-[38px] md:px-10">
+        <div className="md:mr-80">
+          <HeadingL className="font-extrabold text-black">
+            Maximize skill, minimize budget
+          </HeadingL>
+          <BodyS className="mt-6 font-medium text-grey">
+            Our modern courses across a range of in-demand skills will give you
+            the knowledge you need to live the life you want.
+          </BodyS>
+          <Button2 className="mt-6 grid h-[56px] place-items-center px-9 font-bold text-white">
+            Get Started
+          </Button2>
         </div>
-        <div className="mt-12 flex flex-col gap-10">
+        <Image className="mt-12 md:hidden" src={imageHeroMobile} alt=""></Image>
+        <Image
+          className="absolute -right-[17rem] -top-[5rem] -z-10 hidden w-[40rem] object-cover md:block"
+          src={imageHeroTablet}
+          alt=""
+        ></Image>
+        <div className="mt-16 grid gap-10 md:mt-52 md:grid-cols-2 md:gap-x-2.5 md:gap-y-14">
+          <div className="rounded-[10px] bg-gradient-to-b from-orange to-red px-7 pb-8 pt-6 md:pt-14">
+            <HeadingS className="font-extrabold text-white">
+              Check out our most popular courses!
+            </HeadingS>
+          </div>
           {sections.map((it) => (
             <div
               key={it.title}
@@ -83,12 +91,14 @@ export default function Home() {
                 {it.title}
               </div>
               <div className="mt-4 font-medium text-grey">{it.description}</div>
-              <BodyM className="text-roose mt-8 font-bold">Get Started</BodyM>
+              <button>
+                <BodyM className="mt-8 font-bold text-rose">Get Started</BodyM>
+              </button>
             </div>
           ))}
         </div>
       </main>
-      <footer className="flex h-[7.5rem] items-center bg-black px-4">
+      <footer className="flex h-[7.5rem] items-center bg-black px-4 md:px-10">
         <div className="grow text-[28px] font-extrabold text-white">
           skilled
         </div>
@@ -101,11 +111,11 @@ export default function Home() {
 }
 
 const HeadingXL = classed.p("text-[3.5rem]/[4.375rem]")
-const HeadingL = classed.p("text-[40px]/[51px]")
-const HeadingM = classed.p("text-[32px]/[40px]")
-const HeadingS = classed.p("text-[24px]/[28px]")
-const BodyM = classed.p("text-[18px]/[28px]")
-const BodyS = classed.p("text-[16px]/[28px]")
+const HeadingL = classed.p("text-[2.5rem]/[3.25rem]")
+const HeadingM = classed.p("text-[2rem]/[2.5rem]")
+const HeadingS = classed.p("text-[1.5rem]/[1.75rem]")
+const BodyM = classed.p("text-[1.125rem]/[1.75rem]")
+const BodyS = classed.p("text-[1rem]/[1.75rem]")
 
 const Button1 = classed.button("bg-black rounded-[28px] hover:bg-opacity-50")
 const Button2 = classed.button(
