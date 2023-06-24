@@ -2,6 +2,8 @@
 import Image from "next/image"
 import bgMobileLight from "#/bg-mobile-light.jpg"
 import bgDesktopLight from "#/bg-desktop-light.jpg"
+import bgMobileDark from "#/bg-mobile-dark.jpg"
+import bgDesktopDark from "#/bg-desktop-dark.jpg"
 import iconMoon from "#/icon-moon.svg"
 import iconSun from "#/icon-sun.svg"
 import iconCheck from "#/icon-check.svg"
@@ -53,13 +55,23 @@ export default function Page() {
   return (
     <div className="flex h-[100svh] flex-col items-center px-6 pb-[4.5rem]">
       <Image
-        className="absolute -z-10 w-full sm:hidden"
+        className="absolute -z-10 w-full dark:hidden sm:hidden"
         src={bgMobileLight}
         alt=""
       />
       <Image
-        className="absolute -z-10 hidden w-full sm:block"
+        className="absolute -z-10 hidden w-full dark:hidden sm:block"
         src={bgDesktopLight}
+        alt=""
+      />
+      <Image
+        className="absolute -z-10 hidden w-full dark:block dark:sm:hidden"
+        src={bgMobileDark}
+        alt=""
+      />
+      <Image
+        className="absolute -z-10 hidden w-full sm:dark:block"
+        src={bgDesktopDark}
         alt=""
       />
       <Header />
@@ -76,7 +88,7 @@ export default function Page() {
         >
           <div className="absolute inset-y-0 left-4 my-auto h-5 w-5 rounded-full border border-divider sm:h-6 sm:w-6"></div>
           <input
-            className="flex h-12 w-full items-center rounded bg-card pl-[48px] text-[12px]/none text-card-foreground placeholder:text-placeholder focus-visible:outline-none sm:h-16 sm:pl-[52px] sm:text-[18px]/none"
+            className="flex h-12 w-full items-center rounded bg-card pl-[48px] text-xs text-card-foreground placeholder:text-placeholder focus-visible:outline-none sm:h-16 sm:pl-[52px] sm:text-lg"
             placeholder="Create a new todo..."
             {...form.register("todo")}
           />
@@ -113,7 +125,7 @@ export default function Page() {
                 </button>
                 <div
                   className={cn(
-                    "mx-3 flex w-full items-center text-[12px]/none text-card-foreground sm:text-[18px]/none",
+                    "mx-3 flex w-full items-center text-sm text-card-foreground sm:text-lg",
                     task.completed && "text-completed line-through"
                   )}
                 >
@@ -133,7 +145,7 @@ export default function Page() {
             ))}
           </div>
           <div className="flex items-center justify-between whitespace-nowrap px-5 pb-5 pt-4">
-            <div className="text-[12px]/none text-muted-foreground">
+            <div className="text-xs text-muted-foreground sm:text-sm">
               {tasksLeft} items left
             </div>
             <Tabs
@@ -141,7 +153,7 @@ export default function Page() {
               onValueChange={setTab}
               className="hidden w-full sm:block"
             >
-              <TabsList className="flex items-center justify-center gap-5 rounded bg-card text-[14px]/[1] font-bold text-muted-foreground">
+              <TabsList className="sm:text-md flex items-center justify-center gap-5 rounded bg-card text-sm font-bold text-muted-foreground">
                 <TabsTrigger
                   className="hover:text-card-foreground data-[state=active]:text-primary"
                   value="all"
@@ -163,7 +175,7 @@ export default function Page() {
               </TabsList>
             </Tabs>
             <button
-              className="text-[12px]/none text-muted-foreground hover:text-card-foreground"
+              className="sm:text-md text-sm text-muted-foreground hover:text-card-foreground"
               onClick={() => {
                 updateTasks((draft) => {
                   return draft.filter((it) => !it.completed)
@@ -180,7 +192,7 @@ export default function Page() {
         onValueChange={setTab}
         className="z-10 mt-4 w-full max-w-[540px] bg-card shadow-card sm:hidden"
       >
-        <TabsList className="flex h-12 items-center justify-center gap-5 rounded  text-[14px]/[1] font-bold text-muted-foreground ">
+        <TabsList className="flex h-12 items-center justify-center gap-5 rounded text-sm font-bold text-muted-foreground ">
           <TabsTrigger className="data-[state=active]:text-primary" value="all">
             All
           </TabsTrigger>
@@ -198,7 +210,7 @@ export default function Page() {
           </TabsTrigger>
         </TabsList>
       </Tabs>
-      <div className="text-[0.875rem]/1.2 mt-10 text-center text-muted-foreground sm:mt-12">
+      <div className="mt-10 text-center text-sm text-muted-foreground sm:mt-12">
         Drag and drop to reorder list
       </div>
     </div>
