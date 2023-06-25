@@ -10,8 +10,8 @@ Frontend Mentor challenges help you improve your coding skills by building reali
 
 Users should be able to:
 
-- [ ] View the optimal layout depending on their device's screen size
-- [ ] See hover states for interactive elements
+- [x] View the optimal layout depending on their device's screen size
+- [x] See hover states for interactive elements
 
 ### Screenshot
 
@@ -21,5 +21,5 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/skilled-elearning-with-nextjs-and-tailwind-_-bX1zU2lk)
+- [Live Site URL](https://edrick-skilled-elearning.netlify.app/)
