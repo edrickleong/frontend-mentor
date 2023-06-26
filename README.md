@@ -42,9 +42,10 @@
 - [x] 💭 Advice generator app
 - [x] 📄 Multi-step form
 
-| Difficulty | Challenge                                                       |
-|------------|-----------------------------------------------------------------|
-| Newbie     | [🎙 Pod request access landing page](./apps/pod-request-access) |
+| Difficulty   | Challenge                                                       |
+|--------------|-----------------------------------------------------------------|
+| Newbie       | [🎙 Pod request access landing page](./apps/pod-request-access) | 
+| Intermediate | [📝 Todo app](./apps/todo-app)                                  |
 
 ## 🔧 Built with
 
