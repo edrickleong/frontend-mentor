@@ -10,9 +10,9 @@ Frontend Mentor challenges help you improve your coding skills by building reali
 
 Users should be able to:
 
-- [ ] View the optimal layout for the app depending on their device's screen size
-- [ ] See hover states for all interactive elements on the page
-- [ ] Use the slider and toggle to see prices for different page view numbers
+- [x] View the optimal layout for the app depending on their device's screen size
+- [x] See hover states for all interactive elements on the page
+- [x] Use the slider and toggle to see prices for different page view numbers
 
 ### Screenshot
 
@@ -22,5 +22,5 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- [Solution URL](https://www.frontendmentor.io/solutions/interactive-pricing-with-nextjs-and-tailwind-f0GgsQdyAe)
+- [Live Site URL](https://edrick-interactive-pricing.netlify.app/)
