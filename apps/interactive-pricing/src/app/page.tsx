@@ -22,13 +22,13 @@ export default function Home() {
     const baseMonthlyPrice = [8, 12, 16]
     const discountedPercentage = isYearlyBilling ? 0.75 : 1
     const monthlyPrice =
-      baseMonthlyPrice[numberOfPageViewsIndex] * discountedPercentage
+      baseMonthlyPrice[numberOfPageViewsIndex[0]] * discountedPercentage
     return monthlyPrice * (isYearlyBilling ? 12 : 1)
   }
 
   function calculatePageViews() {
     const pageViews = [50, 100, 200]
-    return pageViews[numberOfPageViewsIndex]
+    return pageViews[numberOfPageViewsIndex[0]]
   }
 
   return (
