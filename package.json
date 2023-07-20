@@ -8,7 +8,7 @@
   "devDependencies": {
     "prettier": "3.0.0",
     "prettier-plugin-tailwindcss": "0.4.1",
-    "turbo": "1.10.7"
+    "turbo": "1.10.9"
   },
   "name": "frontend-mentor"
 }
