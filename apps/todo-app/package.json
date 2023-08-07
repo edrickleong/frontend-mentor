@@ -18,7 +18,7 @@
     "clsx": "2.0.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
-    "eslint-config-prettier": "8.8.0",
+    "eslint-config-prettier": "9.0.0",
     "immer": "10.0.2",
     "jotai": "2.2.2",
     "jotai-immer": "0.2.0",
