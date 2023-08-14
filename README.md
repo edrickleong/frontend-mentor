@@ -14,36 +14,35 @@
 
 ## ✨ Challenges
 
-- [x] 📷 QR code component
-- [x] ⭐ Interactive rating component
-- [x] 💯 Results summary component
-- [x] 🧑‍🦳 Age calculator app
-- [x] 💸 Tip calculator app
-- [x] 📈 Expenses chart component
-- [x] ⌛ Time tracking dashboard
-- [x] 👤 Profile card component
-- [x] 🧴 Product preview card component
-- [x] 📱 Huddle landing page with a single introductory section
-- [x] 🪙 NFT preview card
-- [x] 🛍️ Order Summary component
-- [x] 🔢 Stats preview card component
-- [x] ❓ FAQ Accordion card component
-- [x] 📝 Social proof section
-- [x] 📄 Article preview component
-- [x] 📱 Workit landing page
-- [x] 🖥️ GitHub user search app
-- [x] 📄 Intro component with sign up form
-- [x] 📰 News homepage
-- [x] 👚 Base Apparel coming soon page
-- [ ] 📖 Dictionary web app
-- [x] 📃 Ping single column coming soon page
-- [x] 💲 Single price grid component
-- [x] 🪧 Four card feature section
-- [x] 💭 Advice generator app
-- [x] 📄 Multi-step form
-
 | Difficulty   | Challenge                                                       |
 |--------------|-----------------------------------------------------------------|
+| Newbie       | 📷 QR code component                                            |
+| Newbie       | ⭐ Interactive rating component                                  |
+| Newbie       | 💯 Results summary component                                    |
+| Junior       | 🧑‍🦳 Age calculator app                                        |
+| Junior       | 💸 Tip calculator app                                           |
+| Newbie       | 📈 Expenses chart component                                     |
+| Junior       | ⌛ Time tracking dashboard                                       |
+| Newbie       | 👤 Profile card component                                       |
+| Newbie       | 🧴 Product preview card component                               |
+| Newbie       | 📱 Huddle landing page with a single introductory section       |
+| Newbie       | 🪙 NFT preview card                                             |
+| Newbie       | 🛍️ Order Summary component                                     |
+| Newbie       | 🔢 Stats preview card component                                 |
+| Newbie       | ❓ FAQ Accordion card component                                  |
+| Newbie       | 📝 Social proof section                                         |
+| Newbie       | 📄 Article preview component                                    |
+| Newbie       | 📱 Workit landing page                                          |
+| Junior       | 🖥️ GitHub user search app                                      |
+| Newbie       | 📄 Intro component with sign up form                            |
+| Newbie       | 📰 News homepage                                                |
+| Newbie       | 👚 Base Apparel coming soon page                                |
+| Intermediate | 📖 Dictionary web app                                           |
+| Newbie       | 📃 Ping single column coming soon page                          |
+| Newbie       | 💲 Single price grid component                                  |
+| Newbie       | 🪧 Four card feature section                                    |
+| Newbie       | 💭 Advice generator app                                         |
+| Advanced     | 📄 Multi-step form                                              |
 | Newbie       | [🎙 Pod request access landing page](./apps/pod-request-access) | 
 | Intermediate | [📝 Todo app](./apps/todo-app)                                  |
 

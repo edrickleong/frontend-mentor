@@ -147,7 +147,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="mt-6 h-[1px] w-full bg-[#E3E1E1]" />
-              <div className="mt-6 self-center text-[11px] font-bold uppercase uppercase tracking-[4.2px] text-[#161932]">
+              <div className="mt-6 self-center text-[11px] font-bold uppercase tracking-[4.2px] text-[#161932]">
                 Font
               </div>
               <DialogClose />
