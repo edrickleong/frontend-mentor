@@ -123,8 +123,8 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
       zod:
-        specifier: 3.22.2
-        version: 3.22.2
+        specifier: 3.22.3
+        version: 3.22.3
     devDependencies:
       prettier:
         specifier: 3.0.3
@@ -190,8 +190,8 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
       zod:
-        specifier: 3.22.2
-        version: 3.22.2
+        specifier: 3.22.3
+        version: 3.22.3
 
   apps/equalizer:
     dependencies:
@@ -349,8 +349,8 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
       zod:
-        specifier: 3.22.2
-        version: 3.22.2
+        specifier: 3.22.3
+        version: 3.22.3
 
   apps/interactive-pricing:
     dependencies:
@@ -550,8 +550,8 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
       zod:
-        specifier: 3.22.2
-        version: 3.22.2
+        specifier: 3.22.3
+        version: 3.22.3
     devDependencies:
       '@hookform/devtools':
         specifier: 4.3.1
@@ -680,8 +680,8 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
       zod:
-        specifier: 3.22.2
-        version: 3.22.2
+        specifier: 3.22.3
+        version: 3.22.3
 
   apps/news-homepage:
     dependencies:
@@ -855,8 +855,8 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
       zod:
-        specifier: 3.22.2
-        version: 3.22.2
+        specifier: 3.22.3
+        version: 3.22.3
 
   apps/pod-request-access:
     dependencies:
@@ -975,8 +975,8 @@ importers:
         specifier: 1.11.2
         version: 1.11.2(@types/react@18.2.21)(react@18.2.0)
       zod:
-        specifier: 3.22.2
-        version: 3.22.2
+        specifier: 3.22.3
+        version: 3.22.3
 
   apps/single-price-grid:
     dependencies:
@@ -1206,8 +1206,8 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
       zod:
-        specifier: 3.22.2
-        version: 3.22.2
+        specifier: 3.22.3
+        version: 3.22.3
 
 packages:
 
@@ -5061,4 +5061,8 @@ packages:
 
   /zod@3.22.2:
     resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
+    dev: false
+
+  /zod@3.22.3:
+    resolution: {integrity: sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==}
     dev: false
