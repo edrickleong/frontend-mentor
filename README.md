@@ -35,7 +35,7 @@
 | Newbie       | 📱 Workit landing page                                          |                                                                                        |
 | Junior       | 🖥️ GitHub user search app                                      | [Preview](https://frontend-mentor-github-user-search.vercel.app/)                      |
 | Newbie       | 📄 Intro component with sign up form                            | [Preview](https://frontend-mentor-intro-component-with-sign-up-form-seven.vercel.app/) |
-| Newbie       | 📰 News homepage                                                | [Preview](https://edrickleong-news.netlify.app/)                                       |
+| Newbie       | 📰 News homepage                                                | [Preview](https://edrick-news.netlify.app/)                                            |
 | Newbie       | 👚 Base Apparel coming soon page                                | [Preview](https://edrick-base-apparel.netlify.app/)                                    |
 | Intermediate | 📖 Dictionary web app                                           | [Preview](https://edrick-dictionary.netlify.app/)                                      |
 | Newbie       | 📃 Ping single column coming soon page                          | [Preview](https://edrick-ping.netlify.app/)                                            |

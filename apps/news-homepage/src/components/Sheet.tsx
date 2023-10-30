@@ -14,8 +14,8 @@ const SheetClose = SheetPrimitive.Close
 
 interface SheetPortalProps extends SheetPrimitive.DialogPortalProps {}
 
-const SheetPortal = ({ className, children, ...props }: SheetPortalProps) => (
-  <SheetPrimitive.Portal className={cn(className)} {...props}>
+const SheetPortal = ({ children, ...props }: SheetPortalProps) => (
+  <SheetPrimitive.Portal {...props}>
     <div className="fixed inset-0 z-50 flex justify-end">{children}</div>
   </SheetPrimitive.Portal>
 )
@@ -27,8 +27,8 @@ const SheetOverlay = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
-      "data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in fixed inset-0 z-50 bg-gray-600 bg-opacity-80 transition-all duration-100",
-      className
+      "fixed inset-0 z-50 bg-gray-600 bg-opacity-80 transition-all duration-100 data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in",
+      className,
     )}
     {...props}
     ref={ref}
@@ -48,8 +48,8 @@ const SheetContent = React.forwardRef<
     <SheetPrimitive.Content
       ref={ref}
       className={cn(
-        "animate-in slide-in-from-right fixed z-50 h-full w-3/4 scale-100 gap-4 border bg-white p-6 opacity-100 shadow-lg duration-300",
-        className
+        "fixed z-50 h-full w-3/4 scale-100 gap-4 border bg-white p-6 opacity-100 shadow-lg duration-300 animate-in slide-in-from-right",
+        className,
       )}
       {...props}
     >
@@ -61,6 +61,7 @@ const SheetContent = React.forwardRef<
     </SheetPrimitive.Content>
   </SheetPortal>
 ))
+
 SheetContent.displayName = SheetPrimitive.Content.displayName
 
 export { Sheet, SheetTrigger, SheetClose, SheetContent }
