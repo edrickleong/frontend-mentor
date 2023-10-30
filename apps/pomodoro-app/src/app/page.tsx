@@ -14,6 +14,7 @@ import { completeTimer, toggle, useTimerStore } from "@/app/timer-store"
 import useInterval from "@/app/use-interval"
 import useUpdate from "@/app/use-update"
 import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs"
+import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group"
 
 const timeFormatter = new Intl.DateTimeFormat("en-US", {
   minute: "numeric",
@@ -39,7 +40,9 @@ export default function Home() {
       case "idle":
         return store.time
       case "running":
-        return Math.max(0, store.state.endTime.getTime() - Date.now())
+        const remainingTime = store.state.endTime.getTime() - Date.now()
+        const remainingTimeRoundedUp = Math.ceil(remainingTime / 1000) * 1000
+        return Math.max(0, remainingTimeRoundedUp)
       case "paused":
         return store.state.timeRemaining
       case "finished":
@@ -107,54 +110,81 @@ export default function Home() {
           <DialogTrigger>
             <Image src={iconSettings} alt="" className="mt-20" />
           </DialogTrigger>
-          <DialogPortal>
-            <DialogOverlay className="fixed inset-0 bg-black/50" />
-            <DialogContent className="fixed inset-0 mx-6 my-12 flex flex-col rounded-2xl bg-white p-6 lg:px-10 lg:py-8">
-              <DialogTitle className="text-xl font-bold text-[#161932] lg:text-[28px]">
-                Settings
-              </DialogTitle>
-              <div className="mt-8 h-[1px] w-full bg-[#E3E1E1] lg:mt-7" />
-              <div className="mt-6 self-center text-[11px] font-bold uppercase tracking-[4.2px] text-[#161932] lg:mt-7">
-                Time (Minutes)
-              </div>
-              <div className="mt-4 flex flex-col gap-2">
-                <div className="flex items-center justify-between">
-                  <div className="text-xs font-bold text-[#1E213F]/40">
-                    pomodoro
-                  </div>
-                  <input
-                    className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4 text-sm font-bold text-[#1E213F]"
-                    defaultValue="25"
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="text-xs font-bold text-[#1E213F]/40">
-                    short break
-                  </div>
-                  <input
-                    className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4 text-sm font-bold text-[#1E213F]"
-                    defaultValue="5"
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <div className="text-xs font-bold text-[#1E213F]/40">
-                    long break
-                  </div>
-                  <input
-                    className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4 text-sm font-bold text-[#1E213F]"
-                    defaultValue="15"
-                  />
-                </div>
-              </div>
-              <div className="mt-6 h-[1px] w-full bg-[#E3E1E1]" />
-              <div className="mt-6 self-center text-[11px] font-bold uppercase tracking-[4.2px] text-[#161932]">
-                Font
-              </div>
-              <DialogClose />
-            </DialogContent>
-          </DialogPortal>
+          <SettingsDialog />
         </Dialog>
       </main>
     </div>
+  )
+}
+
+function SettingsDialog() {
+  return (
+    <DialogPortal>
+      <DialogOverlay className="fixed inset-0 bg-black/50" />
+      <DialogContent className="fixed inset-0 mx-6 my-12 flex flex-col rounded-2xl bg-white p-6 lg:px-10 lg:py-8">
+        <DialogTitle className="text-xl font-bold text-[#161932] lg:text-[28px]">
+          Settings
+        </DialogTitle>
+        <div className="mt-8 h-[1px] w-full bg-[#E3E1E1] lg:mt-7" />
+        <div className="mt-6 self-center text-[11px] font-bold uppercase tracking-[4.2px] text-[#161932] lg:mt-7">
+          Time (Minutes)
+        </div>
+        <div className="mt-4 flex flex-col gap-2">
+          <div className="flex items-center justify-between">
+            <div className="text-xs font-bold text-[#1E213F]/40">pomodoro</div>
+            <input
+              className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4 text-sm font-bold text-[#1E213F]"
+              defaultValue="25"
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="text-xs font-bold text-[#1E213F]/40">
+              short break
+            </div>
+            <input
+              className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4 text-sm font-bold text-[#1E213F]"
+              defaultValue="5"
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="text-xs font-bold text-[#1E213F]/40">
+              long break
+            </div>
+            <input
+              className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4 text-sm font-bold text-[#1E213F]"
+              defaultValue="15"
+            />
+          </div>
+        </div>
+        <div className="mt-6 h-[1px] w-full bg-[#E3E1E1]" />
+        <div className="mt-6 self-center text-[11px] font-bold uppercase tracking-[4.2px] text-[#161932]">
+          Font
+        </div>
+        <RadioGroup
+          className="mt-4 flex flex-row items-center justify-center gap-4"
+          defaultValue={"kumbh-sans"}
+        >
+          <RadioGroupItem
+            value={"kumbh-sans"}
+            className="bg-grey font-kumbh-sans flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-bold text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
+          >
+            Aa
+          </RadioGroupItem>
+          <RadioGroupItem
+            value={"roboto-slab"}
+            className="bg-grey font-roboto-slab flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
+          >
+            Aa
+          </RadioGroupItem>
+          <RadioGroupItem
+            value={"space-mono"}
+            className="bg-grey font-space-mono flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-bold text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
+          >
+            Aa
+          </RadioGroupItem>
+        </RadioGroup>
+        <DialogClose />
+      </DialogContent>
+    </DialogPortal>
   )
 }

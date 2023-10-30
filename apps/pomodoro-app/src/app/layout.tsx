@@ -1,16 +1,39 @@
 import "./globals.css"
-import { Kumbh_Sans } from "next/font/google"
+import { Kumbh_Sans, Roboto_Slab, Space_Mono } from "next/font/google"
+import { cn } from "@/lib/utils"
 
-const kumbhSans = Kumbh_Sans({ subsets: ["latin"] })
+const kumbhSans = Kumbh_Sans({
+  subsets: ["latin"],
+  variable: "--font-kumbh-sans",
+})
+
+const robotoSlab = Roboto_Slab({
+  subsets: ["latin"],
+  variable: "--font-roboto-slab",
+})
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
+})
 
 export const metadata = {
   title: "Pomodoro App",
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <body className={kumbhSans.className}>{children}</body>
+      <body
+        className={`${kumbhSans.variable} ${robotoSlab.variable} ${spaceMono.variable} ${kumbhSans.className}`}
+      >
+        {children}
+      </body>
     </html>
   )
 }
