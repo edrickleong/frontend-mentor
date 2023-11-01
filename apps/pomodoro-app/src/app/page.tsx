@@ -15,9 +15,8 @@ import useInterval from "@/app/use-interval"
 import useUpdate from "@/app/use-update"
 import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs"
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group"
-import { useContext } from "react"
-import { Font, FontContext, toClassName } from "@/app/font-context"
 import { cn } from "@/lib/utils"
+import { Font, useFontContext } from "@/app/font-provider"
 
 const timeFormatter = new Intl.DateTimeFormat("en-US", {
   minute: "numeric",
@@ -25,8 +24,19 @@ const timeFormatter = new Intl.DateTimeFormat("en-US", {
   hour12: false,
 })
 
+function toClassName(font: Font) {
+  switch (font) {
+    case "kumbh-sans":
+      return "font-kumbh-sans"
+    case "roboto-slab":
+      return "font-roboto-slab"
+    case "space-mono":
+      return "font-space-mono"
+  }
+}
+
 export default function Home() {
-  const { font } = useContext(FontContext)!!
+  const { font } = useFontContext()
   const store = useTimerStore()
   const update = useUpdate()
 
@@ -68,66 +78,65 @@ export default function Home() {
   }
 
   return (
-    <div
-      className={cn(
-        "flex min-h-screen flex-col items-center bg-[#1E213F]",
-        toClassName(font),
-      )}
-    >
-      <header className="mt-8 text-2xl font-bold text-[#D7E0FF]">
-        pomodoro
-      </header>
-      <main className="mt-11 flex flex-col items-center">
-        <Tabs className="w-full" defaultValue="pomodoro">
-          <TabsList className="grid h-16 w-full grid-cols-3 justify-between rounded-[26px] bg-[#161932] p-2">
-            <TabsTrigger
-              value="pomodoro"
-              className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[#F87070] data-[state=active]:text-[#1E213F]"
-            >
-              pomodoro
-            </TabsTrigger>
-            <TabsTrigger
-              value="short-break"
-              className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[#F87070] data-[state=active]:text-[#1E213F]"
-            >
-              short break
-            </TabsTrigger>
-            <TabsTrigger
-              value="long-break"
-              className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[#F87070] data-[state=active]:text-[#1E213F]"
-            >
-              long break
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
-        <button
-          className="mt-12 flex h-[300px] w-[300px] items-center justify-center rounded-full bg-[#161932]"
-          onClick={() => toggle()}
-        >
-          <div className="flex h-[268px] w-[268px] items-center justify-center rounded-full bg-[#161932]">
-            <div className="relative grid h-[248px] w-[248px] place-items-center rounded-full border-8 border-[#F87070]">
-              <div className="text-[80px] font-bold text-[#D7E0FF]">
-                {timeFormatter.format(new Date(getLiveTimeRemaining()))}
-              </div>
-              <div className="absolute -mr-[13px] mt-32 text-sm font-bold uppercase tracking-[13px] text-[#D7E0FF]">
-                {toggleActionText()}
+    <body className={toClassName(font)}>
+      <div
+        className={cn("flex min-h-screen flex-col items-center bg-[#1E213F]")}
+      >
+        <header className="mt-8 text-2xl font-bold text-[#D7E0FF]">
+          pomodoro
+        </header>
+        <main className="mt-11 flex flex-col items-center">
+          <Tabs className="w-full" defaultValue="pomodoro">
+            <TabsList className="grid h-16 w-full grid-cols-3 justify-between rounded-[26px] bg-[#161932] p-2">
+              <TabsTrigger
+                value="pomodoro"
+                className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[#F87070] data-[state=active]:text-[#1E213F]"
+              >
+                pomodoro
+              </TabsTrigger>
+              <TabsTrigger
+                value="short-break"
+                className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[#F87070] data-[state=active]:text-[#1E213F]"
+              >
+                short break
+              </TabsTrigger>
+              <TabsTrigger
+                value="long-break"
+                className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[#F87070] data-[state=active]:text-[#1E213F]"
+              >
+                long break
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+          <button
+            className="mt-12 flex h-[300px] w-[300px] items-center justify-center rounded-full bg-[#161932]"
+            onClick={() => toggle()}
+          >
+            <div className="flex h-[268px] w-[268px] items-center justify-center rounded-full bg-[#161932]">
+              <div className="relative grid h-[248px] w-[248px] place-items-center rounded-full border-8 border-[#F87070]">
+                <div className="text-[80px] font-bold text-[#D7E0FF]">
+                  {timeFormatter.format(new Date(getLiveTimeRemaining()))}
+                </div>
+                <div className="absolute -mr-[13px] mt-32 text-sm font-bold uppercase tracking-[13px] text-[#D7E0FF]">
+                  {toggleActionText()}
+                </div>
               </div>
             </div>
-          </div>
-        </button>
-        <Dialog>
-          <DialogTrigger>
-            <Image src={iconSettings} alt="" className="mt-20" />
-          </DialogTrigger>
-          <SettingsDialog />
-        </Dialog>
-      </main>
-    </div>
+          </button>
+          <Dialog>
+            <DialogTrigger>
+              <Image src={iconSettings} alt="" className="mt-20" />
+            </DialogTrigger>
+            <SettingsDialog />
+          </Dialog>
+        </main>
+      </div>
+    </body>
   )
 }
 
 function SettingsDialog() {
-  const { font, setFont } = useContext(FontContext)!!
+  const { font, setFont } = useFontContext()
 
   return (
     <DialogPortal>

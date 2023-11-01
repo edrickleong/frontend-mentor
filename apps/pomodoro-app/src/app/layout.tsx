@@ -28,12 +28,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${kumbhSans.variable} ${robotoSlab.variable} ${spaceMono.variable}`}
-      >
-        <Providers>{children}</Providers>
-      </body>
+    <html
+      lang="en"
+      className={`${kumbhSans.variable} ${robotoSlab.variable} ${spaceMono.variable}`}
+    >
+      <Providers>{children}</Providers>
     </html>
   )
 }
