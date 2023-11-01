@@ -1,6 +1,6 @@
 import "./globals.css"
 import { Kumbh_Sans, Roboto_Slab, Space_Mono } from "next/font/google"
-import { cn } from "@/lib/utils"
+import { Providers } from "@/app/providers"
 
 const kumbhSans = Kumbh_Sans({
   subsets: ["latin"],
@@ -30,9 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${kumbhSans.variable} ${robotoSlab.variable} ${spaceMono.variable} ${kumbhSans.className}`}
+        className={`${kumbhSans.variable} ${robotoSlab.variable} ${spaceMono.variable}`}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

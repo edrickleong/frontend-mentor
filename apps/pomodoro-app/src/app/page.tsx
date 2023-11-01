@@ -15,6 +15,9 @@ import useInterval from "@/app/use-interval"
 import useUpdate from "@/app/use-update"
 import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs"
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group"
+import { useContext } from "react"
+import { Font, FontContext, toClassName } from "@/app/font-context"
+import { cn } from "@/lib/utils"
 
 const timeFormatter = new Intl.DateTimeFormat("en-US", {
   minute: "numeric",
@@ -23,6 +26,7 @@ const timeFormatter = new Intl.DateTimeFormat("en-US", {
 })
 
 export default function Home() {
+  const { font } = useContext(FontContext)!!
   const store = useTimerStore()
   const update = useUpdate()
 
@@ -64,7 +68,12 @@ export default function Home() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center bg-[#1E213F]">
+    <div
+      className={cn(
+        "flex min-h-screen flex-col items-center bg-[#1E213F]",
+        toClassName(font),
+      )}
+    >
       <header className="mt-8 text-2xl font-bold text-[#D7E0FF]">
         pomodoro
       </header>
@@ -118,6 +127,8 @@ export default function Home() {
 }
 
 function SettingsDialog() {
+  const { font, setFont } = useContext(FontContext)!!
+
   return (
     <DialogPortal>
       <DialogOverlay className="fixed inset-0 bg-black/50" />
@@ -162,23 +173,24 @@ function SettingsDialog() {
         </div>
         <RadioGroup
           className="mt-4 flex flex-row items-center justify-center gap-4"
-          defaultValue={"kumbh-sans"}
+          value={font}
+          onValueChange={(font) => setFont(font as Font)}
         >
           <RadioGroupItem
             value={"kumbh-sans"}
-            className="bg-grey font-kumbh-sans flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-bold text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
+            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-kumbh-sans font-bold text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
           >
             Aa
           </RadioGroupItem>
           <RadioGroupItem
             value={"roboto-slab"}
-            className="bg-grey font-roboto-slab flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
+            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-roboto-slab text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
           >
             Aa
           </RadioGroupItem>
           <RadioGroupItem
             value={"space-mono"}
-            className="bg-grey font-space-mono flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-bold text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
+            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-space-mono font-bold text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
           >
             Aa
           </RadioGroupItem>
