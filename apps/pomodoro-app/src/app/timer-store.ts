@@ -1,9 +1,7 @@
-import { proxy, useSnapshot } from "valtio"
+import { proxy } from "valtio"
 import { z } from "zod"
 
-const defaultTime = 5 * 1000
-
-const timerState = z.discriminatedUnion("type", [
+const timerRunningState = z.discriminatedUnion("type", [
   z.object({ type: z.literal("idle") }),
   z.object({ type: z.literal("running"), endTime: z.date() }),
   z.object({
@@ -13,43 +11,56 @@ const timerState = z.discriminatedUnion("type", [
   z.object({ type: z.literal("finished") }),
 ])
 
-type TimerState = z.infer<typeof timerState>
+type TimerRunningState = z.infer<typeof timerRunningState>
 
-const store = proxy({
-  state: { type: "idle" } as TimerState,
-  time: defaultTime,
-})
-
-export const useTimerStore = () => useSnapshot(store)
-
-export const completeTimer = () => {
-  store.state = { type: "finished" }
+type TimerState = {
+  time: number
+  state: TimerRunningState
 }
 
-export const toggle = () => {
-  switch (store.state.type) {
+export const pomodoroState = proxy({
+  state: { type: "idle" },
+  time: 25 * 60 * 1000,
+} as TimerState)
+
+export const shortBreakState = proxy({
+  state: { type: "idle" },
+  time: 5 * 60 * 1000,
+} as TimerState)
+
+export const longBreakState = proxy({
+  state: { type: "idle" },
+  time: 15 * 60 * 1000,
+} as TimerState)
+
+export const completeTimer = (timer: TimerState) => {
+  timer.state = { type: "finished" }
+}
+
+export const toggle = (timer: TimerState) => {
+  switch (timer.state.type) {
     case "idle":
-      store.state = {
+      timer.state = {
         type: "running",
-        endTime: new Date(Date.now() + store.time),
+        endTime: new Date(Date.now() + timer.time),
       }
       break
     case "running":
-      store.state = {
+      timer.state = {
         type: "paused",
-        timeRemaining: store.state.endTime.getTime() - Date.now(),
+        timeRemaining: timer.state.endTime.getTime() - Date.now(),
       }
       break
     case "paused":
-      store.state = {
+      timer.state = {
         type: "running",
-        endTime: new Date(Date.now() + store.state.timeRemaining),
+        endTime: new Date(Date.now() + timer.state.timeRemaining),
       }
       break
     case "finished":
-      store.state = {
+      timer.state = {
         type: "running",
-        endTime: new Date(Date.now() + defaultTime),
+        endTime: new Date(Date.now() + timer.time),
       }
       break
     default:

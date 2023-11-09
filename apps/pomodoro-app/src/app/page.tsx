@@ -1,22 +1,23 @@
 "use client"
 import iconSettings from "#/icon-settings.svg"
 import Image from "next/image"
+import { Dialog, DialogTrigger } from "@radix-ui/react-dialog"
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogOverlay,
-  DialogPortal,
-  DialogTitle,
-  DialogTrigger,
-} from "@radix-ui/react-dialog"
-import { completeTimer, toggle, useTimerStore } from "@/app/timer-store"
+  completeTimer,
+  longBreakState,
+  pomodoroState,
+  shortBreakState,
+  toggle,
+} from "@/app/timer-store"
 import useInterval from "@/app/use-interval"
 import useUpdate from "@/app/use-update"
 import { Tabs, TabsList, TabsTrigger } from "@radix-ui/react-tabs"
-import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group"
 import { cn } from "@/lib/utils"
 import { Font, useFontContext } from "@/app/font-provider"
+import { CSSProperties, useState } from "react"
+import { SettingsDialog } from "@/app/components/settings-dialog"
+import { useProxy } from "valtio/utils"
+import { Color, useColorContext } from "@/app/color-provider"
 
 const timeFormatter = new Intl.DateTimeFormat("en-US", {
   minute: "numeric",
@@ -35,50 +36,33 @@ function toClassName(font: Font) {
   }
 }
 
+function toColorStyle(color: Color) {
+  switch (color) {
+    case "light-red":
+      return "#F87070"
+    case "cyan":
+      return "#70F3F8"
+    case "purple":
+      return "#D881F8"
+  }
+}
+
+type Tabs = "pomodoro" | "short-break" | "long-break"
+
 export default function Home() {
+  const [tab, setTab] = useState<Tabs>("pomodoro")
   const { font } = useFontContext()
-  const store = useTimerStore()
-  const update = useUpdate()
-
-  useInterval(() => {
-    if (store.state.type !== "running") return
-    if (store.state.endTime.getTime() < Date.now()) {
-      completeTimer()
-    }
-
-    update()
-  }, 100)
-
-  const getLiveTimeRemaining = () => {
-    switch (store.state.type) {
-      case "idle":
-        return store.time
-      case "running":
-        const remainingTime = store.state.endTime.getTime() - Date.now()
-        const remainingTimeRoundedUp = Math.ceil(remainingTime / 1000) * 1000
-        return Math.max(0, remainingTimeRoundedUp)
-      case "paused":
-        return store.state.timeRemaining
-      case "finished":
-        return 0
-    }
-  }
-
-  const toggleActionText = () => {
-    switch (store.state.type) {
-      case "idle":
-        return "Start"
-      case "running":
-        return "Pause"
-      case "paused":
-        return "Resume"
-      case "finished":
-        return "Start"
-    }
-  }
+  const { color } = useColorContext()
 
   return (
-    <body className={toClassName(font)}>
+    <body
+      className={toClassName(font)}
+      style={
+        {
+          "--accent": toColorStyle(color),
+        } as CSSProperties
+      }
+    >
       <div
         className={cn("flex min-h-screen flex-col items-center bg-[#1E213F]")}
       >
@@ -86,43 +70,33 @@ export default function Home() {
           pomodoro
         </header>
         <main className="mt-11 flex flex-col items-center">
-          <Tabs className="w-full" defaultValue="pomodoro">
+          <Tabs
+            className="w-full"
+            value={tab}
+            onValueChange={(value) => setTab(value as Tabs)}
+          >
             <TabsList className="grid h-16 w-full grid-cols-3 justify-between rounded-[26px] bg-[#161932] p-2">
               <TabsTrigger
                 value="pomodoro"
-                className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[#F87070] data-[state=active]:text-[#1E213F]"
+                className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[--accent] data-[state=active]:text-[#1E213F]"
               >
                 pomodoro
               </TabsTrigger>
               <TabsTrigger
                 value="short-break"
-                className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[#F87070] data-[state=active]:text-[#1E213F]"
+                className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[--accent] data-[state=active]:text-[#1E213F]"
               >
                 short break
               </TabsTrigger>
               <TabsTrigger
                 value="long-break"
-                className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[#F87070] data-[state=active]:text-[#1E213F]"
+                className="grid place-items-center text-xs font-bold text-[#D7E0FF] data-[state=active]:rounded-[26px] data-[state=active]:bg-[--accent] data-[state=active]:text-[#1E213F]"
               >
                 long break
               </TabsTrigger>
             </TabsList>
           </Tabs>
-          <button
-            className="mt-12 flex h-[300px] w-[300px] items-center justify-center rounded-full bg-[#161932]"
-            onClick={() => toggle()}
-          >
-            <div className="flex h-[268px] w-[268px] items-center justify-center rounded-full bg-[#161932]">
-              <div className="relative grid h-[248px] w-[248px] place-items-center rounded-full border-8 border-[#F87070]">
-                <div className="text-[80px] font-bold text-[#D7E0FF]">
-                  {timeFormatter.format(new Date(getLiveTimeRemaining()))}
-                </div>
-                <div className="absolute -mr-[13px] mt-32 text-sm font-bold uppercase tracking-[13px] text-[#D7E0FF]">
-                  {toggleActionText()}
-                </div>
-              </div>
-            </div>
-          </button>
+          <Timer type={tab} />
           <Dialog>
             <DialogTrigger>
               <Image src={iconSettings} alt="" className="mt-20" />
@@ -135,77 +109,83 @@ export default function Home() {
   )
 }
 
-function SettingsDialog() {
-  const { font, setFont } = useFontContext()
+function Timer({ type }: { type: "pomodoro" | "short-break" | "long-break" }) {
+  const { font } = useFontContext()
+  const pomodoroStore = useProxy(pomodoroState)
+  const shortBreakStore = useProxy(shortBreakState)
+  const longBreakStore = useProxy(longBreakState)
+
+  const update = useUpdate()
+
+  function getTimerStore() {
+    switch (type) {
+      case "pomodoro":
+        return pomodoroStore
+      case "short-break":
+        return shortBreakStore
+      case "long-break":
+        return longBreakStore
+    }
+  }
+
+  const timerStore = getTimerStore()
+
+  useInterval(() => {
+    if (timerStore.state.type !== "running") return
+    if (timerStore.state.endTime.getTime() < Date.now()) {
+      completeTimer(timerStore)
+    }
+
+    update()
+  }, 100)
+
+  const calculateTimeRemaining = () => {
+    switch (timerStore.state.type) {
+      case "idle":
+        return timerStore.time
+      case "running":
+        const remainingTime = timerStore.state.endTime.getTime() - Date.now()
+        return Math.max(0, remainingTime)
+      case "paused":
+        return timerStore.state.timeRemaining
+      case "finished":
+        return 0
+    }
+  }
+
+  const getButtonText = () => {
+    switch (timerStore.state.type) {
+      case "idle":
+        return "Start"
+      case "running":
+        return "Pause"
+      case "paused":
+        return "Resume"
+      case "finished":
+        return "Start"
+    }
+  }
 
   return (
-    <DialogPortal>
-      <DialogOverlay className="fixed inset-0 bg-black/50" />
-      <DialogContent className="fixed inset-0 mx-6 my-12 flex flex-col rounded-2xl bg-white p-6 lg:px-10 lg:py-8">
-        <DialogTitle className="text-xl font-bold text-[#161932] lg:text-[28px]">
-          Settings
-        </DialogTitle>
-        <div className="mt-8 h-[1px] w-full bg-[#E3E1E1] lg:mt-7" />
-        <div className="mt-6 self-center text-[11px] font-bold uppercase tracking-[4.2px] text-[#161932] lg:mt-7">
-          Time (Minutes)
-        </div>
-        <div className="mt-4 flex flex-col gap-2">
-          <div className="flex items-center justify-between">
-            <div className="text-xs font-bold text-[#1E213F]/40">pomodoro</div>
-            <input
-              className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4 text-sm font-bold text-[#1E213F]"
-              defaultValue="25"
-            />
+    <button
+      className="mt-12 flex h-[300px] w-[300px] items-center justify-center rounded-full bg-[#161932]"
+      onClick={() => toggle(timerStore)}
+    >
+      <div className="flex h-[268px] w-[268px] items-center justify-center rounded-full bg-[#161932]">
+        <div className="relative grid h-[248px] w-[248px] place-items-center rounded-full border-8 border-[--accent]">
+          <div
+            className={cn(
+              "text-[80px] text-[#D7E0FF]",
+              font !== "space-mono" ? "font-bold" : "-tracking-[4px]",
+            )}
+          >
+            {timeFormatter.format(new Date(calculateTimeRemaining()))}
           </div>
-          <div className="flex items-center justify-between">
-            <div className="text-xs font-bold text-[#1E213F]/40">
-              short break
-            </div>
-            <input
-              className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4 text-sm font-bold text-[#1E213F]"
-              defaultValue="5"
-            />
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="text-xs font-bold text-[#1E213F]/40">
-              long break
-            </div>
-            <input
-              className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4 text-sm font-bold text-[#1E213F]"
-              defaultValue="15"
-            />
+          <div className="absolute -mr-[13px] mt-32 text-sm font-bold uppercase tracking-[13px] text-[#D7E0FF]">
+            {getButtonText()}
           </div>
         </div>
-        <div className="mt-6 h-[1px] w-full bg-[#E3E1E1]" />
-        <div className="mt-6 self-center text-[11px] font-bold uppercase tracking-[4.2px] text-[#161932]">
-          Font
-        </div>
-        <RadioGroup
-          className="mt-4 flex flex-row items-center justify-center gap-4"
-          value={font}
-          onValueChange={(font) => setFont(font as Font)}
-        >
-          <RadioGroupItem
-            value={"kumbh-sans"}
-            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-kumbh-sans font-bold text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
-          >
-            Aa
-          </RadioGroupItem>
-          <RadioGroupItem
-            value={"roboto-slab"}
-            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-roboto-slab text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
-          >
-            Aa
-          </RadioGroupItem>
-          <RadioGroupItem
-            value={"space-mono"}
-            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-space-mono font-bold text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
-          >
-            Aa
-          </RadioGroupItem>
-        </RadioGroup>
-        <DialogClose />
-      </DialogContent>
-    </DialogPortal>
+      </div>
+    </button>
   )
 }
