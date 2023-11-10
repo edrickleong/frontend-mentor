@@ -1,6 +1,7 @@
 import "./globals.css"
 import { Kumbh_Sans, Roboto_Slab, Space_Mono } from "next/font/google"
 import { Providers } from "@/app/providers/providers"
+import { ReactNode } from "react"
 
 const kumbhSans = Kumbh_Sans({
   subsets: ["latin"],
@@ -22,11 +23,7 @@ export const metadata = {
   title: "Pomodoro",
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
