@@ -156,11 +156,11 @@ export function SettingsDialog() {
           </RadioGroupItem>
         </RadioGroup>
 
-        <DialogClose asChild>
-          <button className="absolute inset-x-0 bottom-0 mx-auto h-[52px] translate-y-1/2 rounded-3xl bg-[--accent] px-12 font-bold text-[#161932] hover:brightness-[1.2]">
+        <div className="absolute inset-x-0 bottom-0 flex translate-y-1/2 justify-center">
+          <DialogClose className="h-[52px] rounded-3xl bg-[--accent] px-12 font-bold text-[#161932] hover:brightness-[1.2]">
             Apply
-          </button>
-        </DialogClose>
+          </DialogClose>
+        </div>
       </DialogContent>
     </DialogPortal>
   )
