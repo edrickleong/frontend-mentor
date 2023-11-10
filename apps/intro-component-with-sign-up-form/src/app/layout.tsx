@@ -7,7 +7,7 @@ const poppins = Poppins({
 })
 
 export const metadata = {
-  title: "Intro Component with Sign Up Form",
+  title: "Sign Up",
 }
 
 export default function RootLayout({

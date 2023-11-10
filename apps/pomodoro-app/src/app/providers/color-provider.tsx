@@ -1,9 +1,9 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, ReactNode, useContext, useState } from "react"
 
 export type Color = "light-red" | "cyan" | "purple"
 
 type FontProviderProps = {
-  children: React.ReactNode
+  children: ReactNode
   defaultColor?: Color
 }
 
@@ -43,4 +43,15 @@ export const useColorContext = () => {
     throw new Error("useFont must be used within a FontProvider")
 
   return context
+}
+
+export function toColorStyle(color: Color) {
+  switch (color) {
+    case "light-red":
+      return "#F87070"
+    case "cyan":
+      return "#70F3F8"
+    case "purple":
+      return "#D881F8"
+  }
 }

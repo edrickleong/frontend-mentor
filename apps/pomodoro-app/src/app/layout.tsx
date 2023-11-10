@@ -1,6 +1,6 @@
 import "./globals.css"
 import { Kumbh_Sans, Roboto_Slab, Space_Mono } from "next/font/google"
-import { Providers } from "@/app/providers"
+import { Providers } from "@/app/providers/providers"
 
 const kumbhSans = Kumbh_Sans({
   subsets: ["latin"],
@@ -19,7 +19,7 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata = {
-  title: "Pomodoro App",
+  title: "Pomodoro",
 }
 
 export default function RootLayout({

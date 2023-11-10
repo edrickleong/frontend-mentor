@@ -4,7 +4,7 @@ import { Manrope } from "next/font/google"
 const manrope = Manrope({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Advice Generator App",
+  title: "Advice Generator",
 }
 
 export default function RootLayout({

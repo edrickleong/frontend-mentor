@@ -5,7 +5,7 @@ import { Providers } from "@/app/providers"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Dictionary Web App",
+  title: "Dictionary",
 }
 
 export default function RootLayout({

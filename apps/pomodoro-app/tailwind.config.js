@@ -23,6 +23,13 @@ module.exports = {
         "roboto-slab": ["var(--font-roboto-slab)"],
         "space-mono": ["var(--font-space-mono)"],
       },
+      backgroundImage: {
+        "outer-ring": "linear-gradient(315deg, #2E325A 0%, #0E112A 100%)",
+      },
+      boxShadow: {
+        "outer-ring":
+          "50px 50px 100px 0px #121530, -50px -50px 100px 0px #272C5A",
+      },
     },
   },
   plugins: [],

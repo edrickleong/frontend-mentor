@@ -1,9 +1,9 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, ReactNode, useContext, useState } from "react"
 
 export type Font = "kumbh-sans" | "roboto-slab" | "space-mono"
 
 type FontProviderProps = {
-  children: React.ReactNode
+  children: ReactNode
   defaultFont?: Font
 }
 
@@ -43,4 +43,15 @@ export const useFontContext = () => {
     throw new Error("useFont must be used within a FontProvider")
 
   return context
+}
+
+export function toClassName(font: Font) {
+  switch (font) {
+    case "kumbh-sans":
+      return "font-kumbh-sans"
+    case "roboto-slab":
+      return "font-roboto-slab"
+    case "space-mono":
+      return "font-space-mono"
+  }
 }
