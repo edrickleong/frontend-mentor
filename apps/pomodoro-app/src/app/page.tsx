@@ -17,15 +17,12 @@ export default function Home() {
   const { font } = useFontContext()
   const { color } = useColorContext()
 
+  const styles = {
+    "--accent": toColorStyle(color),
+  } as CSSProperties
+
   return (
-    <body
-      className={toClassName(font)}
-      style={
-        {
-          "--accent": toColorStyle(color),
-        } as CSSProperties
-      }
-    >
+    <body className={toClassName(font)} style={styles}>
       <div
         className={cn("flex min-h-screen flex-col items-center bg-[#1E213F]")}
       >
@@ -61,11 +58,11 @@ export default function Home() {
           </Tabs>
           <Timer type={tab} />
           <Dialog>
-            <DialogTrigger>
+            <DialogTrigger className="mt-20">
               <Image
                 src={iconSettings}
                 alt=""
-                className="mt-20 opacity-50 hover:opacity-100"
+                className="opacity-50 hover:opacity-100"
               />
             </DialogTrigger>
             <SettingsDialog />

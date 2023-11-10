@@ -1,5 +1,5 @@
 import { useFontContext } from "@/app/providers/font-provider"
-import { useProxy } from "valtio/esm/utils"
+import { useProxy } from "valtio/utils"
 import {
   completeTimer,
   longBreakState,
