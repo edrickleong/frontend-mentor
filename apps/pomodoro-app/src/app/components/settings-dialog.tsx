@@ -18,6 +18,25 @@ import {
   shortBreakState,
 } from "@/app/timer-store"
 import { Color, useColorContext } from "@/app/providers/color-provider"
+import { cn } from "@/lib/utils"
+
+function StyledRadioGroupItem({
+  children,
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof RadioGroupItem>) {
+  return (
+    <RadioGroupItem
+      className={cn(
+        "flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-bold text-[#1E213F] ring-offset-4 ring-offset-white hover:ring-1 hover:ring-[#EFF1FA] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </RadioGroupItem>
+  )
+}
 
 export function SettingsDialog() {
   const { font, setFont } = useFontContext()
@@ -35,7 +54,7 @@ export function SettingsDialog() {
             Settings
           </DialogTitle>
           <DialogClose asChild>
-            <button className="opacity-50 hover:opacity-100 ">
+            <button className="flex h-4 w-4 items-center justify-center opacity-50 hover:opacity-100">
               <CloseIcon />
             </button>
           </DialogClose>
@@ -49,6 +68,7 @@ export function SettingsDialog() {
             <div className="text-xs font-bold text-[#1E213F]/40">pomodoro</div>
             <input
               className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4  font-bold text-[#1E213F]"
+              inputMode="numeric"
               value={pomodoroStore.time / 60 / 1000}
               onChange={(e) => {
                 pomodoroStore.time = Number(e.target.value) * 60 * 1000
@@ -61,6 +81,7 @@ export function SettingsDialog() {
             </div>
             <input
               className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4 font-bold text-[#1E213F]"
+              inputMode="numeric"
               value={shortBreakStore.time / 60 / 1000}
               onChange={(e) => {
                 shortBreakStore.time = Number(e.target.value) * 60 * 1000
@@ -73,6 +94,7 @@ export function SettingsDialog() {
             </div>
             <input
               className="h-10 w-[140px] rounded-[10px] bg-[#EFF1FA] pl-4 font-bold text-[#1E213F]"
+              inputMode="numeric"
               value={longBreakStore.time / 60 / 1000}
               onChange={(e) => {
                 longBreakStore.time = Number(e.target.value) * 60 * 1000
@@ -89,24 +111,15 @@ export function SettingsDialog() {
           value={font}
           onValueChange={(font) => setFont(font as Font)}
         >
-          <RadioGroupItem
-            value={"kumbh-sans"}
-            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-kumbh-sans font-bold text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
-          >
+          <StyledRadioGroupItem value="kumbh-sans" className="font-kumbh-sans">
             Aa
-          </RadioGroupItem>
-          <RadioGroupItem
-            value={"roboto-slab"}
-            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-roboto-slab text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
-          >
+          </StyledRadioGroupItem>
+          <StyledRadioGroupItem value="robot-sans" className="font-roboto-sans">
             Aa
-          </RadioGroupItem>
-          <RadioGroupItem
-            value={"space-mono"}
-            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#EFF1FA] font-space-mono font-bold text-[#1E213F] data-[state=checked]:bg-[#161932] data-[state=checked]:text-white"
-          >
+          </StyledRadioGroupItem>
+          <StyledRadioGroupItem value="space-mono" className="font-space-mono">
             Aa
-          </RadioGroupItem>
+          </StyledRadioGroupItem>
         </RadioGroup>
         <div className="mt-6 h-[1px] w-full bg-[#E3E1E1]" />
         <div className="mt-6 self-center text-[11px] font-bold uppercase tracking-[4.2px] text-[#161932]">
@@ -119,7 +132,7 @@ export function SettingsDialog() {
         >
           <RadioGroupItem
             value={"light-red"}
-            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#F87070]"
+            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#F87070] ring-offset-4 ring-offset-white hover:ring-1 hover:ring-[#EFF1FA]"
           >
             <RadioGroupIndicator className="hidden data-[state=checked]:block">
               <CheckIcon />
@@ -127,7 +140,7 @@ export function SettingsDialog() {
           </RadioGroupItem>
           <RadioGroupItem
             value={"cyan"}
-            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#70F3F8]"
+            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#70F3F8] ring-offset-4 ring-offset-white hover:ring-1 hover:ring-[#EFF1FA]"
           >
             <RadioGroupIndicator className="hidden data-[state=checked]:block">
               <CheckIcon />
@@ -135,7 +148,7 @@ export function SettingsDialog() {
           </RadioGroupItem>
           <RadioGroupItem
             value={"purple"}
-            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#D881F8]"
+            className="bg-grey flex h-10 w-10 items-center justify-center rounded-full bg-[#D881F8] ring-offset-4 ring-offset-white hover:ring-1 hover:ring-[#EFF1FA]"
           >
             <RadioGroupIndicator className="hidden data-[state=checked]:block">
               <CheckIcon />

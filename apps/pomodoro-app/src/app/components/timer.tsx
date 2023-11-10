@@ -80,7 +80,7 @@ export function Timer({
 
   return (
     <button
-      className="bg-outer-ring shadow-outer-ring mt-12 flex h-[300px] w-[300px] items-center justify-center overflow-hidden rounded-full"
+      className="bg-outer-ring shadow-outer-ring mt-12 flex h-[300px] w-[300px] select-none items-center justify-center overflow-hidden rounded-full"
       onClick={() => toggle(timerStore)}
     >
       <div className="flex h-[268px] w-[268px] items-center justify-center rounded-full bg-[#161932]">

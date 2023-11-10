@@ -1,4 +1,5 @@
 "use client"
+import logo from "#/logo.svg"
 import iconSettings from "#/icon-settings.svg"
 import Image from "next/image"
 import { Dialog, DialogTrigger } from "@radix-ui/react-dialog"
@@ -22,12 +23,18 @@ export default function Home() {
   } as CSSProperties
 
   return (
-    <body className={toClassName(font)} style={styles}>
-      <div
-        className={cn("flex min-h-screen flex-col items-center bg-[#1E213F]")}
-      >
-        <header className="mt-8 text-2xl font-bold text-[#D7E0FF]">
-          pomodoro
+    <body
+      className={cn("select-none bg-[#1E213F]", toClassName(font))}
+      style={styles}
+    >
+      <div className={cn("flex min-h-[100dvh] flex-col items-center py-8")}>
+        <header>
+          <Image
+            src={logo}
+            alt=""
+            className="pointer-events-none"
+            priority={true}
+          />
         </header>
         <main className="z-0 mt-11 flex flex-col items-center">
           <Tabs
@@ -58,11 +65,12 @@ export default function Home() {
           </Tabs>
           <Timer type={tab} />
           <Dialog>
-            <DialogTrigger className="mt-20">
+            <DialogTrigger className="mt-20 opacity-50 hover:opacity-100">
               <Image
                 src={iconSettings}
                 alt=""
-                className="opacity-50 hover:opacity-100"
+                className="pointer-events-none"
+                priority={true}
               />
             </DialogTrigger>
             <SettingsDialog />
