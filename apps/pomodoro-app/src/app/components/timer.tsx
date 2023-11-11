@@ -80,7 +80,7 @@ export function Timer({
 
   return (
     <button
-      className="bg-outer-ring shadow-outer-ring mt-12 flex h-[300px] w-[300px] select-none items-center justify-center overflow-hidden rounded-full"
+      className="group flex h-[300px] w-[300px] select-none items-center justify-center overflow-hidden rounded-full bg-outer-ring shadow-outer-ring"
       onClick={() => toggle(timerStore)}
     >
       <div className="flex h-[268px] w-[268px] items-center justify-center rounded-full bg-[#161932]">
@@ -93,7 +93,7 @@ export function Timer({
           >
             {timeFormatter.format(new Date(calculateTimeRemaining()))}
           </div>
-          <div className="absolute -mr-[13px] mt-32 text-sm font-bold uppercase tracking-[13px] text-[#D7E0FF]">
+          <div className="absolute -mr-[13px] mt-32 text-sm font-bold uppercase tracking-[13px] text-[#D7E0FF] group-hover:text-[--accent]">
             {getButtonText()}
           </div>
         </div>

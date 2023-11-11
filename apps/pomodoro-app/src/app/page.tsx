@@ -27,7 +27,11 @@ export default function Home() {
       className={cn("select-none bg-[#1E213F]", toClassName(font))}
       style={styles}
     >
-      <div className={cn("flex min-h-[100dvh] flex-col items-center py-8")}>
+      <div
+        className={cn(
+          "flex min-h-[100dvh] flex-col items-center py-8 md:py-20 lg:py-12",
+        )}
+      >
         <header>
           <Image
             src={logo}
@@ -36,7 +40,7 @@ export default function Home() {
             priority={true}
           />
         </header>
-        <main className="z-0 mt-11 flex flex-col items-center">
+        <main className="z-0 mt-11 flex flex-1 flex-col items-center">
           <Tabs
             className="z-10 w-full"
             value={tab}
@@ -63,9 +67,11 @@ export default function Home() {
               </TabsTrigger>
             </TabsList>
           </Tabs>
-          <Timer type={tab} />
+          <div className="mt-12">
+            <Timer type={tab} />
+          </div>
           <Dialog>
-            <DialogTrigger className="mt-20 opacity-50 hover:opacity-100">
+            <DialogTrigger className="mt-auto opacity-50 hover:opacity-100">
               <Image
                 src={iconSettings}
                 alt=""

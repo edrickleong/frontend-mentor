@@ -75,3 +75,8 @@ pnpm install
 ```
 pnpm dev
 ```
+## ⚡ Generate a new project from template
+
+```shell
+turbo gen workspace --copy template
+```
