@@ -22,6 +22,7 @@ module.exports = {
         "kumbh-sans": ["var(--font-kumbh-sans)"],
         "roboto-slab": ["var(--font-roboto-slab)"],
         "space-mono": ["var(--font-space-mono)"],
+        neon: ["var(--font-neon)"],
       },
       backgroundImage: {
         "outer-ring": "linear-gradient(315deg, #2E325A 0%, #0E112A 100%)",
