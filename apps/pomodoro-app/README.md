@@ -1,6 +1,8 @@
 # Frontend Mentor - Pomodoro app solution
 
-This is a solution to the [Pomodoro app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/pomodoro-app-KBFnycJ6G). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to
+the [Pomodoro app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/pomodoro-app-KBFnycJ6G).
+Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Overview
 
@@ -14,7 +16,6 @@ Users should be able to:
 - [ ] Customize the appearance of the app with the ability to set preferences for colors and fonts
 
 ### Screenshot
-
 
 ### Links
 
