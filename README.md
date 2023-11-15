@@ -14,42 +14,43 @@
 
 ## ✨ Challenges
 
-| Difficulty   | Challenge                                                   | Preview                                                                                |
-|--------------|-------------------------------------------------------------|----------------------------------------------------------------------------------------|
-| Newbie       | 📷 QR code component                                        |                                                                                        |
-| Newbie       | ⭐ Interactive rating component                              |                                                                                        |
-| Newbie       | 💯 Results summary component                                |                                                                                        |
-| Junior       | 🧑‍🦳 Age calculator app                                    |                                                                                        |
-| Junior       | 💸 Tip calculator app                                       |                                                                                        |
-| Newbie       | 📈 Expenses chart component                                 |                                                                                        |
-| Junior       | ⌛ Time tracking dashboard                                   |                                                                                        |
-| Newbie       | 👤 Profile card component                                   |                                                                                        |
-| Newbie       | 🧴 Product preview card component                           |                                                                                        |
-| Newbie       | 📱 Huddle landing page with a single introductory section   |                                                                                        |
-| Newbie       | 🪙 NFT preview card                                         |                                                                                        |
-| Newbie       | 🛍️ Order Summary component                                 |                                                                                        |
-| Newbie       | 🔢 Stats preview card component                             |                                                                                        |
-| Newbie       | ❓ FAQ Accordion card component                              |                                                                                        |
-| Newbie       | 📝 Social proof section                                     |                                                                                        |
-| Newbie       | 📄 Article preview component                                |                                                                                        |
-| Newbie       | 📱 Workit landing page                                      |                                                                                        |
-| Junior       | 🖥️ GitHub user search app                                  | [Preview](https://frontend-mentor-github-user-search.vercel.app/)                      |
-| Newbie       | 📄 Intro component with sign up form                        | [Preview](https://frontend-mentor-intro-component-with-sign-up-form-seven.vercel.app/) |
-| Newbie       | 📰 News homepage                                            | [Preview](https://edrick-news.netlify.app/)                                            |
-| Newbie       | 👚 Base Apparel coming soon page                            | [Preview](https://edrick-base-apparel.netlify.app/)                                    |
-| Intermediate | 📖 Dictionary web app                                       | [Preview](https://edrick-dictionary.netlify.app/)                                      |
-| Newbie       | 📃 Ping single column coming soon page                      | [Preview](https://edrick-ping.netlify.app/)                                            |
-| Newbie       | 💲 Single price grid component                              | [Preview](https://edrick-single-price-grid.netlify.app/)                               |
-| Newbie       | 🪧 Four card feature section                                | [Preview](https://edrick-four-card-section.netlify.app/)                               |
-| Newbie       | 💭 Advice generator app                                     | [Preview](https://edrick-advice-generator.netlify.app/)                                |
-| Advanced     | 📄 Multi-step form                                          | [Preview](https://edrick-multi-step-form.netlify.app/)                                 |
+| Difficulty   | Challenge                                                     | Preview                                                                                |
+|--------------|---------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| Newbie       | 📷 QR code component                                          |                                                                                        |
+| Newbie       | ⭐ Interactive rating component                                |                                                                                        |
+| Newbie       | 💯 Results summary component                                  |                                                                                        |
+| Junior       | 🧑‍🦳 Age calculator app                                      |                                                                                        |
+| Junior       | 💸 Tip calculator app                                         |                                                                                        |
+| Newbie       | 📈 Expenses chart component                                   |                                                                                        |
+| Junior       | ⌛ Time tracking dashboard                                     |                                                                                        |
+| Newbie       | 👤 Profile card component                                     |                                                                                        |
+| Newbie       | 🧴 Product preview card component                             |                                                                                        |
+| Newbie       | 📱 Huddle landing page with a single introductory section     |                                                                                        |
+| Newbie       | 🪙 NFT preview card                                           |                                                                                        |
+| Newbie       | 🛍️ Order Summary component                                   |                                                                                        |
+| Newbie       | 🔢 Stats preview card component                               |                                                                                        |
+| Newbie       | ❓ FAQ Accordion card component                                |                                                                                        |
+| Newbie       | 📝 Social proof section                                       |                                                                                        |
+| Newbie       | 📄 Article preview component                                  |                                                                                        |
+| Newbie       | 📱 Workit landing page                                        |                                                                                        |
+| Junior       | 🖥️ GitHub user search app                                    | [Preview](https://frontend-mentor-github-user-search.vercel.app/)                      |
+| Newbie       | 📄 Intro component with sign up form                          | [Preview](https://frontend-mentor-intro-component-with-sign-up-form-seven.vercel.app/) |
+| Newbie       | 📰 News homepage                                              | [Preview](https://edrick-news.netlify.app/)                                            |
+| Newbie       | 👚 Base Apparel coming soon page                              | [Preview](https://edrick-base-apparel.netlify.app/)                                    |
+| Intermediate | 📖 Dictionary web app                                         | [Preview](https://edrick-dictionary.netlify.app/)                                      |
+| Newbie       | 📃 Ping single column coming soon page                        | [Preview](https://edrick-ping.netlify.app/)                                            |
+| Newbie       | 💲 Single price grid component                                | [Preview](https://edrick-single-price-grid.netlify.app/)                               |
+| Newbie       | 🪧 Four card feature section                                  | [Preview](https://edrick-four-card-section.netlify.app/)                               |
+| Newbie       | 💭 Advice generator app                                       | [Preview](https://edrick-advice-generator.netlify.app/)                                |
+| Advanced     | 📄 Multi-step form                                            | [Preview](https://edrick-multi-step-form.netlify.app/)                                 |
 | Newbie       | [🎙 Pod request access landing page](apps/pod-request-access) | [Preview](https://edrick-pod-request-access.netlify.app/)                              |
-| Intermediate | [📝 Todo app](apps/todo-app)                                | [Preview](https://edrick-todo-app.netlify.app/)                                        |
-| Junior       | [🔔 Notifications page](apps/notifications-page)            | [Preview](https://edrick-notifications-page.netlify.app/)                              |
-| Newbie       | Equalizer landing page                                      | [Preview](https://edrick-equalizer.netlify.app/)                                       |
-| Junior       | [Interactive pricing component](apps/interactive-pricing)   | [Preview](https://edrick-interactive-pricing.netlify.app/)                             |
-| Newbie       | [Skilled e-learning landing page](apps/skilled-elearning)   | [Preview](https://edrick-skilled-elearning.netlify.app/)                               |
-| Newbie       | [Pomodoro app](apps/pomodoro-app)                           |                                                                                        |
+| Intermediate | [📝 Todo app](apps/todo-app)                                  | [Preview](https://edrick-todo-app.netlify.app/)                                        |
+| Junior       | [🔔 Notifications page](apps/notifications-page)              | [Preview](https://edrick-notifications-page.netlify.app/)                              |
+| Newbie       | Equalizer landing page                                        | [Preview](https://edrick-equalizer.netlify.app/)                                       |
+| Junior       | [Interactive pricing component](apps/interactive-pricing)     | [Preview](https://edrick-interactive-pricing.netlify.app/)                             |
+| Newbie       | [Skilled e-learning landing page](apps/skilled-elearning)     | [Preview](https://edrick-skilled-elearning.netlify.app/)                               |
+| Advanced     | [Pomodoro app](apps/pomodoro-app)                             | [Preview](https://edrick-pomodoro.netlify.app/)                                        |
+| Intermediate | [Launch countdown timer](apps/countdown)                      | [Preview](https://edrick-countdown.netlify.app/)                                       |
 
 ## 🔧 Built with
 
@@ -75,6 +76,7 @@ pnpm install
 ```
 pnpm dev
 ```
+
 ## ⚡ Generate a new project from template
 
 ```shell
