@@ -1,3 +1,5 @@
+import {GameState} from "@/domain/types";
+
 export type Json =
   | string
   | number
@@ -13,17 +15,20 @@ export interface Database {
         Row: {
           created_at: string
           id: string
-          state: Json
+          version: number,
+          state: GameState
         }
         Insert: {
           created_at?: string
           id?: string
-          state: Json
+          version: number,
+          state: GameState
         }
         Update: {
           created_at?: string
           id?: string
-          state?: Json
+          version?: number,
+          state?: GameState
         }
         Relationships: []
       }

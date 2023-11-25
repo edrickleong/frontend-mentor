@@ -1,40 +1,29 @@
-import { createClient } from "@supabase/supabase-js"
-import { NextResponse } from "next/server"
-
-type Game = {
-  id: string
-  state: {
-    board: string[][]
-  }
-}
+import { v4 as uuidv4 } from "uuid"
+import { createUserSupabaseClient } from "@/app/supabase"
+import { cookies } from "next/headers"
+import { createCommandHandler } from "@/app/create-command-handler"
 
 export async function POST() {
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_KEY!,
-  )
-  const { data, error } = await supabase
-    .from("games")
-    .insert([
-      {
-        state: {
-          board: [
-            ["", "", ""],
-            ["", "", ""],
-            ["", "", ""],
-          ],
-        },
-      },
-    ])
-    .select()
-
+  const userSupabase = createUserSupabaseClient(cookies())
+  const { data, error } = await userSupabase.auth.getSession()
   if (error) {
-    return new NextResponse("", { status: 500 })
+    console.error(error)
+    return new Response("", { status: 500 })
   }
+  if (!data.session) {
+    console.error("user is not logged in")
+    return new Response("", { status: 401 })
+  }
+  const userId = data.session.user.id
 
-  const game = data![0] as Game
+  const commandHandler = createCommandHandler()
+  const gameRoomId = uuidv4()
+  await commandHandler.createGame({
+    roomId: gameRoomId,
+    playerId: userId,
+  })
 
   return Response.json({
-    gameId: game.id,
+    gameId: gameRoomId,
   })
 }
