@@ -16,7 +16,8 @@ export async function POST(
   },
 ) {
   const requestBody = await request.json()
-  const userSupabase = createUserSupabaseClient(cookies())
+  const cookieStore = cookies()
+  const userSupabase = createUserSupabaseClient(cookieStore)
   const { data, error } = await userSupabase.auth.getSession()
   if (error) throw error
   if (!data.session) throw new Error("session is null")

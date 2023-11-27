@@ -11,7 +11,7 @@ export default function Home() {
   const [startingMark, setStartingMark] = useState<"X" | "O">("O")
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-dark-navy">
+    <main className="flex min-h-screen flex-col items-center bg-dark-navy px-6">
       <div className="flex w-full max-w-lg flex-col items-center">
         <Image className="mt-32" src={logo} alt="Logo" />
         <section className="mt-8 flex w-full flex-col items-center rounded-2xl bg-semi-dark-navy px-6 pb-8 pt-6 shadow-[0_-8px_0_0px_#10212A_inset]">

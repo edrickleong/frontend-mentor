@@ -1,6 +1,10 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js"
 import { Database } from "@/app/database-definitions"
-import { createBrowserClient, createServerClient } from "@supabase/ssr"
+import {
+  type CookieOptions,
+  createBrowserClient,
+  createServerClient,
+} from "@supabase/ssr"
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies"
 import { v4 as uuidv4 } from "uuid"
 
@@ -12,14 +16,20 @@ export const supabase = createBrowserClient<Database>(
   supabaseAnonKey,
 )
 
-export function createUserSupabaseClient(cookies: ReadonlyRequestCookies) {
-  return createServerClient<Database>(
+export function createUserSupabaseClient(cookieStore: ReadonlyRequestCookies) {
+  return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
         get(name: string) {
-          return cookies.get(name)?.value
+          return cookieStore.get(name)?.value
+        },
+        set(name: string, value: string, options: CookieOptions) {
+          cookieStore.set({ name, value, ...options })
+        },
+        remove(name: string, options: CookieOptions) {
+          cookieStore.set({ name, value: "", ...options })
         },
       },
     },

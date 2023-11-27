@@ -11,7 +11,7 @@ import {
 } from "@/app/_components/icons"
 import { Board } from "@/app/types"
 import { supabase } from "@/app/supabase"
-import { GameState, PlayingState } from "@/domain/types"
+import { GameState } from "@/domain/types"
 import Link from "next/link"
 import { Database } from "@/app/database-definitions"
 
@@ -30,13 +30,19 @@ export default function Game({ id }: Props) {
   const [userId, setUserId] = useState<string>()
 
   useEffect(() => {
-    async function createGame() {
+    async function getGame() {
       const { data: games, error } = await supabase
         .from("games")
         .select("*")
         .eq("id", id)
       const game = games![0]
-      setGameState(game.state as PlayingState)
+      setGameState(game.state)
+
+      if (game.state.type === "Waiting") {
+        await fetch(`/api/games/${game.id}/join`, {
+          method: "POST",
+        })
+      }
     }
 
     const changes = supabase
@@ -51,12 +57,11 @@ export default function Game({ id }: Props) {
         (payload) => {
           const row =
             payload.new as Database["public"]["Tables"]["games"]["Row"]
-          setGameState(row.state as PlayingState)
+          setGameState(row.state)
         },
       )
       .subscribe()
-
-    createGame()
+    getGame()
 
     return () => {
       changes.unsubscribe()
@@ -87,12 +92,12 @@ export default function Game({ id }: Props) {
     return (
       <div className="flex min-h-screen flex-col items-center bg-dark-navy px-6">
         <div className="flex h-screen flex-col items-center justify-center">
-          <div className="text-4xl font-bold text-white">
+          <div className="text-center text-2xl font-bold text-white sm:text-4xl">
             Waiting for opponent...
           </div>
 
           <div className="mt-4">
-            <div className="h-14 w-14 animate-spin rounded-full border-b-2 border-t-2 border-white"></div>
+            <div className="h-10 w-10 animate-spin rounded-full border-b-2 border-t-2 border-white sm:h-14 sm:w-14"></div>
           </div>
         </div>
       </div>
@@ -103,25 +108,29 @@ export default function Game({ id }: Props) {
 
   return (
     <section className="flex min-h-screen flex-col items-center bg-dark-navy px-6">
-      <header className="mt-6 grid w-full max-w-lg grid-cols-3 items-center">
-        <Link href="/">
+      <header className="relative mt-6 flex w-full max-w-lg flex-row items-end justify-around">
+        <Link href="/" className="absolute left-0">
           <Image src={logo} alt="Logo" />
         </Link>
         <div className="grid place-items-center">
-          <div className="flex h-9 items-center gap-2.5 rounded-md bg-semi-dark-navy px-4 shadow-[0_4px_0_0_#10212A]">
-            {gameState?.type !== "Playing" ? (
-              <XIcon className="h-4 w-4 text-silver" />
-            ) : gameState?.currentPlayerMark === "X" ? (
-              <XIcon className="h-4 w-4 text-silver" />
-            ) : (
-              <OIcon className="h-4 w-4 text-silver" />
-            )}
-            <div className="text-sm font-bold uppercase tracking-wider text-silver">
-              Turn
+          {gameState?.type === "Playing" && (
+            <div className="flex h-9 items-center gap-2.5 rounded-md bg-semi-dark-navy px-4 text-sm font-bold uppercase tracking-wider text-silver shadow-[0_4px_0_0_#10212A]">
+              {gameState?.currentPlayerMark === "X" ? (
+                <XIcon className="h-4 w-4 text-silver" />
+              ) : (
+                <OIcon className="h-4 w-4 text-silver" />
+              )}
+              <div>
+                {userMark === undefined
+                  ? "Turn"
+                  : gameState.currentPlayerMark === userMark
+                    ? "Turn (You)"
+                    : "Turn (Them)"}
+              </div>
             </div>
-          </div>
+          )}
         </div>
-        <div className="grid place-items-end">
+        <div className="absolute right-0">
           <button className="grid h-9 w-10 place-items-center rounded-md bg-silver shadow-[0_4px_#6B8997] hover:bg-silver-hover">
             <RestartIcon className="h-4 w-4 text-dark-navy" />
           </button>
@@ -153,14 +162,14 @@ export default function Game({ id }: Props) {
                     }}
                   >
                     {cell === "X" ? (
-                      <XIcon className="h-10 w-10 sm:h-16 sm:w-16 text-light-blue" />
+                      <XIcon className="h-10 w-10 text-light-blue sm:h-16 sm:w-16" />
                     ) : cell === "O" ? (
-                      <OIcon className="h-10 w-10 sm:h-16 sm:w-16 text-light-yellow" />
+                      <OIcon className="h-10 w-10 text-light-yellow sm:h-16 sm:w-16" />
                     ) : gameState.type === "Playing" &&
                       gameState.currentPlayerMark === "X" ? (
-                      <XIconOutline className="hidden h-10 w-10 sm:h-16 sm:w-16 group-hover:block group-hover:group-disabled:hidden" />
+                      <XIconOutline className="hidden h-10 w-10 group-hover:block group-hover:group-disabled:hidden sm:h-16 sm:w-16" />
                     ) : (
-                      <OIconOutline className="hidden h-10 w-10 sm:h-16 sm:w-16 group-hover:block group-hover:group-disabled:hidden" />
+                      <OIconOutline className="hidden h-10 w-10 group-hover:block group-hover:group-disabled:hidden sm:h-16 sm:w-16" />
                     )}
                   </button>
                 )
