@@ -43,6 +43,18 @@ export default function Game({ id }: Props) {
           method: "POST",
         })
       }
+
+      const { data, error: getSessionError } = await supabase.auth.getSession()
+      if (getSessionError) {
+        console.error(getSessionError)
+        return
+      }
+      if (!data.session) {
+        console.error("No session!!")
+        return
+      }
+
+      setUserId(data.session.user.id)
     }
 
     const changes = supabase
@@ -67,24 +79,6 @@ export default function Game({ id }: Props) {
       changes.unsubscribe()
     }
   }, [id])
-
-  useEffect(() => {
-    async function getUser() {
-      const { data, error } = await supabase.auth.getSession()
-      if (error) {
-        console.error(error)
-        return
-      }
-      if (!data.session) {
-        console.error("No session!!")
-        return
-      }
-
-      setUserId(data.session.user.id)
-    }
-
-    getUser()
-  }, [])
 
   const board = gameState?.type === "Playing" ? gameState?.board : emptyBoard
 
