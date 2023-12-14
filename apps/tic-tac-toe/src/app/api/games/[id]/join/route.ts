@@ -8,13 +8,19 @@ import {
   CannotJoinWhenGameStartedError,
   PlayerAlreadyJoinedError,
 } from "@/domain/command-handler"
-import { NextRequest } from "next/server"
 
 type Params = {
   id: string
 }
 
-export async function POST({ params }: { params: Params }) {
+export async function POST(
+  _request: Request,
+  {
+    params,
+  }: {
+    params: Params
+  },
+) {
   const cookieStore = cookies()
   const userSupabase = createUserSupabaseClient(cookieStore)
   const playerId = await getOrCreateAnonymousUser(userSupabase)
