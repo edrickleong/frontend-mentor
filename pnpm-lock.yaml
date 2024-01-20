@@ -1258,11 +1258,11 @@ importers:
         specifier: 9.0.7
         version: 9.0.7
       vite:
-        specifier: 5.0.5
-        version: 5.0.5(@types/node@20.9.0)
+        specifier: 5.0.12
+        version: 5.0.12(@types/node@20.9.0)
       vite-tsconfig-paths:
         specifier: 4.2.1
-        version: 4.2.1(typescript@5.2.2)(vite@5.0.5)
+        version: 4.2.1(typescript@5.2.2)(vite@5.0.12)
       vitest:
         specifier: 1.1.3
         version: 1.1.3(@types/node@20.9.0)
@@ -5996,7 +5996,7 @@ packages:
       debug: 4.3.4
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 5.0.5(@types/node@20.9.0)
+      vite: 5.0.12(@types/node@20.9.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -6008,7 +6008,7 @@ packages:
       - terser
     dev: true
 
-  /vite-tsconfig-paths@4.2.1(typescript@5.2.2)(vite@5.0.5):
+  /vite-tsconfig-paths@4.2.1(typescript@5.2.2)(vite@5.0.12):
     resolution: {integrity: sha512-GNUI6ZgPqT3oervkvzU+qtys83+75N/OuDaQl7HmOqFTb0pjZsuARrRipsyJhJ3enqV8beI1xhGbToR4o78nSQ==}
     peerDependencies:
       vite: '*'
@@ -6019,14 +6019,14 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.1.2(typescript@5.2.2)
-      vite: 5.0.5(@types/node@20.9.0)
+      vite: 5.0.12(@types/node@20.9.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@5.0.5(@types/node@20.9.0):
-    resolution: {integrity: sha512-OekeWqR9Ls56f3zd4CaxzbbS11gqYkEiBtnWFFgYR2WV8oPJRRKq0mpskYy/XaoCL3L7VINDhqqOMNDiYdGvGg==}
+  /vite@5.0.12(@types/node@20.9.0):
+    resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -6105,7 +6105,7 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.5.1
       tinypool: 0.8.1
-      vite: 5.0.5(@types/node@20.9.0)
+      vite: 5.0.12(@types/node@20.9.0)
       vite-node: 1.1.3(@types/node@20.9.0)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
