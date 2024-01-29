@@ -16,6 +16,7 @@
 
 | Difficulty   | Challenge                                                     | Preview                                                                                |
 |--------------|---------------------------------------------------------------|----------------------------------------------------------------------------------------|
+| Newbie       | [3 Column Preview](apps/3-column-preview)                     |                                                                                        |
 | Newbie       | 📷 QR code component                                          |                                                                                        |
 | Newbie       | ⭐ Interactive rating component                                |                                                                                        |
 | Newbie       | 💯 Results summary component                                  |                                                                                        |

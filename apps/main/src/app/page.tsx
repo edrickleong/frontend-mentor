@@ -11,7 +11,6 @@ import huddlePreview from "#/huddle-landing-page/desktop-preview.jpg"
 import nftPreview from "#/nft-preview/desktop-preview.jpg"
 import orderSummary from "#/order-summary/desktop-preview.jpg"
 import statsPreview from "#/stats-preview/desktop-preview.jpg"
-import threeColumnPreview from "#/three-column-preview/desktop-preview.jpg"
 import faqAccordion from "#/faq-accordion/desktop-preview.jpg"
 import socialProof from "#/social-proof/desktop-preview.jpg"
 import articlePreview from "#/article-preview/desktop-preview.jpg"
@@ -92,11 +91,6 @@ const projects = [
     link: "/stats-preview",
   },
   {
-    title: "Three column preview card component",
-    preview: threeColumnPreview,
-    link: "/three-column-preview",
-  },
-  {
     title: "FAQ accordion card",
     preview: faqAccordion,
     link: "/faq-accordion",
@@ -128,7 +122,7 @@ export default function Home() {
     <main
       className={cn(
         "flex min-h-screen flex-col items-center justify-between p-6 lg:p-24",
-        dmSans.className
+        dmSans.className,
       )}
     >
       <h1 className="text-center text-4xl font-medium sm:text-6xl">

@@ -1,19 +1,8 @@
-import { Big_Shoulders_Display, Lexend_Deca } from "next/font/google"
-import { cn } from "@/app/utils"
+import { cn } from "@/lib/utils"
 import Image from "next/image"
-import iconSedans from "#/three-column-preview/icon-sedans.svg"
-import iconSuvs from "#/three-column-preview/icon-suvs.svg"
-import iconLuxury from "#/three-column-preview/icon-luxury.svg"
-
-const lexendDeca = Lexend_Deca({
-  subsets: ["latin"],
-  weight: ["400"],
-})
-
-const bigShouldersDisplay = Big_Shoulders_Display({
-  subsets: ["latin"],
-  weight: ["700"],
-})
+import iconSedans from "#/icon-sedans.svg"
+import iconSuvs from "#/icon-suvs.svg"
+import iconLuxury from "#/icon-luxury.svg"
 
 const styles = {
   "--bright-orange": "hsl(31, 77%, 52%)",
@@ -53,7 +42,6 @@ export default function Page() {
       style={styles}
       className={cn(
         "flex min-h-screen w-full flex-col bg-[--very-light-gray] px-6 py-[88px]",
-        lexendDeca.className
       )}
     >
       <div className="flex flex-col overflow-hidden rounded-lg md:flex-row">
@@ -68,17 +56,12 @@ export default function Page() {
             <Image src={it.icon} alt={""} />
             <div
               className={cn(
-                "mt-[35px] text-[40px] font-bold uppercase text-[--very-light-gray]",
-                bigShouldersDisplay.className
+                "font-heading mt-[35px] text-[40px] font-bold uppercase text-[--very-light-gray]",
               )}
             >
               {it.title}
             </div>
-            <div
-              className={
-                "mt-[25px] text-[15px] leading-[25px] text-[--transparent-white]"
-              }
-            >
+            <div className="mt-[25px] text-[15px] leading-[25px] text-[--transparent-white]">
               {it.description}
             </div>
             <button className="mt-[25px] h-[48px] rounded-[25px] bg-[--very-light-gray] px-8 text-[15px] leading-[25px] text-[--primary] hover:border-2 hover:border-white hover:bg-[--primary] hover:text-white md:mt-[83px]">
